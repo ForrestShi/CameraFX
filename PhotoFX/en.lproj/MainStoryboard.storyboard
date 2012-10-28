@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="L7m-zq-jxI">
+    <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller - PhotoFX-->
+        <scene sceneID="5">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
+                <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3">
+                        <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="4uW-05-3PN" customClass="iCarousel">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="392"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="2" id="6dH-BO-Zfe"/>
+                                    <outlet property="delegate" destination="2" id="jkj-Pc-PJ7"/>
+                                </connections>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="5jI-7Y-lB7">
+                                <rect key="frame" x="0.0" y="392" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Album" id="Vpe-Rx-cOs">
+                                        <connections>
+                                            <action selector="photoFromAlbum" destination="2" id="Obf-vn-A2V"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="camera" id="U1T-P5-uNl">
+                                        <connections>
+                                            <segue destination="idv-MW-BFP" kind="push" identifier="pushMTCamera" id="wPn-Z7-CeE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="hAO-K6-IOf"/>
+                                    <barButtonItem enabled="NO" title="Filter" id="eD4-rR-jhT">
+                                        <connections>
+                                            <action selector="applyImageFilter:" destination="2" id="RSo-jI-1jJ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="PhotoFX" id="qlM-Gs-z9a">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="4FO-qN-WxZ">
+                            <connections>
+                                <action selector="saveImageToAlbum" destination="2" id="A9g-ak-tNO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="filterButton" destination="eD4-rR-jhT" id="YEN-QY-yKg"/>
+                        <outlet property="photoCarousel" destination="4uW-05-3PN" id="uFa-sZ-edU"/>
+                        <outlet property="saveButton" destination="4FO-qN-WxZ" id="Xbg-GV-mOR"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="536" y="661"/>
+        </scene>
+        <!--Camera View Controller - Capture-->
+        <scene sceneID="Men-zD-Zy7">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ana-gz-VIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController title="Capture" id="idv-MW-BFP" customClass="MTCameraViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tYG-iW-Bgh" customClass="GPUImageView">
+                        <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="gSm-3S-QJO">
+                                <rect key="frame" x="0.0" y="392" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="zAg-K2-hkV"/>
+                                    <barButtonItem title="Take Photo" id="Ijz-Zq-Pys">
+                                        <connections>
+                                            <action selector="captureImage:" destination="idv-MW-BFP" id="RSg-A1-Nij"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="DlF-sR-EKU"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="981" y="661"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QWX-Xi-OS3">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jfj-Je-9WK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="L7m-zq-jxI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="2Qw-DA-Tim">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2" kind="relationship" relationship="rootViewController" id="Y8z-IO-20B"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="36" y="629"/>
+        </scene>
+    </scenes>
+    <classes>
+        <class className="GPUImageView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GPUImageView.h"/>
+        </class>
+        <class className="MTCameraViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTCameraViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="captureImage:"/>
+            </relationships>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="applyImageFilter:"/>
+                <relationship kind="action" name="photoFromAlbum"/>
+                <relationship kind="action" name="photoFromCamera"/>
+                <relationship kind="action" name="saveImageToAlbum"/>
+                <relationship kind="outlet" name="filterButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="photoCarousel" candidateClass="iCarousel"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="iCarousel" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/iCarousel.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dataSource"/>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <nil key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>

@@ -1,0 +1,446 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1F12BD2D15FEFC0200DD8284 /* MTCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */; };
+		1F8C309F160068D800FEBB7B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F8C309D160068D800FEBB7B /* Icon.png */; };
+		1F8C30A0160068D800FEBB7B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F8C309E160068D800FEBB7B /* Icon@2x.png */; };
+		1F8C30D41600FEAF00FEBB7B /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8C30D31600FE0D00FEBB7B /* UIImage+ProportionalFill.m */; };
+		1F92413415F741B90089AAAF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F92413315F741B90089AAAF /* UIKit.framework */; };
+		1F92413615F741B90089AAAF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F92413515F741B90089AAAF /* Foundation.framework */; };
+		1F92413815F741B90089AAAF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F92413715F741B90089AAAF /* CoreGraphics.framework */; };
+		1F92413E15F741B90089AAAF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F92413C15F741B90089AAAF /* InfoPlist.strings */; };
+		1F92414015F741B90089AAAF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F92413F15F741B90089AAAF /* main.m */; };
+		1F92414415F741B90089AAAF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F92414315F741B90089AAAF /* AppDelegate.m */; };
+		1F92414715F741B90089AAAF /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F92414515F741B90089AAAF /* MainStoryboard.storyboard */; };
+		1F92414A15F741B90089AAAF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F92414915F741B90089AAAF /* ViewController.m */; };
+		1F92416A15F74AFC0089AAAF /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F92416515F74A930089AAAF /* libGPUImage.a */; };
+		1F92416C15F74B1F0089AAAF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F92416B15F74B1F0089AAAF /* CoreMedia.framework */; };
+		1F92416E15F74B2C0089AAAF /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F92416D15F74B2C0089AAAF /* CoreVideo.framework */; };
+		1F92417015F74B350089AAAF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F92416F15F74B350089AAAF /* OpenGLES.framework */; };
+		1F92417215F74B3E0089AAAF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F92417115F74B3E0089AAAF /* AVFoundation.framework */; };
+		1F92417415F74B450089AAAF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F92417315F74B450089AAAF /* QuartzCore.framework */; };
+		1FEECF7C15FF588500C4FB0A /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEECF7B15FF54C500C4FB0A /* iCarousel.m */; };
+		1FEECF8315FFEB5200C4FB0A /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEECF8215FFE8E200C4FB0A /* UIImage+Resize.m */; };
+		1FEECF8815FFEBCA00C4FB0A /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEECF8715FFEBA900C4FB0A /* UIImage+RoundedCorner.m */; };
+		1FEECF8915FFEBCF00C4FB0A /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEECF8515FFEBA000C4FB0A /* UIImage+Alpha.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1F92416415F74A930089AAAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F92415B15F74A930089AAAF /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A33414DDB1EC00852800;
+			remoteInfo = GPUImage;
+		};
+		1F92416615F74A930089AAAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F92415B15F74A930089AAAF /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A34414DDB1EC00852800;
+			remoteInfo = GPUImageTests;
+		};
+		1F92416815F74AD10089AAAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F92415B15F74A930089AAAF /* GPUImage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BCF1A33314DDB1EC00852800;
+			remoteInfo = GPUImage;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1F12BD2B15FEFC0200DD8284 /* MTCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCameraViewController.h; sourceTree = "<group>"; };
+		1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCameraViewController.m; sourceTree = "<group>"; };
+		1F8C309D160068D800FEBB7B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		1F8C309E160068D800FEBB7B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		1F8C30D21600FE0D00FEBB7B /* UIImage+ProportionalFill.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ProportionalFill.h"; sourceTree = "<group>"; };
+		1F8C30D31600FE0D00FEBB7B /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
+		1F92412F15F741B90089AAAF /* PhotoFX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoFX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F92413315F741B90089AAAF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1F92413515F741B90089AAAF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1F92413715F741B90089AAAF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1F92413B15F741B90089AAAF /* PhotoFX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PhotoFX-Info.plist"; sourceTree = "<group>"; };
+		1F92413D15F741B90089AAAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1F92413F15F741B90089AAAF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1F92414115F741B90089AAAF /* PhotoFX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotoFX-Prefix.pch"; sourceTree = "<group>"; };
+		1F92414215F741B90089AAAF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1F92414315F741B90089AAAF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1F92414615F741B90089AAAF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		1F92414815F741B90089AAAF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1F92414915F741B90089AAAF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1F92415B15F74A930089AAAF /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = Submodules/GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
+		1F92416B15F74B1F0089AAAF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		1F92416D15F74B2C0089AAAF /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		1F92416F15F74B350089AAAF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		1F92417115F74B3E0089AAAF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1F92417315F74B450089AAAF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1FEECF7A15FF54C500C4FB0A /* iCarousel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		1FEECF7B15FF54C500C4FB0A /* iCarousel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		1FEECF8115FFE8E200C4FB0A /* UIImage+Resize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		1FEECF8215FFE8E200C4FB0A /* UIImage+Resize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		1FEECF8415FFEBA000C4FB0A /* UIImage+Alpha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
+		1FEECF8515FFEBA000C4FB0A /* UIImage+Alpha.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
+		1FEECF8615FFEBA900C4FB0A /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		1FEECF8715FFEBA900C4FB0A /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1F92412C15F741B90089AAAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F92417415F74B450089AAAF /* QuartzCore.framework in Frameworks */,
+				1F92417215F74B3E0089AAAF /* AVFoundation.framework in Frameworks */,
+				1F92417015F74B350089AAAF /* OpenGLES.framework in Frameworks */,
+				1F92416E15F74B2C0089AAAF /* CoreVideo.framework in Frameworks */,
+				1F92416C15F74B1F0089AAAF /* CoreMedia.framework in Frameworks */,
+				1F92416A15F74AFC0089AAAF /* libGPUImage.a in Frameworks */,
+				1F92413415F741B90089AAAF /* UIKit.framework in Frameworks */,
+				1F92413615F741B90089AAAF /* Foundation.framework in Frameworks */,
+				1F92413815F741B90089AAAF /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1F8C30D11600FE0100FEBB7B /* MGImageUtiltiies */ = {
+			isa = PBXGroup;
+			children = (
+				1F8C30D21600FE0D00FEBB7B /* UIImage+ProportionalFill.h */,
+				1F8C30D31600FE0D00FEBB7B /* UIImage+ProportionalFill.m */,
+			);
+			name = MGImageUtiltiies;
+			sourceTree = "<group>";
+		};
+		1F92412415F741B90089AAAF = {
+			isa = PBXGroup;
+			children = (
+				1F92415B15F74A930089AAAF /* GPUImage.xcodeproj */,
+				1F92413915F741B90089AAAF /* PhotoFX */,
+				1F92413215F741B90089AAAF /* Frameworks */,
+				1F92413015F741B90089AAAF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1F92413015F741B90089AAAF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F92412F15F741B90089AAAF /* PhotoFX.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1F92413215F741B90089AAAF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F92417315F74B450089AAAF /* QuartzCore.framework */,
+				1F92417115F74B3E0089AAAF /* AVFoundation.framework */,
+				1F92416F15F74B350089AAAF /* OpenGLES.framework */,
+				1F92416D15F74B2C0089AAAF /* CoreVideo.framework */,
+				1F92416B15F74B1F0089AAAF /* CoreMedia.framework */,
+				1F92413315F741B90089AAAF /* UIKit.framework */,
+				1F92413515F741B90089AAAF /* Foundation.framework */,
+				1F92413715F741B90089AAAF /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1F92413915F741B90089AAAF /* PhotoFX */ = {
+			isa = PBXGroup;
+			children = (
+				1F8C30D11600FE0100FEBB7B /* MGImageUtiltiies */,
+				1FFFD6181600359B006FD8FB /* UIImage+Categories */,
+				1FEECF7915FF54B500C4FB0A /* iCarousel */,
+				1F92414215F741B90089AAAF /* AppDelegate.h */,
+				1F92414315F741B90089AAAF /* AppDelegate.m */,
+				1F92414515F741B90089AAAF /* MainStoryboard.storyboard */,
+				1F92414815F741B90089AAAF /* ViewController.h */,
+				1F92414915F741B90089AAAF /* ViewController.m */,
+				1F12BD2B15FEFC0200DD8284 /* MTCameraViewController.h */,
+				1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */,
+				1F92413A15F741B90089AAAF /* Supporting Files */,
+			);
+			path = PhotoFX;
+			sourceTree = "<group>";
+		};
+		1F92413A15F741B90089AAAF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1F8C309D160068D800FEBB7B /* Icon.png */,
+				1F8C309E160068D800FEBB7B /* Icon@2x.png */,
+				1F92413B15F741B90089AAAF /* PhotoFX-Info.plist */,
+				1F92413C15F741B90089AAAF /* InfoPlist.strings */,
+				1F92413F15F741B90089AAAF /* main.m */,
+				1F92414115F741B90089AAAF /* PhotoFX-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1F92415C15F74A930089AAAF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F92416515F74A930089AAAF /* libGPUImage.a */,
+				1F92416715F74A930089AAAF /* GPUImageTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1FEECF7915FF54B500C4FB0A /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				1FEECF7A15FF54C500C4FB0A /* iCarousel.h */,
+				1FEECF7B15FF54C500C4FB0A /* iCarousel.m */,
+			);
+			name = iCarousel;
+			sourceTree = "<group>";
+		};
+		1FFFD6181600359B006FD8FB /* UIImage+Categories */ = {
+			isa = PBXGroup;
+			children = (
+				1FEECF8415FFEBA000C4FB0A /* UIImage+Alpha.h */,
+				1FEECF8515FFEBA000C4FB0A /* UIImage+Alpha.m */,
+				1FEECF8115FFE8E200C4FB0A /* UIImage+Resize.h */,
+				1FEECF8215FFE8E200C4FB0A /* UIImage+Resize.m */,
+				1FEECF8615FFEBA900C4FB0A /* UIImage+RoundedCorner.h */,
+				1FEECF8715FFEBA900C4FB0A /* UIImage+RoundedCorner.m */,
+			);
+			name = "UIImage+Categories";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1F92412E15F741B90089AAAF /* PhotoFX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F92414D15F741B90089AAAF /* Build configuration list for PBXNativeTarget "PhotoFX" */;
+			buildPhases = (
+				1F92412B15F741B90089AAAF /* Sources */,
+				1F92412C15F741B90089AAAF /* Frameworks */,
+				1F92412D15F741B90089AAAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F92416915F74AD10089AAAF /* PBXTargetDependency */,
+			);
+			name = PhotoFX;
+			productName = PhotoFX;
+			productReference = 1F92412F15F741B90089AAAF /* PhotoFX.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1F92412615F741B90089AAAF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = Mobiletuts;
+			};
+			buildConfigurationList = 1F92412915F741B90089AAAF /* Build configuration list for PBXProject "PhotoFX" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1F92412415F741B90089AAAF;
+			productRefGroup = 1F92413015F741B90089AAAF /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1F92415C15F74A930089AAAF /* Products */;
+					ProjectRef = 1F92415B15F74A930089AAAF /* GPUImage.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				1F92412E15F741B90089AAAF /* PhotoFX */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1F92416515F74A930089AAAF /* libGPUImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGPUImage.a;
+			remoteRef = 1F92416415F74A930089AAAF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1F92416715F74A930089AAAF /* GPUImageTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GPUImageTests.octest;
+			remoteRef = 1F92416615F74A930089AAAF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1F92412D15F741B90089AAAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F92413E15F741B90089AAAF /* InfoPlist.strings in Resources */,
+				1F92414715F741B90089AAAF /* MainStoryboard.storyboard in Resources */,
+				1F8C309F160068D800FEBB7B /* Icon.png in Resources */,
+				1F8C30A0160068D800FEBB7B /* Icon@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1F92412B15F741B90089AAAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F8C30D41600FEAF00FEBB7B /* UIImage+ProportionalFill.m in Sources */,
+				1FEECF8915FFEBCF00C4FB0A /* UIImage+Alpha.m in Sources */,
+				1FEECF8815FFEBCA00C4FB0A /* UIImage+RoundedCorner.m in Sources */,
+				1FEECF8315FFEB5200C4FB0A /* UIImage+Resize.m in Sources */,
+				1FEECF7C15FF588500C4FB0A /* iCarousel.m in Sources */,
+				1F92414015F741B90089AAAF /* main.m in Sources */,
+				1F92414415F741B90089AAAF /* AppDelegate.m in Sources */,
+				1F92414A15F741B90089AAAF /* ViewController.m in Sources */,
+				1F12BD2D15FEFC0200DD8284 /* MTCameraViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1F92416915F74AD10089AAAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GPUImage;
+			targetProxy = 1F92416815F74AD10089AAAF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1F92413C15F741B90089AAAF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F92413D15F741B90089AAAF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1F92414515F741B90089AAAF /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F92414615F741B90089AAAF /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1F92414B15F741B90089AAAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "Submodules/GPUImage/framework/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1F92414C15F741B90089AAAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "Submodules/GPUImage/framework/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1F92414E15F741B90089AAAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoFX/PhotoFX-Prefix.pch";
+				INFOPLIST_FILE = "PhotoFX/PhotoFX-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1F92414F15F741B90089AAAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PhotoFX/PhotoFX-Prefix.pch";
+				INFOPLIST_FILE = "PhotoFX/PhotoFX-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1F92412915F741B90089AAAF /* Build configuration list for PBXProject "PhotoFX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F92414B15F741B90089AAAF /* Debug */,
+				1F92414C15F741B90089AAAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F92414D15F741B90089AAAF /* Build configuration list for PBXNativeTarget "PhotoFX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F92414E15F741B90089AAAF /* Debug */,
+				1F92414F15F741B90089AAAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1F92412615F741B90089AAAF /* Project object */;
+}
