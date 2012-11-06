@@ -1,6 +1,10 @@
 CameraFX
 ========
 
+Found memory issue:
+-11-06 21:41:39.145 PhotoFX[8505:707] Received memory warning.
+2012-11-06 21:41:55.891 PhotoFX[8505:707] Received memory warning.
+
 ################################################################
 Oct.28 2012, Sunday
 
