@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		186C5AD2163D2481008550E4 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 186C5AD1163D2481008550E4 /* README */; };
+		18A5541B164948C1007AF252 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 18A5541A164948C1007AF252 /* README.md */; };
 		1F12BD2D15FEFC0200DD8284 /* MTCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */; };
 		1F8C309F160068D800FEBB7B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F8C309D160068D800FEBB7B /* Icon.png */; };
 		1F8C30A0160068D800FEBB7B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F8C309E160068D800FEBB7B /* Icon@2x.png */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		186C5AD1163D2481008550E4 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		18A5541A164948C1007AF252 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		1F12BD2B15FEFC0200DD8284 /* MTCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCameraViewController.h; sourceTree = "<group>"; };
 		1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCameraViewController.m; sourceTree = "<group>"; };
 		1F8C309D160068D800FEBB7B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		1F92412415F741B90089AAAF = {
 			isa = PBXGroup;
 			children = (
+				18A5541A164948C1007AF252 /* README.md */,
 				186C5AD1163D2481008550E4 /* README */,
 				1F92415B15F74A930089AAAF /* GPUImage.xcodeproj */,
 				1F92413915F741B90089AAAF /* PhotoFX */,
@@ -298,6 +301,7 @@
 				1F8C309F160068D800FEBB7B /* Icon.png in Resources */,
 				1F8C30A0160068D800FEBB7B /* Icon@2x.png in Resources */,
 				186C5AD2163D2481008550E4 /* README in Resources */,
+				18A5541B164948C1007AF252 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,7 +416,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoFX/PhotoFX-Prefix.pch";
 				INFOPLIST_FILE = "PhotoFX/PhotoFX-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -425,7 +429,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoFX/PhotoFX-Prefix.pch";
 				INFOPLIST_FILE = "PhotoFX/PhotoFX-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

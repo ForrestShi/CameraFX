@@ -27,19 +27,25 @@
     UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(applyImageFilter:)];
     self.navigationItem.rightBarButtonItem = filterButton;
 
-    // Setup initial camera filter
-    filter = [[GPUImageToonFilter alloc] init];
-	[filter prepareForImageCapture];
-    GPUImageView *filterView = (GPUImageView *)self.view;
-    [filter addTarget:filterView];
+    if (!filter) {
+        // Setup initial camera filter
+        filter = [[GPUImageToonFilter alloc] init];
+        [filter prepareForImageCapture];
+        GPUImageView *filterView = (GPUImageView *)self.view;
+        [filter addTarget:filterView];
+
+    }
 
     // Create custom GPUImage camera
-    stillCamera =  [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
-    stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
-    [stillCamera addTarget:filter];
-    
-    // Begin showing video camera stream
-    [stillCamera startCameraCapture];
+    if (!stillCamera) {
+        stillCamera =  [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
+        stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+        [stillCamera addTarget:filter];
+        
+        // Begin showing video camera stream
+        [stillCamera startCameraCapture];
+ 
+    }
     
 }
 
