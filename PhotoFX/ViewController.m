@@ -8,6 +8,7 @@
 {
     NSMutableArray *displayImages;
     GPUImageStillCamera *stillCamera;
+    MTCameraViewController *cameraViewController;
 }
 
 @property(nonatomic, weak) IBOutlet iCarousel *photoCarousel;
@@ -68,7 +69,7 @@
     if([segue.identifier isEqualToString:@"pushMTCamera"])
     {
         // Set the delegate so this controller can received snapped photos
-        MTCameraViewController *cameraViewController = (MTCameraViewController *) segue.destinationViewController;
+        cameraViewController = (MTCameraViewController *) segue.destinationViewController;
         cameraViewController.delegate = self;
     }
 }
