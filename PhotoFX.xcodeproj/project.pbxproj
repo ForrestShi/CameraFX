@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		186C5AD2163D2481008550E4 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 186C5AD1163D2481008550E4 /* README */; };
 		1F12BD2D15FEFC0200DD8284 /* MTCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */; };
 		1F8C309F160068D800FEBB7B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F8C309D160068D800FEBB7B /* Icon.png */; };
 		1F8C30A0160068D800FEBB7B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F8C309E160068D800FEBB7B /* Icon@2x.png */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		186C5AD1163D2481008550E4 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		1F12BD2B15FEFC0200DD8284 /* MTCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCameraViewController.h; sourceTree = "<group>"; };
 		1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCameraViewController.m; sourceTree = "<group>"; };
 		1F8C309D160068D800FEBB7B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		1F92412415F741B90089AAAF = {
 			isa = PBXGroup;
 			children = (
+				186C5AD1163D2481008550E4 /* README */,
 				1F92415B15F74A930089AAAF /* GPUImage.xcodeproj */,
 				1F92413915F741B90089AAAF /* PhotoFX */,
 				1F92413215F741B90089AAAF /* Frameworks */,
@@ -294,6 +297,7 @@
 				1F92414715F741B90089AAAF /* MainStoryboard.storyboard in Resources */,
 				1F8C309F160068D800FEBB7B /* Icon.png in Resources */,
 				1F8C30A0160068D800FEBB7B /* Icon@2x.png in Resources */,
+				186C5AD2163D2481008550E4 /* README in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +358,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -370,7 +375,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "Submodules/GPUImage/framework/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				SHARED_PRECOMPS_DIR = "`";
 			};
 			name = Debug;
 		};
@@ -393,6 +400,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
+				SHARED_PRECOMPS_DIR = "`";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -400,10 +408,13 @@
 		1F92414E15F741B90089AAAF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoFX/PhotoFX-Prefix.pch";
 				INFOPLIST_FILE = "PhotoFX/PhotoFX-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -414,6 +425,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoFX/PhotoFX-Prefix.pch";
 				INFOPLIST_FILE = "PhotoFX/PhotoFX-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
