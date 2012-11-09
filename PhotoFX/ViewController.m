@@ -66,12 +66,15 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"pushMTCamera"])
-    {
-        // Set the delegate so this controller can received snapped photos
-        cameraViewController = (MTCameraViewController *) segue.destinationViewController;
-        cameraViewController.delegate = self;
-    }
+    runOnMainQueueWithoutDeadlocking(^{
+        if([segue.identifier isEqualToString:@"pushMTCamera"])
+        {
+            // Set the delegate so this controller can received snapped photos
+            cameraViewController = (MTCameraViewController *) segue.destinationViewController;
+            cameraViewController.delegate = self;
+        }
+    });
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

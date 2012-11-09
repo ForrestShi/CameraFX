@@ -23,6 +23,8 @@
 {
     [super viewDidLoad];
 
+    NSLog(@"view loaded");
+    
     // Add Filter Button to Interface
     UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(applyImageFilter:)];
     self.navigationItem.rightBarButtonItem = filterButton;
@@ -73,7 +75,7 @@
 {
     // Disable to prevent multiple taps while processing
     UIButton *captureButton = (UIButton *)sender;
-    captureButton.enabled = NO;
+    //captureButton.enabled = NO;
     
     // Snap Image from GPU camera, send back to main view controller
     [stillCamera capturePhotoAsJPEGProcessedUpToFilter:filter withCompletionHandler:^(NSData *processedJPEG, NSError *error)
@@ -88,6 +90,9 @@
          }
 
          runOnMainQueueWithoutDeadlocking(^{
+             
+             captureButton.enabled = YES;
+
              [self.navigationController popToRootViewControllerAnimated:YES];
          });
      }];
