@@ -227,10 +227,15 @@
     {
         UIImage *image = [[UIImage alloc] initWithData:imageData];
         [displayImages addObject:image];
-        [self.photoCarousel reloadData];
+    
+        runOnMainQueueWithoutDeadlocking(^{
+            [self.photoCarousel reloadData];
+            [self.photoCarousel scrollToItemAtIndex:[displayImages count] animated:YES];
+            
+            self.filterButton.enabled = YES;
+            self.saveButton.enabled = YES;
+        });
         
-        self.filterButton.enabled = YES;
-        self.saveButton.enabled = YES;
     }
     else
     {
