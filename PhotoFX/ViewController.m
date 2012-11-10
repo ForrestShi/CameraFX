@@ -4,8 +4,8 @@
 #import "iCarousel.h"
 #import "UIImage+Resize.h"
 #import "FXImageView.h"
-#import "SHKConfiguration.h"
-#import "MySHKConfigurator.h"
+#import "SHKItem.h"
+#import "SHKActionSheet.h"
 
 @interface ViewController () 
 {
@@ -99,13 +99,24 @@
 
 - (IBAction)saveImageToAlbum
 {
-    /*
-    UIImage *selectedImage = [displayImages objectAtIndex:self.photoCarousel.currentItemIndex];
-    UIImageWriteToSavedPhotosAlbum(selectedImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    
+    if ([displayImages count] == 0 ) {
+        return;
+    }
+    
+    SHKItem *item = [SHKItem image:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex] title:@"San Francisco"];
+    
+    /* optional examples
+     item.tags = [NSArray arrayWithObjects:@"bay bridge", @"architecture", @"california", nil];
+     
+     //give a source rect in the coords of the view set with setRootViewController:
+     item.popOverSourceRect = [self.navigationController.toolbar convertRect:self.navigationController.toolbar.bounds toView:self.view];
      */
     
-    DefaultSHKConfigurator *configurator = [[MySHKConfigurator alloc] init];
-    [SHKConfiguration sharedInstanceWithConfigurator:configurator];
+	SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
+	[SHK setRootViewController:self];
+//	[actionSheet showFromToolbar:self.navigationController.toolbar];
+    [actionSheet showFromRect:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 1) inView:self.view animated:YES];
 
 }
 

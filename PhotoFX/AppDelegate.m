@@ -1,4 +1,6 @@
 #import "AppDelegate.h"
+#import "MySHKConfigurator.h"
+#import "SHKConfiguration.h"
 
 @implementation AppDelegate
 @synthesize window;
@@ -6,6 +8,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    DefaultSHKConfigurator *configurator = [[MySHKConfigurator alloc] init];
+    [SHKConfiguration sharedInstanceWithConfigurator:configurator];
+    
+
+    
     return YES;
 }
 							
