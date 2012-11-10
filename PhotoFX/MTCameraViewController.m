@@ -51,6 +51,17 @@
  
     }
     
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
+    
+    [self.view addGestureRecognizer:singleTap];
+    
+}
+
+- (void)singleTap:(UIGestureRecognizer*)gesture{
+    if (stillCamera) {
+        DLog(@"switch camera");
+        [stillCamera rotateCamera];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
