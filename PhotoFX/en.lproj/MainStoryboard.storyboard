@@ -8,11 +8,15 @@
         <!--View Controller - PhotoFX-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" id="2" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="green.jpg" id="ZLM-er-djg">
+                                <rect key="frame" x="0.0" y="22" width="320" height="453"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                             <view contentMode="scaleToFill" id="4uW-05-3PN" customClass="iCarousel">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,6 +132,9 @@
             <point key="canvasLocation" x="-140" y="661"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="green.jpg" width="640" height="960"/>
+    </resources>
     <classes>
         <class className="GPUImageView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GPUImageView.h"/>
@@ -135,6 +142,7 @@
         <class className="MTCameraViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MTCameraViewController.h"/>
             <relationships>
+                <relationship kind="action" name="applyImageFilter:"/>
                 <relationship kind="action" name="captureImage:"/>
             </relationships>
         </class>

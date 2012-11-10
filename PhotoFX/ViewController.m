@@ -70,9 +70,10 @@
 {
     [super viewDidLoad];
     
+    self.photoCarousel.backgroundColor = [UIColor clearColor];
     // iCarousel Configuration
-    self.photoCarousel.type = iCarouselTypeCoverFlow2;
-    self.photoCarousel.bounces = NO;
+    self.photoCarousel.type = iCarouselTypeCoverFlow;
+    self.photoCarousel.bounces = YES;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
