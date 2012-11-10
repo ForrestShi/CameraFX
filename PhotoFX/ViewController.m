@@ -3,6 +3,7 @@
 #import "MTCameraViewController.h"
 #import "iCarousel.h"
 #import "UIImage+Resize.h"
+#import "FXImageView.h"
 
 @interface ViewController () 
 {
@@ -240,9 +241,10 @@
         [displayImages addObject:image];
     
         runOnMainQueueWithoutDeadlocking(^{
-            [self.photoCarousel reloadData];
-            [self.photoCarousel scrollToItemAtIndex:[displayImages count] animated:YES];
-            
+
+            [self.photoCarousel reloadDataToLastItem];
+            //[self.photoCarousel scrollToItemAtIndex:[displayImages count] animated:YES];
+
             self.filterButton.enabled = YES;
             self.saveButton.enabled = YES;
         });
@@ -265,41 +267,33 @@
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
-{    
-    // Create new view if no view is available for recycling
+{
+    
+    //create new view if no view is available for recycling
     if (view == nil)
     {
-        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 300.0f, 300.0f)];
-        view.contentMode = UIViewContentModeCenter;
+        FXImageView *imageView = [[[FXImageView alloc] initWithFrame:CGRectMake(0, 0, 250.0f, 250.0f)] autorelease];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        imageView.asynchronous = YES;
+        imageView.reflectionScale = 0.5f;
+        imageView.reflectionAlpha = 0.25f;
+        imageView.reflectionGap = 10.0f;
+        imageView.shadowOffset = CGSizeMake(0.0f, 2.0f);
+        imageView.shadowBlur = 5.0f;
+        imageView.cornerRadius = 10.0f;
+        
+        view = imageView;
     }
     
-    // Intelligently scale down to a max of 250px in width or height
-    UIImage *originalImage = [displayImages objectAtIndex:index];
-    
-    CGSize maxSize = CGSizeMake(250.0f, 250.0f);
-    CGSize targetSize;
-    
-    // If image is landscape, set width to 250px
-    if(originalImage.size.width >= originalImage.size.height)
-    {
-        float newHeightMultiplier = maxSize.width / originalImage.size.width;
-        targetSize = CGSizeMake(maxSize.width, round(originalImage.size.height * newHeightMultiplier));
-    } // If image is portrait, set height to 250px
-    else
-    {
-        float newWidthMultiplier = maxSize.height / originalImage.size.height;
-        targetSize = CGSizeMake( round(newWidthMultiplier * originalImage.size.width), maxSize.height );
-    }
-    
-    // Resize the source image down to fit nicely in iCarousel
-    //((UIImageView *)view).image = [[displayImages objectAtIndex:index] imageScaledToFitSize:targetSize];
-    ((UIImageView *)view).image = [[displayImages objectAtIndex:index] resizedImage:targetSize interpolationQuality:kCGInterpolationHigh];
+    //load image
+    [(FXImageView*)view setImage:[displayImages objectAtIndex:index]];
     
     // Two finger double-tap will delete an image
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeImageFromCarousel:)];
     gesture.numberOfTouchesRequired = 2;
     gesture.numberOfTapsRequired = 2;
     view.gestureRecognizers = [NSArray arrayWithObject:gesture];
+    
     
     return view;
 }

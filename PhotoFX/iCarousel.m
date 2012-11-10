@@ -1361,6 +1361,40 @@ NSComparisonResult compareViewDepth(UIView *view1, UIView *view2, iCarousel *sel
     }
 }
 
+- (void)reloadDataToLastItem
+{
+    //remove old views
+    for (UIView *view in [_itemViews allValues])
+    {
+        [view.superview removeFromSuperview];
+    }
+    
+    //bail out if not set up yet
+    if (!_dataSource || !_contentView)
+    {
+        return;
+    }
+    
+    //get number of items and placeholders
+    _numberOfVisibleItems = 0;
+    _numberOfItems = [_dataSource numberOfItemsInCarousel:self];
+    if ([_dataSource respondsToSelector:@selector(numberOfPlaceholdersInCarousel:)])
+    {
+        _numberOfPlaceholders = [_dataSource numberOfPlaceholdersInCarousel:self];
+    }
+    
+    //reset view pools
+    self.itemViews = [NSMutableDictionary dictionary];
+    self.itemViewPool = [NSMutableSet set];
+    self.placeholderViewPool = [NSMutableSet setWithCapacity:_numberOfPlaceholders];
+    
+    //layout views
+    [self setNeedsLayout];
+    
+    [self scrollToItemAtIndex:_numberOfItems animated:YES];
+
+}
+
 
 #pragma mark -
 #pragma mark Scrolling

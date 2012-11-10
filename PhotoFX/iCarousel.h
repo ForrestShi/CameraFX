@@ -239,6 +239,7 @@ iCarouselOption;
 - (void)reloadItemAtIndex:(NSInteger)index animated:(BOOL)animated;
 
 - (void)reloadData;
+- (void)reloadDataToLastItem;
 
 @end
 

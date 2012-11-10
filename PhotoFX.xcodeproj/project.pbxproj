@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		18A4331C164E1D0300C58F27 /* CameraFXManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4331B164E1D0300C58F27 /* CameraFXManager.m */; };
+		18A43325164E22EF00C58F27 /* FXImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A43322164E22EF00C58F27 /* FXImageView.m */; };
+		18A43326164E22EF00C58F27 /* UIImage+FX.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A43324164E22EF00C58F27 /* UIImage+FX.m */; };
 		18A5541B164948C1007AF252 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 18A5541A164948C1007AF252 /* README.md */; };
 		1F12BD2D15FEFC0200DD8284 /* MTCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */; };
 		1F8C309F160068D800FEBB7B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F8C309D160068D800FEBB7B /* Icon.png */; };
@@ -60,6 +62,10 @@
 /* Begin PBXFileReference section */
 		18A4331A164E1D0300C58F27 /* CameraFXManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraFXManager.h; sourceTree = "<group>"; };
 		18A4331B164E1D0300C58F27 /* CameraFXManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraFXManager.m; sourceTree = "<group>"; };
+		18A43321164E22EE00C58F27 /* FXImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXImageView.h; sourceTree = "<group>"; };
+		18A43322164E22EF00C58F27 /* FXImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXImageView.m; sourceTree = "<group>"; };
+		18A43323164E22EF00C58F27 /* UIImage+FX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FX.h"; sourceTree = "<group>"; };
+		18A43324164E22EF00C58F27 /* UIImage+FX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FX.m"; sourceTree = "<group>"; };
 		18A5541A164948C1007AF252 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		1F12BD2B15FEFC0200DD8284 /* MTCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCameraViewController.h; sourceTree = "<group>"; };
 		1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCameraViewController.m; sourceTree = "<group>"; };
@@ -116,6 +122,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18A43327164E22F900C58F27 /* FXImageView */ = {
+			isa = PBXGroup;
+			children = (
+				18A43321164E22EE00C58F27 /* FXImageView.h */,
+				18A43322164E22EF00C58F27 /* FXImageView.m */,
+				18A43323164E22EF00C58F27 /* UIImage+FX.h */,
+				18A43324164E22EF00C58F27 /* UIImage+FX.m */,
+			);
+			name = FXImageView;
+			sourceTree = "<group>";
+		};
 		1F8C30D11600FE0100FEBB7B /* MGImageUtiltiies */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +179,7 @@
 		1F92413915F741B90089AAAF /* PhotoFX */ = {
 			isa = PBXGroup;
 			children = (
+				18A43327164E22F900C58F27 /* FXImageView */,
 				1F8C30D11600FE0100FEBB7B /* MGImageUtiltiies */,
 				1FFFD6181600359B006FD8FB /* UIImage+Categories */,
 				1FEECF7915FF54B500C4FB0A /* iCarousel */,
@@ -323,6 +341,8 @@
 				1F92414A15F741B90089AAAF /* ViewController.m in Sources */,
 				1F12BD2D15FEFC0200DD8284 /* MTCameraViewController.m in Sources */,
 				18A4331C164E1D0300C58F27 /* CameraFXManager.m in Sources */,
+				18A43325164E22EF00C58F27 /* FXImageView.m in Sources */,
+				18A43326164E22EF00C58F27 /* UIImage+FX.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
