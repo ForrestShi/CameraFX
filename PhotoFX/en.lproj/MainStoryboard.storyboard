@@ -94,7 +94,7 @@
                                     <action selector="captureImage:" destination="idv-MW-BFP" eventType="touchUpInside" id="bcg-lN-SeF"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="J23-3x-mCl">
+                            <slider opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.050000000000000003" maxValue="1" id="J23-3x-mCl">
                                 <rect key="frame" x="40" y="229" width="250" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="minimumTrackTintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -103,13 +103,23 @@
                                     <action selector="adjust1:" destination="idv-MW-BFP" eventType="valueChanged" id="t5N-Y4-ZOZ"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="LLY-hQ-fmi">
-                                <rect key="frame" x="40" y="300" width="250" height="23"/>
+                            <slider opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.050000000000000003" maxValue="1" id="LLY-hQ-fmi">
+                                <rect key="frame" x="40" y="293" width="250" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="minimumTrackTintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="thumbTintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="adjust2:" destination="idv-MW-BFP" eventType="valueChanged" id="5l0-k9-bt4"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.050000000000000003" maxValue="1" id="iAd-7d-Eh3">
+                                <rect key="frame" x="40" y="160" width="250" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="minimumTrackTintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="thumbTintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="adjust0:" destination="idv-MW-BFP" eventType="valueChanged" id="tie-FU-EYj"/>
+                                    <action selector="adjust2:" destination="idv-MW-BFP" eventType="valueChanged" id="WZH-du-K1o"/>
                                 </connections>
                             </slider>
                         </subviews>
@@ -171,8 +181,10 @@
         <class className="MTCameraViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MTCameraViewController.h"/>
             <relationships>
+                <relationship kind="action" name="adjust0:"/>
                 <relationship kind="action" name="adjust1:"/>
                 <relationship kind="action" name="adjust2:"/>
+                <relationship kind="action" name="applyImageFilter:"/>
                 <relationship kind="action" name="captureImage:"/>
             </relationships>
         </class>

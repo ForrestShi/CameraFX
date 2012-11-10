@@ -11,6 +11,7 @@
 }
 
 - (IBAction)captureImage:(id)sender;
+- (IBAction)adjust0:(id)sender;
 - (IBAction)adjust1:(id)sender;
 - (IBAction)adjust2:(id)sender;
 
@@ -75,6 +76,16 @@
     DLog(@"%@",@"paning");
 }
 
+- (IBAction)adjust0:(id)sender{
+    UISlider *slider = (UISlider*)sender;
+    
+    if (filter) {
+        if ([filter isKindOfClass:[GPUImageSmoothToonFilter class]]) {
+            GPUImageSmoothToonFilter *toonFilter = (GPUImageSmoothToonFilter*)filter;
+            [toonFilter setBlurSize:slider.value];
+        }
+    }
+}
 
 - (IBAction)adjust1:(id)sender{
     UISlider *slider = (UISlider*)sender;
@@ -106,11 +117,11 @@
     CGRect captureBtnFrame = ((UIButton*)[self.view viewWithTag:1000]).frame;
     CGRect sliderFrame = ((UISlider*)[self.view viewWithTag:1001]).frame;
     CGRect sliderFrame2 = ((UISlider*)[self.view viewWithTag:1002]).frame;
+    CGRect sliderFrame3 = ((UISlider*)[self.view viewWithTag:1003]).frame;
 
-    //DLog(@"capture frame %@",NSStringFromCGRect(captureBtnFrame));
     if ( CGRectContainsPoint(captureBtnFrame, [gestureRecognizer locationInView:self.view]) ||
-                             CGRectContainsPoint(sliderFrame, [gestureRecognizer locationInView:self.view]) ||
-                                     CGRectContainsPoint(sliderFrame2, [gestureRecognizer locationInView:self.view])) {
+        CGRectContainsPoint(sliderFrame3, [gestureRecognizer locationInView:self.view]) || CGRectContainsPoint(sliderFrame, [gestureRecognizer locationInView:self.view]) || CGRectContainsPoint(sliderFrame2, [gestureRecognizer locationInView:self.view]))
+    {
         return NO;
     }
     return YES;
