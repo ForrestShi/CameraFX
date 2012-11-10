@@ -66,14 +66,12 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    runOnMainQueueWithoutDeadlocking(^{
-        if([segue.identifier isEqualToString:@"pushMTCamera"])
-        {
-            // Set the delegate so this controller can received snapped photos
-            cameraViewController = (MTCameraViewController *) segue.destinationViewController;
-            cameraViewController.delegate = self;
-        }
-    });
+    if([segue.identifier isEqualToString:@"pushMTCamera"])
+    {
+        // Set the delegate so this controller can received snapped photos
+        cameraViewController = (MTCameraViewController *) segue.destinationViewController;
+        cameraViewController.delegate = self;
+    }
 
 }
 
