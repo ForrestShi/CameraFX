@@ -10,7 +10,7 @@
 		18A4331C164E1D0300C58F27 /* CameraFXManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4331B164E1D0300C58F27 /* CameraFXManager.m */; };
 		18A43325164E22EF00C58F27 /* FXImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A43322164E22EF00C58F27 /* FXImageView.m */; };
 		18A43326164E22EF00C58F27 /* UIImage+FX.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A43324164E22EF00C58F27 /* UIImage+FX.m */; };
-		18A43329164E2A5400C58F27 /* green.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18A43328164E2A5400C58F27 /* green.jpg */; };
+		18A4332B164E2CAE00C58F27 /* zune.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18A4332A164E2CAE00C58F27 /* zune.jpg */; };
 		18A5541B164948C1007AF252 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 18A5541A164948C1007AF252 /* README.md */; };
 		1F12BD2D15FEFC0200DD8284 /* MTCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */; };
 		1F8C309F160068D800FEBB7B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F8C309D160068D800FEBB7B /* Icon.png */; };
@@ -67,7 +67,7 @@
 		18A43322164E22EF00C58F27 /* FXImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXImageView.m; sourceTree = "<group>"; };
 		18A43323164E22EF00C58F27 /* UIImage+FX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FX.h"; sourceTree = "<group>"; };
 		18A43324164E22EF00C58F27 /* UIImage+FX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FX.m"; sourceTree = "<group>"; };
-		18A43328164E2A5400C58F27 /* green.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = green.jpg; sourceTree = "<group>"; };
+		18A4332A164E2CAE00C58F27 /* zune.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zune.jpg; sourceTree = "<group>"; };
 		18A5541A164948C1007AF252 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		1F12BD2B15FEFC0200DD8284 /* MTCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCameraViewController.h; sourceTree = "<group>"; };
 		1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCameraViewController.m; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 		1F92413A15F741B90089AAAF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				18A43328164E2A5400C58F27 /* green.jpg */,
+				18A4332A164E2CAE00C58F27 /* zune.jpg */,
 				1F8C309D160068D800FEBB7B /* Icon.png */,
 				1F8C309E160068D800FEBB7B /* Icon@2x.png */,
 				1F92413B15F741B90089AAAF /* PhotoFX-Info.plist */,
@@ -324,7 +324,7 @@
 				1F8C309F160068D800FEBB7B /* Icon.png in Resources */,
 				1F8C30A0160068D800FEBB7B /* Icon@2x.png in Resources */,
 				18A5541B164948C1007AF252 /* README.md in Resources */,
-				18A43329164E2A5400C58F27 /* green.jpg in Resources */,
+				18A4332B164E2CAE00C58F27 /* zune.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
