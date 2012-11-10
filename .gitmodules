@@ -1,3 +1,6 @@
 [submodule "submodules/gpuimage"]
 	path = submodules/gpuimage
 	url = git://github.com/BradLarson/GPUImage.git
+[submodule "submodules/sharekit"]
+	path = submodules/sharekit
+	url = git://github.com/ShareKit/ShareKit.git
