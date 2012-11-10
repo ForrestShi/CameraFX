@@ -14,6 +14,6 @@
 + (CameraFXManager*) sharedInstance;
 
 @property(nonatomic,strong)  GPUImageStillCamera *stillCamera;
-@property(nonatomic,strong)  GPUImageFilter *filter;
+@property(nonatomic,strong)  GPUImageSmoothToonFilter *filter;
 
 @end

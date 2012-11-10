@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PhotoFX/ViewController.m"
-         timestampString = "374220955.663824"
+         timestampString = "374231202.048575"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "120"
-         endingLineNumber = "120"
+         startingLineNumber = "111"
+         endingLineNumber = "111"
          landmarkName = "-photoFromCamera"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PhotoFX/ViewController.m"
-         timestampString = "374220955.663824"
+         timestampString = "374231202.048575"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "142"
-         endingLineNumber = "142"
+         startingLineNumber = "133"
+         endingLineNumber = "133"
          landmarkName = "-applyImageFilter:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,11 +34,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PhotoFX/MTCameraViewController.m"
-         timestampString = "374226421.913826"
+         timestampString = "374230996.895458"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "82"
-         endingLineNumber = "82"
+         startingLineNumber = "85"
+         endingLineNumber = "85"
+         landmarkName = "-adjust1:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "PhotoFX/MTCameraViewController.m"
+         timestampString = "374231002.710726"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "83"
+         endingLineNumber = "83"
          landmarkName = "-adjust1:"
          landmarkType = "5">
       </FileBreakpoint>

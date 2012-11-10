@@ -31,7 +31,7 @@ static CameraFXManager* instance = nil;
     
     if (!_filter) {
         // Setup initial camera filter
-        _filter = [[GPUImageToonFilter alloc] init];
+        _filter = [[GPUImageSmoothToonFilter alloc] init];
     }
 
 

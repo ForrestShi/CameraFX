@@ -6,7 +6,7 @@
 @interface MTCameraViewController () <UIActionSheetDelegate, UIGestureRecognizerDelegate>
 {
     GPUImageStillCamera *stillCamera;
-    GPUImageFilter      *filter;
+    GPUImageSmoothToonFilter *filter;
 
 }
 
@@ -36,7 +36,7 @@
     if (!filter) {
         // Setup initial camera filter
         filter = [[CameraFXManager sharedInstance] filter];
-        [filter prepareForImageCapture];
+        //[filter prepareForImageCapture];
         GPUImageView *filterView = (GPUImageView *)self.view;
         [filter addTarget:filterView];
 
@@ -74,12 +74,17 @@
 - (void)onPan:(UIPanGestureRecognizer*)gesture{
     DLog(@"%@",@"paning");
 }
+
+
 - (IBAction)adjust1:(id)sender{
     UISlider *slider = (UISlider*)sender;
 
     if (filter) {
-        GPUImageToonFilter *toonFilter = (GPUImageToonFilter*)filter;
-        [toonFilter setThreshold:slider.value];
+        if ([filter isKindOfClass:[GPUImageSmoothToonFilter class]]) {
+            GPUImageSmoothToonFilter *toonFilter = (GPUImageSmoothToonFilter*)filter;
+            [toonFilter setThreshold:slider.value];
+        }
+
     }
 
 }
@@ -88,8 +93,11 @@
     UISlider *slider = (UISlider*)sender;
     
     if (filter) {
-        GPUImageToonFilter *toonFilter = (GPUImageToonFilter*)filter;
-        [toonFilter setQuantizationLevels:slider.value * 20.];
+        if ([filter isKindOfClass:[GPUImageSmoothToonFilter class]]) {
+            GPUImageSmoothToonFilter *toonFilter = (GPUImageSmoothToonFilter*)filter;
+            [toonFilter setQuantizationLevels:slider.value * 20.];
+
+        }
     }
     
 }
@@ -193,7 +201,7 @@
             selectedFilter = [[GPUImageColorInvertFilter alloc] init];
             break;
         case 5:
-            selectedFilter = [[GPUImageToonFilter alloc] init];
+            selectedFilter = [[GPUImageSmoothToonFilter alloc] init];
             break;
         case 6:
             selectedFilter = [[GPUImagePinchDistortionFilter alloc] init];
