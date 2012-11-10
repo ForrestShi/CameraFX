@@ -1,11 +1,13 @@
 #import "MTCameraViewController.h"
-#import "GPUImage.h"
 //http://mobile.tutsplus.com/tutorials/iphone/enhancing-a-photo-app-with-gpuimage-icarousel/
+#import "CameraFXManager.h"
+
 
 @interface MTCameraViewController () <UIActionSheetDelegate>
 {
     GPUImageStillCamera *stillCamera;
-    GPUImageFilter *filter;
+    GPUImageFilter      *filter;
+
 }
 
 - (IBAction)captureImage:(id)sender;
@@ -13,11 +15,11 @@
 @end
 
 @implementation MTCameraViewController 
-
 @synthesize delegate;
 
 #pragma mark -
 #pragma mark View Controller Lifecycle
+
 
 - (void)viewDidLoad
 {
@@ -31,7 +33,7 @@
 
     if (!filter) {
         // Setup initial camera filter
-        filter = [[GPUImageToonFilter alloc] init];
+        filter = [[CameraFXManager sharedInstance] filter];
         [filter prepareForImageCapture];
         GPUImageView *filterView = (GPUImageView *)self.view;
         [filter addTarget:filterView];
@@ -40,7 +42,7 @@
 
     // Create custom GPUImage camera
     if (!stillCamera) {
-        stillCamera =  [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
+        stillCamera =[[CameraFXManager sharedInstance] stillCamera];
         stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
         [stillCamera addTarget:filter];
         
@@ -88,6 +90,9 @@
          {
              NSLog(@"Delegate did not respond to message");
          }
+
+         [stillCamera removeAllTargets];
+         [filter removeAllTargets];
 
          runOnMainQueueWithoutDeadlocking(^{
              

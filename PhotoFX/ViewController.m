@@ -8,6 +8,7 @@
 {
     NSMutableArray *displayImages;
     GPUImageStillCamera *stillCamera;
+    GPUImageFilter      *filter;
     MTCameraViewController *cameraViewController;
 }
 
@@ -32,6 +33,15 @@
 - (void)customSetup
 {
     displayImages = [[NSMutableArray alloc] init];
+    
+    stillCamera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
+    stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+    
+    if (!filter) {
+        // Setup initial camera filter
+        filter = [[GPUImageToonFilter alloc] init];        
+    }
+
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

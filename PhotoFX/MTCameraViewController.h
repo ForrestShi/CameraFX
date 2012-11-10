@@ -1,4 +1,6 @@
 #import <UIKit/UIKit.h>
+#import "GPUImage.h"
+
 
 @protocol MTCameraViewControllerDelegate
 
@@ -9,5 +11,4 @@
 @interface MTCameraViewController : UIViewController
 
 @property(nonatomic, unsafe_unretained) id delegate;
-
 @end
