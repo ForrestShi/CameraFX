@@ -477,7 +477,6 @@
 		1F92412415F741B90089AAAF = {
 			isa = PBXGroup;
 			children = (
-				18AEE497164E6EE800D1A3D3 /* CoreLocation.framework */,
 				18A5541A164948C1007AF252 /* README.md */,
 				18AEE3E3164E681600D1A3D3 /* ShareKit.xcodeproj */,
 				1F92415B15F74A930089AAAF /* GPUImage.xcodeproj */,
@@ -498,6 +497,7 @@
 		1F92413215F741B90089AAAF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18AEE497164E6EE800D1A3D3 /* CoreLocation.framework */,
 				18AEE461164E697400D1A3D3 /* Twitter.framework */,
 				18AEE45F164E696300D1A3D3 /* CFNetwork.framework */,
 				18AEE45D164E695900D1A3D3 /* MessageUI.framework */,
