@@ -3,7 +3,7 @@
 #import "CameraFXManager.h"
 
 
-@interface MTCameraViewController () <UIActionSheetDelegate>
+@interface MTCameraViewController () <UIActionSheetDelegate, UIGestureRecognizerDelegate>
 {
     GPUImageStillCamera *stillCamera;
     GPUImageFilter      *filter;
@@ -11,6 +11,8 @@
 }
 
 - (IBAction)captureImage:(id)sender;
+- (IBAction)adjust1:(id)sender;
+- (IBAction)adjust2:(id)sender;
 
 @end
 
@@ -43,7 +45,7 @@
     // Create custom GPUImage camera
     if (!stillCamera) {
         stillCamera =[[CameraFXManager sharedInstance] stillCamera];
-        stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+        //stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
         [stillCamera addTarget:filter];
         
         // Begin showing video camera stream
@@ -52,17 +54,60 @@
     }
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
+    singleTap.delegate = self;
+    
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
+    panGesture.delegate = self;
     
     [self.view addGestureRecognizer:singleTap];
+    [self.view addGestureRecognizer:panGesture];
     
 }
 
 - (void)singleTap:(UIGestureRecognizer*)gesture{
     if (stillCamera) {
-        DLog(@"switch camera");
+        //DLog(@"switch camera");
         [stillCamera rotateCamera];
     }
 }
+
+- (void)onPan:(UIPanGestureRecognizer*)gesture{
+    DLog(@"%@",@"paning");
+}
+- (IBAction)adjust1:(id)sender{
+    UISlider *slider = (UISlider*)sender;
+
+    if (filter) {
+        GPUImageToonFilter *toonFilter = (GPUImageToonFilter*)filter;
+        [toonFilter setThreshold:slider.value];
+    }
+
+}
+
+- (IBAction)adjust2:(id)sender{
+    UISlider *slider = (UISlider*)sender;
+    
+    if (filter) {
+        GPUImageToonFilter *toonFilter = (GPUImageToonFilter*)filter;
+        [toonFilter setQuantizationLevels:slider.value * 20.];
+    }
+    
+}
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    
+    CGRect captureBtnFrame = ((UIButton*)[self.view viewWithTag:1000]).frame;
+    CGRect sliderFrame = ((UISlider*)[self.view viewWithTag:1001]).frame;
+    CGRect sliderFrame2 = ((UISlider*)[self.view viewWithTag:1002]).frame;
+
+    //DLog(@"capture frame %@",NSStringFromCGRect(captureBtnFrame));
+    if ( CGRectContainsPoint(captureBtnFrame, [gestureRecognizer locationInView:self.view]) ||
+                             CGRectContainsPoint(sliderFrame, [gestureRecognizer locationInView:self.view]) ||
+                                     CGRectContainsPoint(sliderFrame2, [gestureRecognizer locationInView:self.view])) {
+        return NO;
+    }
+    return YES;
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
