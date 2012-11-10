@@ -63,12 +63,15 @@
 //    SHKFacebookLocalAppID = lite
 //
 //    Your CFBundleURLSchemes entry: fb555lite
+
+// connected with design4app@gmail.com 5****apple*
 - (NSString*)facebookAppId {
 	return @"414276128610860";
 }
 
 - (NSString*)facebookLocalAppId {
-	return @"";
+    NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
+	return appName;
 }
 // Read It Later - http://readitlaterlist.com/api/signup/
 - (NSString*)readItLaterKey {
@@ -100,11 +103,11 @@
 }
 
 - (NSString*)twitterConsumerKey {
-	return @"48Ii81VO5NtDKIsQDZ3Ggw";
+	return @"NH08DWvkrQEERJ1ZQoE1g";
 }
 
 - (NSString*)twitterSecret {
-	return @"WYc2HSatOQGXlUCsYnuW3UjrlqQj0xvkvvOIsKek32g";
+	return @"vjnAOTS8r497cYK3r0N4jXkrrANj7RLdO29J1ArcXw";
 }
 // You need to set this if using OAuth, see note above (xAuth users can skip it)
 - (NSString*)twitterCallbackUrl {
@@ -116,7 +119,7 @@
 }
 // Enter your app's twitter account if you'd like to ask the user to follow it when logging in. (Only for xAuth)
 - (NSString*)twitterUsername {
-	return @"";
+	return @"Design4App";
 }
 // Evernote - http://www.evernote.com/about/developer/api/
 /*	You need to set to sandbox until you get approved by evernote

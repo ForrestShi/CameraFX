@@ -15,7 +15,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1F92412E15F741B90089AAAF"
                BuildableName = "PhotoFX.app"
-               BlueprintName = "PhotoFX"
+               BlueprintName = "Sepia Camera Pro"
                ReferencedContainer = "container:PhotoFX.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,7 +33,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1F92412E15F741B90089AAAF"
             BuildableName = "PhotoFX.app"
-            BlueprintName = "PhotoFX"
+            BlueprintName = "Sepia Camera Pro"
             ReferencedContainer = "container:PhotoFX.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -52,7 +52,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1F92412E15F741B90089AAAF"
             BuildableName = "PhotoFX.app"
-            BlueprintName = "PhotoFX"
+            BlueprintName = "Sepia Camera Pro"
             ReferencedContainer = "container:PhotoFX.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -70,7 +70,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1F92412E15F741B90089AAAF"
             BuildableName = "PhotoFX.app"
-            BlueprintName = "PhotoFX"
+            BlueprintName = "Sepia Camera Pro"
             ReferencedContainer = "container:PhotoFX.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -1,9 +1,34 @@
 #import "AppDelegate.h"
 #import "MySHKConfigurator.h"
 #import "SHKConfiguration.h"
+#import "SHKConfiguration.h"
+#import "SHKFacebook.h"
+
 
 @implementation AppDelegate
 @synthesize window;
+
+// support facebook SSO https://github.com/ShareKit/ShareKit/wiki/Installing-sharekit
+
+- (BOOL)handleOpenURL:(NSURL*)url
+{
+    NSString* scheme = [url scheme];
+    NSString* facebookAppId = @"414276128610860";
+    NSString* prefix = [NSString stringWithFormat:@"fb%@", SHKCONFIG(facebookAppId)];
+    if ([scheme hasPrefix:prefix])
+        return [SHKFacebook handleOpenURL:url];
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return [self handleOpenURL:url];
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return [self handleOpenURL:url];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

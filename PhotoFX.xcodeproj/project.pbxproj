@@ -350,13 +350,14 @@
 		18AEE495164E6E8C00D1A3D3 /* MySHKConfigurator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySHKConfigurator.m; sourceTree = "<group>"; };
 		18AEE497164E6EE800D1A3D3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		18AEE4CE164E9B7E00D1A3D3 /* MySHKSharers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MySHKSharers.plist; sourceTree = "<group>"; };
+		18AEE4D0164EA96B00D1A3D3 /* Sepia Camera Pro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Sepia Camera Pro.entitlements"; sourceTree = "<group>"; };
 		1F12BD2B15FEFC0200DD8284 /* MTCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCameraViewController.h; sourceTree = "<group>"; };
 		1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCameraViewController.m; sourceTree = "<group>"; };
 		1F8C309D160068D800FEBB7B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		1F8C309E160068D800FEBB7B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		1F8C30D21600FE0D00FEBB7B /* UIImage+ProportionalFill.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ProportionalFill.h"; sourceTree = "<group>"; };
 		1F8C30D31600FE0D00FEBB7B /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
-		1F92412F15F741B90089AAAF /* PhotoFX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoFX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F92412F15F741B90089AAAF /* Sepia Camera Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sepia Camera Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F92413315F741B90089AAAF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1F92413515F741B90089AAAF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1F92413715F741B90089AAAF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -477,6 +478,7 @@
 		1F92412415F741B90089AAAF = {
 			isa = PBXGroup;
 			children = (
+				18AEE4D0164EA96B00D1A3D3 /* Sepia Camera Pro.entitlements */,
 				18A5541A164948C1007AF252 /* README.md */,
 				18AEE3E3164E681600D1A3D3 /* ShareKit.xcodeproj */,
 				1F92415B15F74A930089AAAF /* GPUImage.xcodeproj */,
@@ -489,7 +491,7 @@
 		1F92413015F741B90089AAAF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1F92412F15F741B90089AAAF /* PhotoFX.app */,
+				1F92412F15F741B90089AAAF /* Sepia Camera Pro.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -588,9 +590,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1F92412E15F741B90089AAAF /* PhotoFX */ = {
+		1F92412E15F741B90089AAAF /* Sepia Camera Pro */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1F92414D15F741B90089AAAF /* Build configuration list for PBXNativeTarget "PhotoFX" */;
+			buildConfigurationList = 1F92414D15F741B90089AAAF /* Build configuration list for PBXNativeTarget "Sepia Camera Pro" */;
 			buildPhases = (
 				1F92412B15F741B90089AAAF /* Sources */,
 				1F92412C15F741B90089AAAF /* Frameworks */,
@@ -603,9 +605,9 @@
 				18AEE456164E685500D1A3D3 /* PBXTargetDependency */,
 				1F92416915F74AD10089AAAF /* PBXTargetDependency */,
 			);
-			name = PhotoFX;
+			name = "Sepia Camera Pro";
 			productName = PhotoFX;
-			productReference = 1F92412F15F741B90089AAAF /* PhotoFX.app */;
+			productReference = 1F92412F15F741B90089AAAF /* Sepia Camera Pro.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -639,7 +641,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				1F92412E15F741B90089AAAF /* PhotoFX */,
+				1F92412E15F741B90089AAAF /* Sepia Camera Pro */,
 			);
 		};
 /* End PBXProject section */
@@ -1044,6 +1046,7 @@
 		1F92414E15F741B90089AAAF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Sepia Camera Pro.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoFX/PhotoFX-Prefix.pch";
@@ -1056,7 +1059,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				USER_HEADER_SEARCH_PATHS = "./submodules/sharekit/Classes/ShareKit/**";
+				USER_HEADER_SEARCH_PATHS = "./submodules/sharekit/Classes/ShareKit/** ./submodules/sharekit/Submodules/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1064,6 +1067,7 @@
 		1F92414F15F741B90089AAAF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Sepia Camera Pro.entitlements";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoFX/PhotoFX-Prefix.pch";
 				HEADER_SEARCH_PATHS = "Submodules/GPUImage/framework/**";
@@ -1074,7 +1078,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "./submodules/sharekit/Classes/ShareKit/**";
+				USER_HEADER_SEARCH_PATHS = "./submodules/sharekit/Classes/ShareKit/** ./submodules/sharekit/Submodules/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1091,7 +1095,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1F92414D15F741B90089AAAF /* Build configuration list for PBXNativeTarget "PhotoFX" */ = {
+		1F92414D15F741B90089AAAF /* Build configuration list for PBXNativeTarget "Sepia Camera Pro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1F92414E15F741B90089AAAF /* Debug */,
