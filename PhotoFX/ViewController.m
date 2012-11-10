@@ -4,6 +4,8 @@
 #import "iCarousel.h"
 #import "UIImage+Resize.h"
 #import "FXImageView.h"
+#import "SHKConfiguration.h"
+#import "MySHKConfigurator.h"
 
 @interface ViewController () 
 {
@@ -18,7 +20,6 @@
 @property(nonatomic, weak) IBOutlet UIBarButtonItem *saveButton;
 
 - (IBAction)photoFromAlbum;
-- (IBAction)photoFromCamera;
 - (IBAction)saveImageToAlbum;
 - (IBAction)applyImageFilter:(id)sender;
 
@@ -95,33 +96,19 @@
     [self presentViewController:photoPicker animated:YES completion:NULL];
 }
 
+
 - (IBAction)saveImageToAlbum
 {
+    /*
     UIImage *selectedImage = [displayImages objectAtIndex:self.photoCarousel.currentItemIndex];
     UIImageWriteToSavedPhotosAlbum(selectedImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+     */
+    
+    DefaultSHKConfigurator *configurator = [[MySHKConfigurator alloc] init];
+    [SHKConfiguration sharedInstanceWithConfigurator:configurator];
+
 }
 
-- (IBAction)photoFromCamera
-{
-    NSLog(@"TAP CAMERA");
-    if (!stillCamera) {
-        NSLog(@"CREATE STILL CAMERA.");
-        stillCamera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
-        stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
-        
-        GPUImageView *gpuImageView = [[GPUImageView alloc] initWithFrame:self.view.frame];
-        
-        GPUImageFilter *filter = [[GPUImageToonFilter alloc] init];
-        [stillCamera addTarget:filter];
-        GPUImageView *filterView = gpuImageView;
-        [filter addTarget:filterView];
-        
-        [self.view addSubview:gpuImageView];
-        
-        [stillCamera startCameraCapture];
- 
-    }
-}
 
 - (IBAction)applyImageFilter:(id)sender
 {

@@ -20,6 +20,8 @@
 		18AEE45E164E695900D1A3D3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AEE45D164E695900D1A3D3 /* MessageUI.framework */; };
 		18AEE460164E696300D1A3D3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AEE45F164E696300D1A3D3 /* CFNetwork.framework */; };
 		18AEE462164E697400D1A3D3 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AEE461164E697400D1A3D3 /* Twitter.framework */; };
+		18AEE496164E6E8C00D1A3D3 /* MySHKConfigurator.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AEE495164E6E8C00D1A3D3 /* MySHKConfigurator.m */; };
+		18AEE498164E6EE800D1A3D3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AEE497164E6EE800D1A3D3 /* CoreLocation.framework */; };
 		1F12BD2D15FEFC0200DD8284 /* MTCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */; };
 		1F8C309F160068D800FEBB7B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F8C309D160068D800FEBB7B /* Icon.png */; };
 		1F8C30A0160068D800FEBB7B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F8C309E160068D800FEBB7B /* Icon@2x.png */; };
@@ -343,6 +345,9 @@
 		18AEE45D164E695900D1A3D3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		18AEE45F164E696300D1A3D3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		18AEE461164E697400D1A3D3 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		18AEE494164E6E8C00D1A3D3 /* MySHKConfigurator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySHKConfigurator.h; sourceTree = "<group>"; };
+		18AEE495164E6E8C00D1A3D3 /* MySHKConfigurator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySHKConfigurator.m; sourceTree = "<group>"; };
+		18AEE497164E6EE800D1A3D3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1F12BD2B15FEFC0200DD8284 /* MTCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCameraViewController.h; sourceTree = "<group>"; };
 		1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCameraViewController.m; sourceTree = "<group>"; };
 		1F8C309D160068D800FEBB7B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -383,6 +388,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18AEE498164E6EE800D1A3D3 /* CoreLocation.framework in Frameworks */,
 				18AEE462164E697400D1A3D3 /* Twitter.framework in Frameworks */,
 				18AEE460164E696300D1A3D3 /* CFNetwork.framework in Frameworks */,
 				18AEE45E164E695900D1A3D3 /* MessageUI.framework in Frameworks */,
@@ -469,6 +475,7 @@
 		1F92412415F741B90089AAAF = {
 			isa = PBXGroup;
 			children = (
+				18AEE497164E6EE800D1A3D3 /* CoreLocation.framework */,
 				18A5541A164948C1007AF252 /* README.md */,
 				18AEE3E3164E681600D1A3D3 /* ShareKit.xcodeproj */,
 				1F92415B15F74A930089AAAF /* GPUImage.xcodeproj */,
@@ -522,6 +529,8 @@
 				1F92414915F741B90089AAAF /* ViewController.m */,
 				1F12BD2B15FEFC0200DD8284 /* MTCameraViewController.h */,
 				1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */,
+				18AEE494164E6E8C00D1A3D3 /* MySHKConfigurator.h */,
+				18AEE495164E6E8C00D1A3D3 /* MySHKConfigurator.m */,
 				1F92413A15F741B90089AAAF /* Supporting Files */,
 			);
 			path = PhotoFX;
@@ -929,6 +938,7 @@
 				18A4331C164E1D0300C58F27 /* CameraFXManager.m in Sources */,
 				18A43325164E22EF00C58F27 /* FXImageView.m in Sources */,
 				18A43326164E22EF00C58F27 /* UIImage+FX.m in Sources */,
+				18AEE496164E6E8C00D1A3D3 /* MySHKConfigurator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1033,14 +1043,16 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoFX/PhotoFX-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"Submodules/GPUImage/framework/**",
-					"Submodules/sharekit/*",
-				);
+				HEADER_SEARCH_PATHS = "Submodules/GPUImage/framework/**";
 				INFOPLIST_FILE = "PhotoFX/PhotoFX-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "./submodules/sharekit/Classes/ShareKit/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1050,13 +1062,15 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoFX/PhotoFX-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"Submodules/GPUImage/framework/**",
-					"Submodules/sharekit/*",
-				);
+				HEADER_SEARCH_PATHS = "Submodules/GPUImage/framework/**";
 				INFOPLIST_FILE = "PhotoFX/PhotoFX-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "./submodules/sharekit/Classes/ShareKit/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
