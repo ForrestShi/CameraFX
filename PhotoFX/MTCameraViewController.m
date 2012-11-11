@@ -6,7 +6,7 @@
 @interface MTCameraViewController () <UIActionSheetDelegate, UIGestureRecognizerDelegate>
 {
     GPUImageStillCamera *stillCamera;
-    GPUImageSmoothToonFilter *filter;
+    GPUImageFilter *filter;
 
 }
 
@@ -53,23 +53,23 @@
  
     }
     
-    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
-    doubleTap.delegate = self;
-    doubleTap.numberOfTapsRequired = 2;
-    doubleTap.numberOfTouchesRequired = 1;
-    
+//    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
+//    doubleTap.delegate = self;
+//    doubleTap.numberOfTapsRequired = 2;
+//    doubleTap.numberOfTouchesRequired = 1;
+//    
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
     singleTap.delegate = self;
     singleTap.numberOfTapsRequired = 1;
     singleTap.numberOfTouchesRequired = 1;
 
-    [singleTap requireGestureRecognizerToFail:doubleTap];
+    //[singleTap requireGestureRecognizerToFail:doubleTap];
     
-    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
-    panGesture.delegate = self;
-    
+//    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
+//    panGesture.delegate = self;
+//    
     [self.view addGestureRecognizer:singleTap];
-    [self.view addGestureRecognizer:doubleTap];
+    //[self.view addGestureRecognizer:doubleTap];
 
     //[self.view addGestureRecognizer:panGesture];
     
@@ -149,15 +149,21 @@
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
     
     CGRect captureBtnFrame = ((UIButton*)[self.view viewWithTag:1000]).frame;
-    CGRect sliderFrame = ((UISlider*)[self.view viewWithTag:1001]).frame;
-    CGRect sliderFrame2 = ((UISlider*)[self.view viewWithTag:1002]).frame;
-    CGRect sliderFrame3 = ((UISlider*)[self.view viewWithTag:1003]).frame;
-
-    if ( CGRectContainsPoint(captureBtnFrame, [gestureRecognizer locationInView:self.view]) ||
-        CGRectContainsPoint(sliderFrame3, [gestureRecognizer locationInView:self.view]) || CGRectContainsPoint(sliderFrame, [gestureRecognizer locationInView:self.view]) || CGRectContainsPoint(sliderFrame2, [gestureRecognizer locationInView:self.view]))
+//    CGRect sliderFrame = ((UISlider*)[self.view viewWithTag:1001]).frame;
+//    CGRect sliderFrame2 = ((UISlider*)[self.view viewWithTag:1002]).frame;
+//    CGRect sliderFrame3 = ((UISlider*)[self.view viewWithTag:1003]).frame;
+//
+//    if ( CGRectContainsPoint(captureBtnFrame, [gestureRecognizer locationInView:self.view]) ||
+//        CGRectContainsPoint(sliderFrame3, [gestureRecognizer locationInView:self.view]) || CGRectContainsPoint(sliderFrame, [gestureRecognizer locationInView:self.view]) || CGRectContainsPoint(sliderFrame2, [gestureRecognizer locationInView:self.view]))
+//    {
+//        return NO;
+//    }
+//    
+    if ( CGRectContainsPoint(captureBtnFrame, [gestureRecognizer locationInView:self.view]) )
     {
         return NO;
     }
+
     return YES;
 }
 
@@ -177,7 +183,7 @@
                                                                    delegate:self
                                                           cancelButtonTitle:@"Cancel"
                                                      destructiveButtonTitle:nil
-                                                          otherButtonTitles:@"Grayscale", @"Sepia", @"Sketch", @"Pixellate", @"Color Invert", @"Toon", @"Pinch Distort", @"None", nil];
+                                                          otherButtonTitles:@"Grayscale", @"Sepia", @"Color Invert", @"None", nil];
     
     [filterActionSheet showFromBarButtonItem:sender animated:YES];
 }
@@ -236,22 +242,22 @@
         case 1:
             selectedFilter = [[GPUImageSepiaFilter alloc] init];
             break;
+//        case 2:
+//            selectedFilter = [[GPUImageSketchFilter alloc] init];
+//            break;
+//        case 3:
+//            selectedFilter = [[GPUImagePixellateFilter alloc] init];
+//            break;
         case 2:
-            selectedFilter = [[GPUImageSketchFilter alloc] init];
-            break;
-        case 3:
-            selectedFilter = [[GPUImagePixellateFilter alloc] init];
-            break;
-        case 4:
             selectedFilter = [[GPUImageColorInvertFilter alloc] init];
             break;
-        case 5:
-            selectedFilter = [[GPUImageSmoothToonFilter alloc] init];
-            break;
-        case 6:
-            selectedFilter = [[GPUImagePinchDistortionFilter alloc] init];
-            break;
-        case 7:
+//        case 5:
+//            selectedFilter = [[GPUImageSmoothToonFilter alloc] init];
+//            break;
+//        case 6:
+//            selectedFilter = [[GPUImagePinchDistortionFilter alloc] init];
+//            break;
+        case 3:
             selectedFilter = [[GPUImageFilter alloc] init];
             break;
         default:

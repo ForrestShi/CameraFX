@@ -158,12 +158,18 @@
 
 - (IBAction)applyImageFilter:(id)sender
 {
+//    UIActionSheet *filterActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select Filter"
+//                                                                   delegate:self
+//                                                          cancelButtonTitle:@"Cancel"
+//                                                     destructiveButtonTitle:nil
+//                                                          otherButtonTitles:@"Grayscale", @"Sepia", @"Sketch", @"Pixellate", @"Color Invert", @"Toon", @"Pinch Distort", @"None", nil];
+    
+    
     UIActionSheet *filterActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select Filter"
                                                                    delegate:self
                                                           cancelButtonTitle:@"Cancel"
                                                      destructiveButtonTitle:nil
-                                                          otherButtonTitles:@"Grayscale", @"Sepia", @"Sketch", @"Pixellate", @"Color Invert", @"Toon", @"Pinch Distort", @"None", nil];
-    
+                                                          otherButtonTitles:@"Grayscale", @"Sepia", @"Color Invert", @"None", nil];
     [filterActionSheet showInView:self.parentViewController.view];
 }
 
@@ -226,22 +232,22 @@
         case 1:
             selectedFilter = [[GPUImageSepiaFilter alloc] init];
             break;
+//        case 2:
+//            selectedFilter = [[GPUImageSketchFilter alloc] init];
+//            break;
+//        case 3:
+//            selectedFilter = [[GPUImagePixellateFilter alloc] init];
+//            break;
         case 2:
-            selectedFilter = [[GPUImageSketchFilter alloc] init];
-            break;
-        case 3:
-            selectedFilter = [[GPUImagePixellateFilter alloc] init];
-            break;
-        case 4:
             selectedFilter = [[GPUImageColorInvertFilter alloc] init];
             break;
-        case 5:
-            selectedFilter = [[GPUImageToonFilter alloc] init];
-            break;
-        case 6:
-            selectedFilter = [[GPUImagePinchDistortionFilter alloc] init];
-            break;
-        case 7:
+//        case 5:
+//            selectedFilter = [[GPUImageToonFilter alloc] init];
+//            break;
+//        case 6:
+//            selectedFilter = [[GPUImagePinchDistortionFilter alloc] init];
+//            break;
+        case 3:
             selectedFilter = [[GPUImageFilter alloc] init];
             break;
         default:
