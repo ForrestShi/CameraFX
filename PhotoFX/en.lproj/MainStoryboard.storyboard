@@ -108,7 +108,7 @@
                                 </connections>
                             </button>
                             <slider hidden="YES" opaque="NO" tag="1001" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.050000000000000003" maxValue="1" id="J23-3x-mCl">
-                                <rect key="frame" x="40" y="229" width="250" height="23"/>
+                                <rect key="frame" x="40" y="256" width="250" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="minimumTrackTintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="thumbTintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -125,8 +125,8 @@
                                     <action selector="adjust2:" destination="idv-MW-BFP" eventType="valueChanged" id="5l0-k9-bt4"/>
                                 </connections>
                             </slider>
-                            <slider hidden="YES" opaque="NO" tag="1003" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.050000000000000003" maxValue="1" id="iAd-7d-Eh3">
-                                <rect key="frame" x="40" y="160" width="250" height="23"/>
+                            <slider opaque="NO" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.050000000000000003" maxValue="1" id="iAd-7d-Eh3">
+                                <rect key="frame" x="40" y="208" width="250" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="minimumTrackTintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="thumbTintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -189,6 +189,7 @@
                 <relationship kind="action" name="adjust0:"/>
                 <relationship kind="action" name="adjust1:"/>
                 <relationship kind="action" name="adjust2:"/>
+                <relationship kind="action" name="applyImageFilter:"/>
                 <relationship kind="action" name="captureImage:"/>
             </relationships>
         </class>

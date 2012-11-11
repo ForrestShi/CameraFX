@@ -107,8 +107,8 @@
                                     <action selector="captureImage:" destination="idv-MW-BFP" eventType="touchUpInside" id="bcg-lN-SeF"/>
                                 </connections>
                             </button>
-                            <slider hidden="YES" opaque="NO" tag="1001" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.050000000000000003" maxValue="1" id="J23-3x-mCl">
-                                <rect key="frame" x="40" y="229" width="250" height="23"/>
+                            <slider opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.050000000000000003" maxValue="1" id="J23-3x-mCl">
+                                <rect key="frame" x="106" y="788" width="557" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="minimumTrackTintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="thumbTintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

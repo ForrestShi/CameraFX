@@ -6,6 +6,7 @@
 #import "FXImageView.h"
 #import "SHKItem.h"
 #import "SHKActionSheet.h"
+#import "FSGPUImageFilterManager.h"
 
 @interface ViewController () 
 {
@@ -163,12 +164,7 @@
 
 - (IBAction)applyImageFilter:(id)sender
 {
-    UIActionSheet *filterActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select Filter"
-                                                                   delegate:self
-                                                          cancelButtonTitle:@"Cancel"
-                                                     destructiveButtonTitle:nil
-                                                          otherButtonTitles:@"Grayscale", @"Sepia", @"Sketch", @"Pixellate", @"Color Invert", @"Toon", @"Pinch Distort", @"None", nil];
-    
+    UIActionSheet *filterActionSheet = [[FSGPUImageFilterManager sharedFSGPUImageFilterManager] createSepiaCameraAppSheetWithDelegate:self];
     
     [filterActionSheet showInView:self.parentViewController.view];
 }
@@ -225,34 +221,49 @@
     
     GPUImageFilter *selectedFilter;
     
+    GPUImageShowcaseFilterType fitlerEnumType;
+    
     switch (buttonIndex) {
         case 0:
-            selectedFilter = [[GPUImageGrayscaleFilter alloc] init];
+            fitlerEnumType = GPUIMAGE_SEPIA;
             break;
         case 1:
-            selectedFilter = [[GPUImageSepiaFilter alloc] init];
+            fitlerEnumType = GPUIMAGE_SKETCH;
             break;
         case 2:
-            selectedFilter = [[GPUImageSketchFilter alloc] init];
+            fitlerEnumType = GPUIMAGE_VIGNETTE;
             break;
         case 3:
-            selectedFilter = [[GPUImagePixellateFilter alloc] init];
+            fitlerEnumType = GPUIMAGE_SMOOTHTOON;
             break;
         case 4:
-            selectedFilter = [[GPUImageColorInvertFilter alloc] init];
+            fitlerEnumType = GPUIMAGE_POSTERIZE;
             break;
         case 5:
-            selectedFilter = [[GPUImageToonFilter alloc] init];
+            fitlerEnumType = GPUIMAGE_BULGE;
             break;
         case 6:
-            selectedFilter = [[GPUImagePinchDistortionFilter alloc] init];
+            fitlerEnumType = GPUIMAGE_PINCH;
             break;
         case 7:
-            selectedFilter = [[GPUImageFilter alloc] init];
+            fitlerEnumType = GPUIMAGE_FASTBLUR;
+            break;
+        case 8:
+            fitlerEnumType = GPUIMAGE_COLORINVERT;
+            break;
+        case 9:
+            fitlerEnumType = GPUIMAGE_GRAYSCALE;
+            break;
+        case 10:
+            fitlerEnumType = GPUIMAGE_EMBOSS;
             break;
         default:
+            fitlerEnumType = GPUIMAGE_SEPIA;
             break;
     }
+    
+    selectedFilter = [[FSGPUImageFilterManager sharedFSGPUImageFilterManager] createGPUImageFilter:fitlerEnumType];
+    
     
     UIImage *filteredImage = [selectedFilter imageByFilteringImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex]];
     [displayImages addObject:filteredImage];

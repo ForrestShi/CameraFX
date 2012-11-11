@@ -1,13 +1,13 @@
 #import "MTCameraViewController.h"
 //http://mobile.tutsplus.com/tutorials/iphone/enhancing-a-photo-app-with-gpuimage-icarousel/
 #import "CameraFXManager.h"
+#import "FSGPUImageFilterManager.h"
 
 
 @interface MTCameraViewController () <UIActionSheetDelegate, UIGestureRecognizerDelegate>
 {
     GPUImageStillCamera *stillCamera;
     GPUImageFilter *filter;
-
 }
 
 - (IBAction)captureImage:(id)sender;
@@ -62,15 +62,16 @@
     singleTap.numberOfTapsRequired = 1;
     singleTap.numberOfTouchesRequired = 1;
 
-    //[singleTap requireGestureRecognizerToFail:doubleTap];
+   // [singleTap requireGestureRecognizerToFail:doubleTap];
     
-//    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
-//    panGesture.delegate = self;
-//
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
+    panGesture.delegate = self;
+
+    [singleTap requireGestureRecognizerToFail:panGesture];
     [self.view addGestureRecognizer:singleTap];
     //[self.view addGestureRecognizer:doubleTap];
 
-    //[self.view addGestureRecognizer:panGesture];
+    [self.view addGestureRecognizer:panGesture];
     
 }
 
@@ -80,7 +81,7 @@
         
         CATransition *animation = [CATransition animation];
         animation.delegate = self;
-        animation.duration = .3;
+        animation.duration = .6;
         animation.timingFunction = UIViewAnimationCurveEaseInOut;
         animation.type = @"cameraIris";
         //animation.type = @"flip";
@@ -103,7 +104,7 @@
             for (UIView *v in [self.view subviews]) {
                 //DLog(@"on %d",firstTimeOn);
                 //DLog(@"v %@",v);
-                if (v.tag > 1000 ) {
+                if (v.tag == 1001 ) {
                     v.alpha = (firstTimeOn == YES ? 0.:1.);
                 }
             }
@@ -117,19 +118,48 @@
 
 - (void)onPan:(UIPanGestureRecognizer*)gesture{
     DLog(@"%@",@"paning");
+    
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        
+        if (stillCamera  ) {
+            DLog(@"show advanced sliders");
+            
+            static BOOL firstTimeOn = YES;
+            firstTimeOn = !firstTimeOn;
+            
+            [UIView animateWithDuration:0.3 animations:^{
+                for (UIView *v in [self.view subviews]) {
+                    //DLog(@"on %d",firstTimeOn);
+                    //DLog(@"v %@",v);
+                    if (v.tag == 1001 ) {
+                        v.alpha = (firstTimeOn == YES ? 0.:1.);
+                    }
+                }
+            }];
+            
+            
+        }
+
+    }
+
 }
 
+//tag: 1001
 - (IBAction)adjust0:(id)sender{
     UISlider *slider = (UISlider*)sender;
     
     if (filter) {
-        if ([filter isKindOfClass:[GPUImageSmoothToonFilter class]]) {
-            GPUImageSmoothToonFilter *toonFilter = (GPUImageSmoothToonFilter*)filter;
-            [toonFilter setBlurSize:slider.value];
+//        if ([filter isKindOfClass:[GPUImageSmoothToonFilter class]]) {
+//            GPUImageSmoothToonFilter *toonFilter = (GPUImageSmoothToonFilter*)filter;
+//            [toonFilter setBlurSize:slider.value];
+//        }
+        if ([filter isKindOfClass:[GPUImageSepiaFilter class]]) {
+            GPUImageSepiaFilter *sepiaFilter = (GPUImageSepiaFilter*)filter;
+            [sepiaFilter setIntensity:slider.value * 3. ];
         }
     }
 }
-
+//tag: 1002
 - (IBAction)adjust1:(id)sender{
     UISlider *slider = (UISlider*)sender;
 
@@ -142,7 +172,7 @@
     }
 
 }
-
+//tag: 1003
 - (IBAction)adjust2:(id)sender{
     UISlider *slider = (UISlider*)sender;
     
@@ -158,8 +188,8 @@
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
     
     CGRect captureBtnFrame = ((UIButton*)[self.view viewWithTag:1000]).frame;
-//    CGRect sliderFrame = ((UISlider*)[self.view viewWithTag:1001]).frame;
-//    CGRect sliderFrame2 = ((UISlider*)[self.view viewWithTag:1002]).frame;
+    CGRect sliderFrame = ((UISlider*)[self.view viewWithTag:1001]).frame;
+//    CRect sliderFrame2 = ((UISlider*)[self.view viewWithTag:1002]).frame;
 //    CGRect sliderFrame3 = ((UISlider*)[self.view viewWithTag:1003]).frame;
 //
 //    if ( CGRectContainsPoint(captureBtnFrame, [gestureRecognizer locationInView:self.view]) ||
@@ -168,7 +198,8 @@
 //        return NO;
 //    }
 //    
-    if ( CGRectContainsPoint(captureBtnFrame, [gestureRecognizer locationInView:self.view]) )
+    if ( CGRectContainsPoint(captureBtnFrame, [gestureRecognizer locationInView:self.view]) ||
+        CGRectContainsPoint(sliderFrame, [gestureRecognizer locationInView:self.view]) )
     {
         return NO;
     }
@@ -188,11 +219,14 @@
 
 - (IBAction)applyImageFilter:(id)sender
 {
-    UIActionSheet *filterActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select Filter"
-                                                                   delegate:self
-                                                          cancelButtonTitle:@"Cancel"
-                                                     destructiveButtonTitle:nil
-                                                          otherButtonTitles:@"Grayscale", @"Sepia", @"Color Invert", @"None", nil];
+    
+//    UIActionSheet *filterActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select Filter"
+//                                                                   delegate:self
+//                                                          cancelButtonTitle:@"Cancel"
+//                                                     destructiveButtonTitle:nil
+//                                                          otherButtonTitles:@"Grayscale", @"Sepia", @"Color Invert", @"None", nil];
+
+    UIActionSheet *filterActionSheet = [[FSGPUImageFilterManager sharedFSGPUImageFilterManager] createSepiaCameraAppSheetWithDelegate:self];
     
     [filterActionSheet showFromBarButtonItem:sender animated:YES];
 }
@@ -238,41 +272,66 @@
         return;
     }
     
-    GPUImageFilter *selectedFilter;
-    
     [stillCamera removeAllTargets];
     [filter removeAllTargets];
 
+    GPUImageFilter *selectedFilter;
+    GPUImageShowcaseFilterType fitlerEnumType;
     
     switch (buttonIndex) {
         case 0:
-            selectedFilter = [[GPUImageGrayscaleFilter alloc] init];
+            fitlerEnumType = GPUIMAGE_SEPIA;
             break;
         case 1:
-            selectedFilter = [[GPUImageSepiaFilter alloc] init];
+            fitlerEnumType = GPUIMAGE_SKETCH;
             break;
-//        case 2:
-//            selectedFilter = [[GPUImageSketchFilter alloc] init];
-//            break;
-//        case 3:
-//            selectedFilter = [[GPUImagePixellateFilter alloc] init];
-//            break;
         case 2:
-            selectedFilter = [[GPUImageColorInvertFilter alloc] init];
+            fitlerEnumType = GPUIMAGE_VIGNETTE;
             break;
-//        case 5:
-//            selectedFilter = [[GPUImageSmoothToonFilter alloc] init];
-//            break;
-//        case 6:
-//            selectedFilter = [[GPUImagePinchDistortionFilter alloc] init];
-//            break;
         case 3:
-            selectedFilter = [[GPUImageFilter alloc] init];
+            fitlerEnumType = GPUIMAGE_SMOOTHTOON;
+            break;
+        case 4:
+            fitlerEnumType = GPUIMAGE_POSTERIZE;
+            break;
+        case 5:
+            fitlerEnumType = GPUIMAGE_BULGE;
+            break;
+        case 6:
+            fitlerEnumType = GPUIMAGE_PINCH;
+            break;
+        case 7:
+            fitlerEnumType = GPUIMAGE_FASTBLUR;
+            break;
+        case 8:
+            fitlerEnumType = GPUIMAGE_COLORINVERT;
+            break;
+        case 9:
+            fitlerEnumType = GPUIMAGE_GRAYSCALE;
+            break;
+        case 10:
+            fitlerEnumType = GPUIMAGE_EMBOSS;
             break;
         default:
+            fitlerEnumType = GPUIMAGE_SEPIA;
             break;
     }
-        
+    
+    selectedFilter = [[FSGPUImageFilterManager sharedFSGPUImageFilterManager] createGPUImageFilter:fitlerEnumType];
+
+    UISlider *slider0 = (UISlider*)[self.view viewWithTag:1001];
+    if (![selectedFilter isKindOfClass:[GPUImageSepiaFilter class]]) {
+        [UIView animateWithDuration:0.3 animations:^{
+            slider0.alpha = 0.;
+        }];
+
+    }else{
+        slider0.hidden = NO;
+        [UIView animateWithDuration:0.3 animations:^{
+            slider0.alpha = 1.;
+        }];
+
+    }
     filter = selectedFilter;
     GPUImageView *filterView = (GPUImageView *)self.view;
     [filter addTarget:filterView];
