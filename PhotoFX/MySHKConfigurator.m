@@ -71,7 +71,7 @@
 
 - (NSString*)facebookLocalAppId {
     NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
-	return appName;
+	return @"";
 }
 // Read It Later - http://readitlaterlist.com/api/signup/
 - (NSString*)readItLaterKey {

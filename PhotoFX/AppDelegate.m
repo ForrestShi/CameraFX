@@ -13,7 +13,6 @@
 - (BOOL)handleOpenURL:(NSURL*)url
 {
     NSString* scheme = [url scheme];
-    NSString* facebookAppId = @"414276128610860";
     NSString* prefix = [NSString stringWithFormat:@"fb%@", SHKCONFIG(facebookAppId)];
     if ([scheme hasPrefix:prefix])
         return [SHKFacebook handleOpenURL:url];
@@ -34,11 +33,9 @@
 {
     // Override point for customization after application launch.
     
-    DefaultSHKConfigurator *configurator = [[MySHKConfigurator alloc] init];
+    MySHKConfigurator *configurator = [[MySHKConfigurator alloc] init];
     [SHKConfiguration sharedInstanceWithConfigurator:configurator];
-    
-
-    
+        
     return YES;
 }
 							
