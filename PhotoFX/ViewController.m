@@ -17,9 +17,13 @@
 
 @property(nonatomic, weak) IBOutlet iCarousel *photoCarousel;
 @property(nonatomic, weak) IBOutlet UIBarButtonItem *filterButton;
-@property(nonatomic, weak) IBOutlet UIBarButtonItem *saveButton;
+@property(nonatomic, weak) IBOutlet UIBarButtonItem *shareButton;
+@property(nonatomic, weak) IBOutlet UIBarButtonItem *deleteButton;
+@property(nonatomic, weak) IBOutlet UIBarButtonItem *refreshButton;
 
 - (IBAction)photoFromAlbum;
+- (IBAction)refreshCarouselStyle;
+- (IBAction)deleteImage;
 - (IBAction)shareImage;
 - (IBAction)applyImageFilter:(id)sender;
 
@@ -27,7 +31,7 @@
 
 @implementation ViewController
 
-@synthesize photoCarousel, filterButton, saveButton;
+@synthesize photoCarousel, filterButton, shareButton,deleteButton,refreshButton;
 
 #pragma mark -
 #pragma mark Initializers 
@@ -87,6 +91,13 @@
 #pragma mark -
 #pragma mark IBAction Methods
 
+- (void)enableButtons{
+    self.filterButton.enabled = YES;
+    self.shareButton.enabled = YES;
+    self.deleteButton.enabled = YES;
+    self.refreshButton.enabled = YES;
+
+}
 - (IBAction)photoFromAlbum
 {
     UIImagePickerController *photoPicker = [[UIImagePickerController alloc] init];
@@ -96,11 +107,35 @@
     [self presentViewController:photoPicker animated:YES completion:NULL];
 }
 
+- (IBAction)refreshCarouselStyle{
+    
+    self.photoCarousel.type = (self.photoCarousel.type+1 > iCarouselTypeCustom) ? iCarouselTypeLinear : (self.photoCarousel.type + 1);
+    
+}
+
+- (IBAction)deleteImage{
+    
+    if ([displayImages count] == 0 ) {
+        self.deleteButton.enabled = NO;
+        self.refreshButton.enabled = NO;
+        return;
+    }
+    
+    [displayImages removeObjectAtIndex:self.photoCarousel.currentItemIndex];
+    NSUInteger nextIndex = self.photoCarousel.currentItemIndex + 1;
+    if (self.photoCarousel.currentItemIndex + 1 > [displayImages count]) {
+        nextIndex = [displayImages count];
+    }
+    
+    [self.photoCarousel scrollToItemAtIndex:nextIndex animated:YES];
+    [self.photoCarousel reloadData];
+
+}
 
 - (IBAction)shareImage
 {
-    
     if ([displayImages count] == 0 ) {
+        self.shareButton.enabled = NO;
         return;
     }
     
@@ -161,8 +196,7 @@
 
 - (void)imagePickerController:(UIImagePickerController *)photoPicker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    self.saveButton.enabled = YES;
-    self.filterButton.enabled = YES;
+    [self enableButtons];
     
     [displayImages addObject:[info valueForKey:UIImagePickerControllerOriginalImage]];
     
@@ -232,10 +266,11 @@
     
         runOnMainQueueWithoutDeadlocking(^{
 
-            [self.photoCarousel reloadDataToLastItem];
+            //[self.photoCarousel reloadDataToLastItem];
+            [self.photoCarousel reloadData];
+            [self.photoCarousel scrollToItemAtIndex:[displayImages count] animated:YES];
 
-            self.filterButton.enabled = YES;
-            self.saveButton.enabled = YES;
+            [self enableButtons];
         });
         
     }
@@ -278,11 +313,11 @@
     [(FXImageView*)view setImage:[displayImages objectAtIndex:index]];
     
     // One finger double-tap will delete an image
-    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeImageFromCarousel:)];
-    gesture.numberOfTouchesRequired = 1;
-    gesture.numberOfTapsRequired = 2;
-    view.gestureRecognizers = [NSArray arrayWithObject:gesture];
-    
+//    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeImageFromCarousel:)];
+//    gesture.numberOfTouchesRequired = 1;
+//    gesture.numberOfTapsRequired = 2;
+//    view.gestureRecognizers = [NSArray arrayWithObject:gesture];
+//    
     
     return view;
 }

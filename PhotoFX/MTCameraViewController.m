@@ -27,12 +27,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    NSLog(@"view loaded");
     
     // Add Filter Button to Interface
-    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(applyImageFilter:)];
+    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(applyImageFilter:)];
     self.navigationItem.rightBarButtonItem = filterButton;
+    self.navigationItem.leftBarButtonItem.style = UIBarButtonSystemItemOrganize;
 
     if (!filter) {
         // Setup initial camera filter
@@ -54,23 +53,58 @@
  
     }
     
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
+    doubleTap.delegate = self;
+    doubleTap.numberOfTapsRequired = 2;
+    doubleTap.numberOfTouchesRequired = 1;
+    
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
     singleTap.delegate = self;
+    singleTap.numberOfTapsRequired = 1;
+    singleTap.numberOfTouchesRequired = 1;
+
+    [singleTap requireGestureRecognizerToFail:doubleTap];
     
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
     panGesture.delegate = self;
     
     [self.view addGestureRecognizer:singleTap];
-    [self.view addGestureRecognizer:panGesture];
+    [self.view addGestureRecognizer:doubleTap];
+
+    //[self.view addGestureRecognizer:panGesture];
     
 }
 
-- (void)singleTap:(UIGestureRecognizer*)gesture{
+- (void)singleTap:(UITapGestureRecognizer*)gesture{
     if (stillCamera) {
-        //DLog(@"switch camera");
+        DLog(@"switch camera");
         [stillCamera rotateCamera];
     }
 }
+
+
+- (void)doubleTap:(UITapGestureRecognizer*)gesture{
+    if (stillCamera  ) {
+        DLog(@"show advanced sliders");
+        
+        static BOOL firstTimeOn = YES;
+        firstTimeOn = !firstTimeOn;
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            for (UIView *v in [self.view subviews]) {
+                //DLog(@"on %d",firstTimeOn);
+                //DLog(@"v %@",v);
+                if (v.tag > 1000 ) {
+                    v.alpha = (firstTimeOn == YES ? 0.:1.);
+                }
+            }
+        }];
+        
+
+    }
+}
+
+
 
 - (void)onPan:(UIPanGestureRecognizer*)gesture{
     DLog(@"%@",@"paning");
@@ -163,7 +197,7 @@
          }
          else
          {
-             NSLog(@"Delegate did not respond to message");
+             DLog(@"Delegate did not respond to message");
          }
 
          [stillCamera removeAllTargets];

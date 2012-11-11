@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
-        <!--View Controller - PhotoFX-->
+        <!--View Controller-->
         <scene sceneID="5">
             <objects>
                 <viewController modalTransitionStyle="flipHorizontal" id="2" customClass="ViewController" sceneMemberID="viewController">
@@ -40,6 +40,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="hAO-K6-IOf"/>
+                                    <barButtonItem enabled="NO" systemItem="trash" id="l46-mb-yvF">
+                                        <connections>
+                                            <action selector="deleteImage" destination="2" id="0Mq-50-dJq"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem enabled="NO" systemItem="add" id="eD4-rR-jhT">
                                         <connections>
                                             <action selector="applyImageFilter:" destination="2" id="RSo-jI-1jJ"/>
@@ -50,7 +55,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="PhotoFX" id="qlM-Gs-z9a">
+                    <navigationItem key="navigationItem" id="qlM-Gs-z9a">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" systemItem="refresh" id="tab-vu-Exj">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="refreshCarouselStyle" destination="2" id="ThK-1W-fW3"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="action" id="4FO-qN-WxZ">
                             <connections>
                                 <action selector="shareImage" destination="2" id="91u-nz-dfv"/>
@@ -62,19 +73,21 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="deleteButton" destination="l46-mb-yvF" id="6V6-rX-SVy"/>
                         <outlet property="filterButton" destination="eD4-rR-jhT" id="YEN-QY-yKg"/>
                         <outlet property="photoCarousel" destination="4uW-05-3PN" id="uFa-sZ-edU"/>
-                        <outlet property="saveButton" destination="4FO-qN-WxZ" id="Xbg-GV-mOR"/>
+                        <outlet property="refreshButton" destination="tab-vu-Exj" id="fBA-Xf-gw1"/>
+                        <outlet property="shareButton" destination="4FO-qN-WxZ" id="G9U-eE-3cB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="452" y="673"/>
         </scene>
-        <!--Camera View Controller - Capture-->
+        <!--Camera View Controller-->
         <scene sceneID="Men-zD-Zy7">
             <objects>
-                <viewController title="Capture" id="idv-MW-BFP" customClass="MTCameraViewController" sceneMemberID="viewController">
+                <viewController id="idv-MW-BFP" customClass="MTCameraViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tYG-iW-Bgh" customClass="GPUImageView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -182,11 +195,15 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
                 <relationship kind="action" name="applyImageFilter:"/>
+                <relationship kind="action" name="deleteImage"/>
                 <relationship kind="action" name="photoFromAlbum"/>
-                <relationship kind="action" name="saveImageToAlbum"/>
+                <relationship kind="action" name="refreshCarouselStyle"/>
+                <relationship kind="action" name="shareImage"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="filterButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="photoCarousel" candidateClass="iCarousel"/>
-                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="refreshButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="shareButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
         <class className="iCarousel" superclassName="UIView">
