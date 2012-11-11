@@ -20,7 +20,7 @@
 @property(nonatomic, weak) IBOutlet UIBarButtonItem *saveButton;
 
 - (IBAction)photoFromAlbum;
-- (IBAction)saveImageToAlbum;
+- (IBAction)shareImage;
 - (IBAction)applyImageFilter:(id)sender;
 
 @end
@@ -97,7 +97,7 @@
 }
 
 
-- (IBAction)saveImageToAlbum
+- (IBAction)shareImage
 {
     
     if ([displayImages count] == 0 ) {
@@ -166,7 +166,7 @@
     
     [displayImages addObject:[info valueForKey:UIImagePickerControllerOriginalImage]];
     
-    [self.photoCarousel reloadData];
+    [self.photoCarousel reloadDataToLastItem];
         
     [photoPicker dismissViewControllerAnimated:YES completion:NULL];
     
@@ -215,8 +215,8 @@
     }
     
     UIImage *filteredImage = [selectedFilter imageByFilteringImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex]];
-    [displayImages replaceObjectAtIndex:self.photoCarousel.currentItemIndex withObject:filteredImage];
-    [self.photoCarousel reloadData];
+    [displayImages addObject:filteredImage];
+    [self.photoCarousel reloadDataToLastItem];
 }
 
 #pragma mark -
@@ -233,7 +233,6 @@
         runOnMainQueueWithoutDeadlocking(^{
 
             [self.photoCarousel reloadDataToLastItem];
-            //[self.photoCarousel scrollToItemAtIndex:[displayImages count] animated:YES];
 
             self.filterButton.enabled = YES;
             self.saveButton.enabled = YES;
@@ -278,9 +277,9 @@
     //load image
     [(FXImageView*)view setImage:[displayImages objectAtIndex:index]];
     
-    // Two finger double-tap will delete an image
+    // One finger double-tap will delete an image
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeImageFromCarousel:)];
-    gesture.numberOfTouchesRequired = 2;
+    gesture.numberOfTouchesRequired = 1;
     gesture.numberOfTapsRequired = 2;
     view.gestureRecognizers = [NSArray arrayWithObject:gesture];
     
@@ -293,6 +292,7 @@
     [gesture removeTarget:self action:@selector(removeImageFromCarousel:)];
     [displayImages removeObjectAtIndex:self.photoCarousel.currentItemIndex];
     [self.photoCarousel reloadData];
+    [self.photoCarousel scrollToItemAtIndex:self.photoCarousel.currentItemIndex animated:YES];
 }
 
 @end

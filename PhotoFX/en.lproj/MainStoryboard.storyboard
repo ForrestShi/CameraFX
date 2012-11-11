@@ -40,7 +40,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="hAO-K6-IOf"/>
-                                    <barButtonItem enabled="NO" title="Filter" id="eD4-rR-jhT">
+                                    <barButtonItem enabled="NO" systemItem="add" id="eD4-rR-jhT">
                                         <connections>
                                             <action selector="applyImageFilter:" destination="2" id="RSo-jI-1jJ"/>
                                         </connections>
@@ -51,9 +51,9 @@
                         <color key="backgroundColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="PhotoFX" id="qlM-Gs-z9a">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="4FO-qN-WxZ">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="action" id="4FO-qN-WxZ">
                             <connections>
-                                <action selector="saveImageToAlbum" destination="2" id="A9g-ak-tNO"/>
+                                <action selector="shareImage" destination="2" id="91u-nz-dfv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -131,15 +131,6 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ana-gz-VIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="gSm-3S-QJO">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <items>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="zAg-K2-hkV"/>
-                        <barButtonItem title="Take Photo" id="Ijz-Zq-Pys"/>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="DlF-sR-EKU"/>
-                    </items>
-                </toolbar>
             </objects>
             <point key="canvasLocation" x="952" y="652"/>
         </scene>
@@ -184,7 +175,6 @@
                 <relationship kind="action" name="adjust0:"/>
                 <relationship kind="action" name="adjust1:"/>
                 <relationship kind="action" name="adjust2:"/>
-                <relationship kind="action" name="applyImageFilter:"/>
                 <relationship kind="action" name="captureImage:"/>
             </relationships>
         </class>
@@ -193,7 +183,6 @@
             <relationships>
                 <relationship kind="action" name="applyImageFilter:"/>
                 <relationship kind="action" name="photoFromAlbum"/>
-                <relationship kind="action" name="photoFromCamera"/>
                 <relationship kind="action" name="saveImageToAlbum"/>
                 <relationship kind="outlet" name="filterButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="photoCarousel" candidateClass="iCarousel"/>

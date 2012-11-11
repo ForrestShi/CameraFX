@@ -413,6 +413,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1827BB5E164F688800A869B9 /* 3rdParty */ = {
+			isa = PBXGroup;
+			children = (
+				18A43327164E22F900C58F27 /* FXImageView */,
+				1F8C30D11600FE0100FEBB7B /* MGImageUtiltiies */,
+				1FFFD6181600359B006FD8FB /* UIImage+Categories */,
+				1FEECF7915FF54B500C4FB0A /* iCarousel */,
+			);
+			name = 3rdParty;
+			sourceTree = "<group>";
+		};
 		18A43327164E22F900C58F27 /* FXImageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,10 +531,7 @@
 		1F92413915F741B90089AAAF /* PhotoFX */ = {
 			isa = PBXGroup;
 			children = (
-				18A43327164E22F900C58F27 /* FXImageView */,
-				1F8C30D11600FE0100FEBB7B /* MGImageUtiltiies */,
-				1FFFD6181600359B006FD8FB /* UIImage+Categories */,
-				1FEECF7915FF54B500C4FB0A /* iCarousel */,
+				1827BB5E164F688800A869B9 /* 3rdParty */,
 				1F92414215F741B90089AAAF /* AppDelegate.h */,
 				1F92414315F741B90089AAAF /* AppDelegate.m */,
 				18A4331A164E1D0300C58F27 /* CameraFXManager.h */,
