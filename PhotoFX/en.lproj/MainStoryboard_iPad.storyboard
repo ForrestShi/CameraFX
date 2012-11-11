@@ -9,29 +9,29 @@
             <objects>
                 <viewController modalTransitionStyle="flipHorizontal" id="2" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="94" width="768" height="930"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="zune.jpg" id="ZLM-er-djg">
-                                <rect key="frame" x="0.0" y="22" width="768" height="997"/>
+                                <rect key="frame" x="0.0" y="-72" width="768" height="997"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" id="4uW-05-3PN" customClass="iCarousel">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
+                                <rect key="frame" x="0.0" y="-93" width="768" height="979"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="2" id="6dH-BO-Zfe"/>
                                     <outlet property="delegate" destination="2" id="jkj-Pc-PJ7"/>
                                 </connections>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="5jI-7Y-lB7">
-                                <rect key="frame" x="0.0" y="980" width="768" height="44"/>
+                                <rect key="frame" x="0.0" y="886" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem title="Album" id="Vpe-Rx-cOs">
                                         <connections>
-                                            <action selector="photoFromAlbum" destination="2" id="Obf-vn-A2V"/>
+                                            <action selector="photoFromAlbum:" destination="2" id="zEP-ta-hXZ"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem systemItem="camera" id="U1T-P5-uNl">
@@ -68,8 +68,8 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackTranslucent" prompted="NO"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
@@ -156,7 +156,6 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackTranslucent"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="2Qw-DA-Tim">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -197,7 +196,7 @@
             <relationships>
                 <relationship kind="action" name="applyImageFilter:"/>
                 <relationship kind="action" name="deleteImage"/>
-                <relationship kind="action" name="photoFromAlbum"/>
+                <relationship kind="action" name="photoFromAlbum:"/>
                 <relationship kind="action" name="refreshCarouselStyle"/>
                 <relationship kind="action" name="shareImage"/>
                 <relationship kind="outlet" name="deleteButton" candidateClass="UIBarButtonItem"/>

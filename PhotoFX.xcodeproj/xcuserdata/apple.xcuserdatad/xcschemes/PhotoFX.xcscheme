@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1F92412E15F741B90089AAAF"
-               BuildableName = "Sepia Camera Pro.app"
+               BuildableName = "SepiaCam Pro.app"
                BlueprintName = "SepiaCam Pro"
                ReferencedContainer = "container:PhotoFX.xcodeproj">
             </BuildableReference>
@@ -32,7 +32,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1F92412E15F741B90089AAAF"
-            BuildableName = "Sepia Camera Pro.app"
+            BuildableName = "SepiaCam Pro.app"
             BlueprintName = "SepiaCam Pro"
             ReferencedContainer = "container:PhotoFX.xcodeproj">
          </BuildableReference>
@@ -51,7 +51,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1F92412E15F741B90089AAAF"
-            BuildableName = "Sepia Camera Pro.app"
+            BuildableName = "SepiaCam Pro.app"
             BlueprintName = "SepiaCam Pro"
             ReferencedContainer = "container:PhotoFX.xcodeproj">
          </BuildableReference>
@@ -69,7 +69,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1F92412E15F741B90089AAAF"
-            BuildableName = "Sepia Camera Pro.app"
+            BuildableName = "SepiaCam Pro.app"
             BlueprintName = "SepiaCam Pro"
             ReferencedContainer = "container:PhotoFX.xcodeproj">
          </BuildableReference>

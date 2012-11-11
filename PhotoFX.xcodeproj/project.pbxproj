@@ -1073,13 +1073,13 @@
 				GCC_PREFIX_HEADER = "PhotoFX/PhotoFX-Prefix.pch";
 				HEADER_SEARCH_PATHS = "Submodules/GPUImage/framework/**";
 				INFOPLIST_FILE = "PhotoFX/PhotoFX-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "./submodules/sharekit/Classes/ShareKit/** ./submodules/sharekit/Submodules/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1149,14 +1149,14 @@
 				GCC_PREFIX_HEADER = "PhotoFX/PhotoFX-Prefix.pch";
 				HEADER_SEARCH_PATHS = "Submodules/GPUImage/framework/**";
 				INFOPLIST_FILE = "PhotoFX/PhotoFX-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "./submodules/sharekit/Classes/ShareKit/** ./submodules/sharekit/Submodules/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1170,13 +1170,13 @@
 				GCC_PREFIX_HEADER = "PhotoFX/PhotoFX-Prefix.pch";
 				HEADER_SEARCH_PATHS = "Submodules/GPUImage/framework/**";
 				INFOPLIST_FILE = "PhotoFX/PhotoFX-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "./submodules/sharekit/Classes/ShareKit/** ./submodules/sharekit/Submodules/**";
 				WRAPPER_EXTENSION = app;
 			};

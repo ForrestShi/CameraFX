@@ -45,7 +45,6 @@
     // Create custom GPUImage camera
     if (!stillCamera) {
         stillCamera =[[CameraFXManager sharedInstance] stillCamera];
-        //stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
         [stillCamera addTarget:filter];
         
         // Begin showing video camera stream
@@ -67,7 +66,7 @@
     
 //    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
 //    panGesture.delegate = self;
-//    
+//
     [self.view addGestureRecognizer:singleTap];
     //[self.view addGestureRecognizer:doubleTap];
 
@@ -78,6 +77,16 @@
 - (void)singleTap:(UITapGestureRecognizer*)gesture{
     if (stillCamera) {
         DLog(@"switch camera");
+        
+        CATransition *animation = [CATransition animation];
+        animation.delegate = self;
+        animation.duration = .3;
+        animation.timingFunction = UIViewAnimationCurveEaseInOut;
+        animation.type = @"cameraIris";
+        //animation.type = @"flip";
+        //animation.subtype = @"fromLeft";
+        [self.view.layer addAnimation:animation forKey:nil];
+
         [stillCamera rotateCamera];
     }
 }

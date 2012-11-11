@@ -13,6 +13,7 @@
     GPUImageStillCamera *stillCamera;
     GPUImageFilter      *filter;
     MTCameraViewController *cameraViewController;
+    UIPopoverController *popOver;
 }
 
 @property(nonatomic, weak) IBOutlet iCarousel *photoCarousel;
@@ -21,7 +22,7 @@
 @property(nonatomic, weak) IBOutlet UIBarButtonItem *deleteButton;
 @property(nonatomic, weak) IBOutlet UIBarButtonItem *refreshButton;
 
-- (IBAction)photoFromAlbum;
+- (IBAction)photoFromAlbum:(id)sender;
 - (IBAction)refreshCarouselStyle;
 - (IBAction)deleteImage;
 - (IBAction)shareImage;
@@ -98,13 +99,23 @@
     self.refreshButton.enabled = YES;
 
 }
-- (IBAction)photoFromAlbum
+- (IBAction)photoFromAlbum:(id)sender
 {
     UIImagePickerController *photoPicker = [[UIImagePickerController alloc] init];
     photoPicker.delegate = self;
     photoPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    
-    [self presentViewController:photoPicker animated:YES completion:NULL];
+        
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:photoPicker];
+
+        [popover presentPopoverFromBarButtonItem:((UIBarButtonItem*)sender) permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        popOver = popover;
+        
+    } else {
+        [self presentViewController:photoPicker animated:YES completion:NULL];
+    }
+
+
 }
 
 - (IBAction)refreshCarouselStyle{
@@ -139,37 +150,26 @@
         return;
     }
     
-    SHKItem *item = [SHKItem image:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex] title:@"San Francisco"];
-    
-    /* optional examples
-     item.tags = [NSArray arrayWithObjects:@"bay bridge", @"architecture", @"california", nil];
-     
-     //give a source rect in the coords of the view set with setRootViewController:
-     item.popOverSourceRect = [self.navigationController.toolbar convertRect:self.navigationController.toolbar.bounds toView:self.view];
-     */
+    SHKItem *item = [SHKItem image:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex] title:@"Sepia Camera Pro"];
     
 	SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
 	[SHK setRootViewController:self];
 //	[actionSheet showFromToolbar:self.navigationController.toolbar];
-    [actionSheet showFromRect:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 1) inView:self.view animated:YES];
+//    [actionSheet showFromRect:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 1) inView:self.view animated:YES];
+    [actionSheet showFromBarButtonItem:self.shareButton animated:YES];
 
 }
 
 
 - (IBAction)applyImageFilter:(id)sender
 {
-//    UIActionSheet *filterActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select Filter"
-//                                                                   delegate:self
-//                                                          cancelButtonTitle:@"Cancel"
-//                                                     destructiveButtonTitle:nil
-//                                                          otherButtonTitles:@"Grayscale", @"Sepia", @"Sketch", @"Pixellate", @"Color Invert", @"Toon", @"Pinch Distort", @"None", nil];
-    
-    
     UIActionSheet *filterActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select Filter"
                                                                    delegate:self
                                                           cancelButtonTitle:@"Cancel"
                                                      destructiveButtonTitle:nil
-                                                          otherButtonTitles:@"Grayscale", @"Sepia", @"Color Invert", @"None", nil];
+                                                          otherButtonTitles:@"Grayscale", @"Sepia", @"Sketch", @"Pixellate", @"Color Invert", @"Toon", @"Pinch Distort", @"None", nil];
+    
+    
     [filterActionSheet showInView:self.parentViewController.view];
 }
 
@@ -232,22 +232,22 @@
         case 1:
             selectedFilter = [[GPUImageSepiaFilter alloc] init];
             break;
-//        case 2:
-//            selectedFilter = [[GPUImageSketchFilter alloc] init];
-//            break;
-//        case 3:
-//            selectedFilter = [[GPUImagePixellateFilter alloc] init];
-//            break;
         case 2:
+            selectedFilter = [[GPUImageSketchFilter alloc] init];
+            break;
+        case 3:
+            selectedFilter = [[GPUImagePixellateFilter alloc] init];
+            break;
+        case 4:
             selectedFilter = [[GPUImageColorInvertFilter alloc] init];
             break;
-//        case 5:
-//            selectedFilter = [[GPUImageToonFilter alloc] init];
-//            break;
-//        case 6:
-//            selectedFilter = [[GPUImagePinchDistortionFilter alloc] init];
-//            break;
-        case 3:
+        case 5:
+            selectedFilter = [[GPUImageToonFilter alloc] init];
+            break;
+        case 6:
+            selectedFilter = [[GPUImagePinchDistortionFilter alloc] init];
+            break;
+        case 7:
             selectedFilter = [[GPUImageFilter alloc] init];
             break;
         default:
@@ -302,7 +302,13 @@
     //create new view if no view is available for recycling
     if (view == nil)
     {
-        FXImageView *imageView = [[[FXImageView alloc] initWithFrame:CGRectMake(0, 0, 250.0f, 250.0f)] autorelease];
+        
+        CGRect cellFrame = CGRectMake(0, 0, 250.0f, 250.0f);
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            cellFrame = CGRectMake(0, 0, 512., 512.);
+        }
+        
+        FXImageView *imageView = [[[FXImageView alloc] initWithFrame:cellFrame] autorelease];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.asynchronous = YES;
         imageView.reflectionScale = 0.5f;
