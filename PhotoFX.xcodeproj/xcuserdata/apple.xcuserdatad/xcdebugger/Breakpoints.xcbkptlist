@@ -8,12 +8,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PhotoFX/MTCameraViewController.m"
-         timestampString = "374329850.528185"
+         timestampString = "374334749.907503"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "139"
-         endingLineNumber = "139"
-         landmarkName = "-adjust1:"
+         startingLineNumber = "133"
+         endingLineNumber = "133"
+         landmarkName = "-onPan:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -21,12 +21,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PhotoFX/MTCameraViewController.m"
-         timestampString = "374329850.528185"
+         timestampString = "374334749.907503"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "137"
-         endingLineNumber = "137"
-         landmarkName = "-adjust1:"
+         startingLineNumber = "131"
+         endingLineNumber = "131"
+         landmarkName = "-onPan:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -40,6 +40,32 @@
          startingLineNumber = "17"
          endingLineNumber = "17"
          landmarkName = "-handleOpenURL:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "PhotoFX/MTCameraViewController.m"
+         timestampString = "374335464.989027"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "151"
+         endingLineNumber = "151"
+         landmarkName = "-adjust0:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "PhotoFX/MTCameraViewController.m"
+         timestampString = "374335475.837442"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "143"
+         endingLineNumber = "143"
+         landmarkName = "-adjust0:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

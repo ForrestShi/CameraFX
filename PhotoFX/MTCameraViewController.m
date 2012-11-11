@@ -52,26 +52,26 @@
  
     }
     
-//    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
-//    doubleTap.delegate = self;
-//    doubleTap.numberOfTapsRequired = 2;
-//    doubleTap.numberOfTouchesRequired = 1;
-//    
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
+    doubleTap.delegate = self;
+    doubleTap.numberOfTapsRequired = 2;
+    doubleTap.numberOfTouchesRequired = 1;
+    
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
     singleTap.delegate = self;
     singleTap.numberOfTapsRequired = 1;
     singleTap.numberOfTouchesRequired = 1;
 
-   // [singleTap requireGestureRecognizerToFail:doubleTap];
+    [singleTap requireGestureRecognizerToFail:doubleTap];
     
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
     panGesture.delegate = self;
 
-    [singleTap requireGestureRecognizerToFail:panGesture];
+    //[singleTap requireGestureRecognizerToFail:panGesture];
     [self.view addGestureRecognizer:singleTap];
-    //[self.view addGestureRecognizer:doubleTap];
+    [self.view addGestureRecognizer:doubleTap];
 
-    [self.view addGestureRecognizer:panGesture];
+    //[self.view addGestureRecognizer:panGesture];
     
 }
 
@@ -94,22 +94,16 @@
 
 
 - (void)doubleTap:(UITapGestureRecognizer*)gesture{
-    if (stillCamera  ) {
+    if (stillCamera && [filter isKindOfClass:[GPUImageSepiaFilter class]] ) {
         DLog(@"show advanced sliders");
         
-        static BOOL firstTimeOn = YES;
+        static BOOL firstTimeOn = NO;
         firstTimeOn = !firstTimeOn;
         
+        UISlider *slider0 = (UISlider*)[self.view viewWithTag:1001];
         [UIView animateWithDuration:0.3 animations:^{
-            for (UIView *v in [self.view subviews]) {
-                //DLog(@"on %d",firstTimeOn);
-                //DLog(@"v %@",v);
-                if (v.tag == 1001 ) {
-                    v.alpha = (firstTimeOn == YES ? 0.:1.);
-                }
-            }
+            slider0.alpha = (firstTimeOn ? 0:1.);
         }];
-        
 
     }
 }
