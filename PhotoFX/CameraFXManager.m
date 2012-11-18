@@ -24,7 +24,7 @@ static CameraFXManager* instance = nil;
 
 - (void)setupCamera{
     if (!_stillCamera) {
-        _stillCamera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
+        _stillCamera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
         _stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
 
     }

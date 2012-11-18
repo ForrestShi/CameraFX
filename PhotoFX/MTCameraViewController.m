@@ -2,9 +2,9 @@
 //http://mobile.tutsplus.com/tutorials/iphone/enhancing-a-photo-app-with-gpuimage-icarousel/
 #import "CameraFXManager.h"
 #import "FSGPUImageFilterManager.h"
+#import "PreviewFilterViewController.h"
 
-
-@interface MTCameraViewController () <UIActionSheetDelegate, UIGestureRecognizerDelegate>
+@interface MTCameraViewController () <UIActionSheetDelegate, UIGestureRecognizerDelegate , PreviewFilterDelegate>
 {
     GPUImageStillCamera *stillCamera;
     GPUImageFilter *filter;
@@ -213,17 +213,55 @@
 
 - (IBAction)applyImageFilter:(id)sender
 {
-    
-//    UIActionSheet *filterActionSheet = [[UIActionSheet alloc] initWithTitle:@"Select Filter"
-//                                                                   delegate:self
-//                                                          cancelButtonTitle:@"Cancel"
-//                                                     destructiveButtonTitle:nil
-//                                                          otherButtonTitles:@"Grayscale", @"Sepia", @"Color Invert", @"None", nil];
 
-    UIActionSheet *filterActionSheet = [[FSGPUImageFilterManager sharedFSGPUImageFilterManager] createSepiaCameraAppSheetWithDelegate:self];
+    // Snap Image from GPU camera, send back to main view controller
+    [stillCamera capturePhotoAsPNGProcessedUpToFilter:filter withCompletionHandler:^(NSData *processedPNG, NSError *error)
+     {
+         
+         runOnMainQueueWithoutDeadlocking(^{
+             
+             PreviewFilterViewController *previewFiltersVC = [[PreviewFilterViewController alloc] initWithImage:[UIImage imageWithData:processedPNG]];
+             
+             previewFiltersVC.delegate = self;
+             
+             [self.navigationController pushViewController:previewFiltersVC animated:NO];
+
+             //[self presentModalViewController:previewFiltersVC animated:YES];
+         });
+     }];
     
-    [filterActionSheet showFromBarButtonItem:sender animated:YES];
 }
+
+- (void) selectImageWithFilterType:(GPUImageShowcaseFilterType)filterType{
+    
+    [stillCamera removeAllTargets];
+    [filter removeAllTargets];
+    
+    GPUImageFilter *selectedFilter = [[FSGPUImageFilterManager sharedFSGPUImageFilterManager] createGPUImageFilter:filterType];
+    
+    UISlider *slider0 = (UISlider*)[self.view viewWithTag:1001];
+    if (![selectedFilter isKindOfClass:[GPUImageSepiaFilter class]]) {
+        [UIView animateWithDuration:0.3 animations:^{
+            slider0.alpha = 0.;
+        }];
+        
+    }else{
+        slider0.hidden = NO;
+        [UIView animateWithDuration:0.3 animations:^{
+            slider0.alpha = 1.;
+        }];
+        
+    }
+    filter = selectedFilter;
+    GPUImageView *filterView = (GPUImageView *)self.view;
+    [filter addTarget:filterView];
+    [stillCamera addTarget:filter];
+    
+    [self.navigationController popToViewController:self animated:YES];
+    
+}
+
+
 
 -(IBAction)captureImage:(id)sender
 {
@@ -232,11 +270,11 @@
     //captureButton.enabled = NO;
     
     // Snap Image from GPU camera, send back to main view controller
-    [stillCamera capturePhotoAsJPEGProcessedUpToFilter:filter withCompletionHandler:^(NSData *processedJPEG, NSError *error)
+    [stillCamera capturePhotoAsPNGProcessedUpToFilter:filter withCompletionHandler:^(NSData *processedPNG, NSError *error)
      {
          if([self.delegate respondsToSelector:@selector(didSelectStillImage:withError:)])
          {
-             [self.delegate didSelectStillImage:processedJPEG withError:error];
+             [self.delegate didSelectStillImage:processedPNG withError:error];
          }
          else
          {

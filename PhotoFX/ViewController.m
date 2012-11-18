@@ -214,6 +214,20 @@
     
 }
 
+- (void) selectImageWithFilterType:(GPUImageShowcaseFilterType)filterType{
+    
+
+    GPUImageFilter *selectedFilter = [[FSGPUImageFilterManager sharedFSGPUImageFilterManager] createGPUImageFilter:filterType];
+    UIImage *filteredImage = [selectedFilter imageByFilteringImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex]];
+    [displayImages addObject:filteredImage];
+    [self.photoCarousel reloadDataToLastItem];
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+
+}
+
+
+
 #pragma mark -
 #pragma mark Album Picking/Saving Code
 
@@ -266,14 +280,6 @@
     
     self.photoCarousel.type = (buttonIndex > iCarouselTypeCustom) ? iCarouselTypeLinear : buttonIndex;
 
-}
-
-- (void) selectImageWithFilterType:(GPUImageShowcaseFilterType)filterType{
-    
-    GPUImageFilter *selectedFilter = [[FSGPUImageFilterManager sharedFSGPUImageFilterManager] createGPUImageFilter:filterType];
-    UIImage *filteredImage = [selectedFilter imageByFilteringImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex]];
-    [displayImages addObject:filteredImage];
-    [self.photoCarousel reloadDataToLastItem];
 }
 
 #pragma mark -

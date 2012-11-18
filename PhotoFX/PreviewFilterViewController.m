@@ -116,7 +116,6 @@
     
     [delegate selectImageWithFilterType:index];
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 
