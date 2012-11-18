@@ -125,8 +125,28 @@
 
 - (IBAction)refreshCarouselStyle{
     
+#if 0
     self.photoCarousel.type = (self.photoCarousel.type+1 > iCarouselTypeCustom) ? iCarouselTypeLinear : (self.photoCarousel.type + 1);
+#else
+    /*
+     iCarouselTypeLinear = 0,
+     iCarouselTypeRotary,
+     iCarouselTypeInvertedRotary,
+     iCarouselTypeCylinder,
+     iCarouselTypeInvertedCylinder,
+     iCarouselTypeWheel,
+     iCarouselTypeInvertedWheel,
+     iCarouselTypeCoverFlow,
+     iCarouselTypeCoverFlow2,
+     iCarouselTypeTimeMachine,
+     iCarouselTypeInvertedTimeMachine,
+     iCarouselTypeCustom
+
+     */
+    UIActionSheet *styleSheet = [[UIActionSheet alloc] initWithTitle:@"Display Style" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Linear",@"Rotary",@"InvertedRotary",@"Cylinder",@"InvertedCylinder",@"Wheel",@"InvertedWheel",@"CoverFlow",@"CoverFlow2",@"TimeMachine",@"TimeMachine2",@"Custom", nil];
+    [styleSheet showFromBarButtonItem:self.refreshButton animated:YES];
     
+#endif
 }
 
 - (IBAction)deleteImage{
@@ -244,55 +264,8 @@
         return;
     }
     
-    GPUImageFilter *selectedFilter;
-    
-    GPUImageShowcaseFilterType fitlerEnumType;
-    
-    switch (buttonIndex) {
-        case 0:
-            fitlerEnumType = GPUIMAGE_SEPIA;
-            break;
-        case 1:
-            fitlerEnumType = GPUIMAGE_SKETCH;
-            break;
-        case 2:
-            fitlerEnumType = GPUIMAGE_VIGNETTE;
-            break;
-        case 3:
-            fitlerEnumType = GPUIMAGE_SMOOTHTOON;
-            break;
-        case 4:
-            fitlerEnumType = GPUIMAGE_POSTERIZE;
-            break;
-        case 5:
-            fitlerEnumType = GPUIMAGE_BULGE;
-            break;
-        case 6:
-            fitlerEnumType = GPUIMAGE_PINCH;
-            break;
-        case 7:
-            fitlerEnumType = GPUIMAGE_FASTBLUR;
-            break;
-        case 8:
-            fitlerEnumType = GPUIMAGE_COLORINVERT;
-            break;
-        case 9:
-            fitlerEnumType = GPUIMAGE_GRAYSCALE;
-            break;
-        case 10:
-            fitlerEnumType = GPUIMAGE_EMBOSS;
-            break;
-        default:
-            fitlerEnumType = GPUIMAGE_SEPIA;
-            break;
-    }
-    
-    selectedFilter = [[FSGPUImageFilterManager sharedFSGPUImageFilterManager] createGPUImageFilter:fitlerEnumType];
-    
-    
-    UIImage *filteredImage = [selectedFilter imageByFilteringImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex]];
-    [displayImages addObject:filteredImage];
-    [self.photoCarousel reloadDataToLastItem];
+    self.photoCarousel.type = (buttonIndex > iCarouselTypeCustom) ? iCarouselTypeLinear : buttonIndex;
+
 }
 
 - (void) selectImageWithFilterType:(GPUImageShowcaseFilterType)filterType{

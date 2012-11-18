@@ -56,7 +56,7 @@
                         <color key="backgroundColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="qlM-Gs-z9a">
-                        <barButtonItem key="leftBarButtonItem" enabled="NO" systemItem="refresh" id="tab-vu-Exj">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Display" id="tab-vu-Exj">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="refreshCarouselStyle" destination="2" id="ThK-1W-fW3"/>
