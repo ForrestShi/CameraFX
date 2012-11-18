@@ -785,6 +785,8 @@ SINGLETON_GCD(FSGPUImageFilterManager);
             [self.filterSettingsSlider setValue:1.0];
             
             filter = [[GPUImageSwirlFilter alloc] init];
+            ((GPUImageSwirlFilter*)filter).radius = 0.1;
+            
         }; break;
         case GPUIMAGE_BULGE:
         {

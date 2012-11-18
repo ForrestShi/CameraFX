@@ -21,6 +21,7 @@
 		1827BB87164FA4C300A869B9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1827BB86164FA4C300A869B9 /* Default.png */; };
 		183948A71658268C00FD7A99 /* fx.png in Resources */ = {isa = PBXBuildFile; fileRef = 183948A61658268C00FD7A99 /* fx.png */; };
 		18963ED2164FC9FD0087B1E6 /* FSGPUImageFilterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18963ED1164FC9FD0087B1E6 /* FSGPUImageFilterManager.m */; };
+		189A0C911658B747003ED0D5 /* PreviewFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A0C901658B747003ED0D5 /* PreviewFilterViewController.m */; };
 		18A4331C164E1D0300C58F27 /* CameraFXManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4331B164E1D0300C58F27 /* CameraFXManager.m */; };
 		18A43325164E22EF00C58F27 /* FXImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A43322164E22EF00C58F27 /* FXImageView.m */; };
 		18A43326164E22EF00C58F27 /* UIImage+FX.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A43324164E22EF00C58F27 /* UIImage+FX.m */; };
@@ -357,6 +358,8 @@
 		183948A61658268C00FD7A99 /* fx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fx.png; sourceTree = "<group>"; };
 		18963ED0164FC9FD0087B1E6 /* FSGPUImageFilterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGPUImageFilterManager.h; sourceTree = "<group>"; };
 		18963ED1164FC9FD0087B1E6 /* FSGPUImageFilterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGPUImageFilterManager.m; sourceTree = "<group>"; };
+		189A0C8F1658B747003ED0D5 /* PreviewFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewFilterViewController.h; sourceTree = "<group>"; };
+		189A0C901658B747003ED0D5 /* PreviewFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewFilterViewController.m; sourceTree = "<group>"; };
 		18A4331A164E1D0300C58F27 /* CameraFXManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraFXManager.h; sourceTree = "<group>"; };
 		18A4331B164E1D0300C58F27 /* CameraFXManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraFXManager.m; sourceTree = "<group>"; };
 		18A43321164E22EE00C58F27 /* FXImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXImageView.h; sourceTree = "<group>"; };
@@ -569,6 +572,8 @@
 				1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */,
 				18AEE494164E6E8C00D1A3D3 /* MySHKConfigurator.h */,
 				18AEE495164E6E8C00D1A3D3 /* MySHKConfigurator.m */,
+				189A0C8F1658B747003ED0D5 /* PreviewFilterViewController.h */,
+				189A0C901658B747003ED0D5 /* PreviewFilterViewController.m */,
 				1F92413A15F741B90089AAAF /* Supporting Files */,
 			);
 			path = PhotoFX;
@@ -999,6 +1004,7 @@
 				18A43326164E22EF00C58F27 /* UIImage+FX.m in Sources */,
 				18AEE496164E6E8C00D1A3D3 /* MySHKConfigurator.m in Sources */,
 				18963ED2164FC9FD0087B1E6 /* FSGPUImageFilterManager.m in Sources */,
+				189A0C911658B747003ED0D5 /* PreviewFilterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

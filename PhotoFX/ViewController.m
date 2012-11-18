@@ -7,8 +7,10 @@
 #import "SHKItem.h"
 #import "SHKActionSheet.h"
 #import "FSGPUImageFilterManager.h"
+#import "PreviewFilterViewController.h"
 
-@interface ViewController () 
+
+@interface ViewController () <PreviewFilterDelegate>
 {
     NSMutableArray *displayImages;
     GPUImageStillCamera *stillCamera;
@@ -166,9 +168,30 @@
 
 - (IBAction)applyImageFilter:(id)sender
 {
+#if 0
     UIActionSheet *filterActionSheet = [[FSGPUImageFilterManager sharedFSGPUImageFilterManager] createSepiaCameraAppSheetWithDelegate:self];
     
     [filterActionSheet showInView:self.parentViewController.view];
+    
+#else
+    
+    CATransition* transition = [CATransition animation];
+    transition.duration = 0.5;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionMoveIn; //kCATransitionMoveIn; //, kCATransitionPush, kCATransitionReveal, kCATransitionFade
+    //transition.subtype = kCATransitionFromBottom; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    [[self navigationController] popViewControllerAnimated:NO];
+    
+    PreviewFilterViewController *previewFiltersVC = [[PreviewFilterViewController alloc] initWithImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex]];
+    previewFiltersVC.delegate = self;
+    
+    
+    [self.navigationController pushViewController:previewFiltersVC animated:NO];
+    
+    
+#endif
+    
 }
 
 #pragma mark -
@@ -267,6 +290,14 @@
     selectedFilter = [[FSGPUImageFilterManager sharedFSGPUImageFilterManager] createGPUImageFilter:fitlerEnumType];
     
     
+    UIImage *filteredImage = [selectedFilter imageByFilteringImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex]];
+    [displayImages addObject:filteredImage];
+    [self.photoCarousel reloadDataToLastItem];
+}
+
+- (void) selectImageWithFilterType:(GPUImageShowcaseFilterType)filterType{
+    
+    GPUImageFilter *selectedFilter = [[FSGPUImageFilterManager sharedFSGPUImageFilterManager] createGPUImageFilter:filterType];
     UIImage *filteredImage = [selectedFilter imageByFilteringImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex]];
     [displayImages addObject:filteredImage];
     [self.photoCarousel reloadDataToLastItem];
