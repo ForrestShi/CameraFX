@@ -72,6 +72,8 @@
     // iCarousel Configuration
     self.photoCarousel.type = iCarouselTypeCoverFlow;
     self.photoCarousel.bounces = YES;
+
+    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -342,6 +344,15 @@
 //    view.gestureRecognizers = [NSArray arrayWithObject:gesture];
 //    
     
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSingleTap:)];
+    singleTap.numberOfTapsRequired = 1;
+    singleTap.numberOfTouchesRequired = 1;
+    [view addGestureRecognizer:singleTap];
+    
+    UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(onPinch:)];
+    [view addGestureRecognizer:pinchGesture];
+    
     return view;
 }
 
@@ -351,6 +362,27 @@
     [displayImages removeObjectAtIndex:self.photoCarousel.currentItemIndex];
     [self.photoCarousel reloadData];
     [self.photoCarousel scrollToItemAtIndex:self.photoCarousel.currentItemIndex animated:YES];
+}
+
+- (void)onPinch:(UIPinchGestureRecognizer*)gesture{
+    DLog(@"pinching... %@ scale : %f", gesture , [gesture scale] );
+    
+    FXImageView *selectedImageView = (FXImageView*)gesture.view;
+    selectedImageView.transform = CGAffineTransformScale([selectedImageView transform], [gesture scale], [gesture scale]);
+    gesture.scale = 1.;
+    
+}
+- (void)onSingleTap:(UITapGestureRecognizer*)gesture{
+  
+    FXImageView *selectedImageView = (FXImageView*)gesture.view;
+    if (selectedImageView) {
+        [UIView animateWithDuration:0.3 animations:^{
+            // make it not clear after multiple times
+            //selectedImageView.frame = CGRectMake(0, 0, 250.0f, 250.0f);
+            
+            selectedImageView.transform =CGAffineTransformMakeScale(1., 1.);
+        }];
+    }
 }
 
 @end
