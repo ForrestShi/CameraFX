@@ -105,13 +105,6 @@
 #pragma mark -
 #pragma mark IBAction Methods
 
-- (void)enableButtons{
-    self.filterButton.enabled = YES;
-    self.shareButton.enabled = YES;
-    self.deleteButton.enabled = YES;
-    self.refreshButton.enabled = YES;
-
-}
 - (IBAction)photoFromAlbum:(id)sender
 {
     UIImagePickerController *photoPicker = [[UIImagePickerController alloc] init];
@@ -157,22 +150,42 @@
 #endif
 }
 
+- (void)refreshUI{
+    if ([displayImages count] == 0 ) {
+        self.filterButton.enabled = NO;
+        self.deleteButton.enabled = NO;
+        self.refreshButton.enabled = NO;
+        self.shareButton.enabled = NO;
+    }else{
+        self.filterButton.enabled = YES;
+        self.deleteButton.enabled = YES;
+        self.refreshButton.enabled = YES;
+        self.shareButton.enabled = YES;
+    }
+
+}
+
 - (IBAction)deleteImage{
     
     if ([displayImages count] == 0 ) {
-        self.deleteButton.enabled = NO;
-        self.refreshButton.enabled = NO;
+        [self refreshUI];
         return;
     }
     
-    [displayImages removeObjectAtIndex:self.photoCarousel.currentItemIndex];
-    NSUInteger nextIndex = self.photoCarousel.currentItemIndex + 1;
-    if (self.photoCarousel.currentItemIndex + 1 > [displayImages count]) {
-        nextIndex = [displayImages count];
+    NSInteger nextIndex = self.photoCarousel.currentItemIndex + 1 ;
+    if (nextIndex >= [displayImages count] ) {
+        nextIndex = self.photoCarousel.currentItemIndex-1;
+        if (nextIndex < 0 ) {
+            nextIndex = 0;
+        }
     }
     
-    [self.photoCarousel scrollToItemAtIndex:nextIndex animated:YES];
+    [self.photoCarousel scrollToItemAtIndex:nextIndex duration:1.];
+
+    [displayImages removeObjectAtIndex:self.photoCarousel.currentItemIndex];
     [self.photoCarousel reloadData];
+    
+    [self refreshUI];
 
 }
 
@@ -219,7 +232,10 @@
     GPUImageFilter *selectedFilter = [[FSGPUImageFilterManager sharedFSGPUImageFilterManager] createGPUImageFilter:filterType];
     UIImage *filteredImage = [selectedFilter imageByFilteringImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex]];
     [displayImages addObject:filteredImage];
-    [self.photoCarousel reloadDataToLastItem];
+    //[self.photoCarousel reloadDataToLastItem];
+    [self.photoCarousel reloadData];
+    [self.photoCarousel scrollToItemAtIndex:[displayImages count] duration:1.];
+
     
     [self.navigationController popToRootViewControllerAnimated:YES];
 
@@ -256,14 +272,17 @@
 
 - (void)imagePickerController:(UIImagePickerController *)photoPicker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    [self enableButtons];
     
     [displayImages addObject:[info valueForKey:UIImagePickerControllerOriginalImage]];
     
-    [self.photoCarousel reloadDataToLastItem];
+    //[self.photoCarousel reloadDataToLastItem];
+    [self.photoCarousel reloadData];
+    [self.photoCarousel scrollToItemAtIndex:[displayImages count] duration:1.];
         
     [photoPicker dismissViewControllerAnimated:YES completion:NULL];
     
+    [self refreshUI];
+
 }
 
 #pragma mark -
@@ -294,11 +313,10 @@
     
         runOnMainQueueWithoutDeadlocking(^{
 
-            //[self.photoCarousel reloadDataToLastItem];
             [self.photoCarousel reloadData];
-            [self.photoCarousel scrollToItemAtIndex:[displayImages count] animated:YES];
+            [self.photoCarousel scrollToItemAtIndex:[displayImages count] duration:1.];
 
-            [self enableButtons];
+            [self refreshUI];
         });
         
     }
