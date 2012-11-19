@@ -45,7 +45,8 @@
         //self.processedImage = [image thumbnailImage:128. transparentBorder:6. cornerRadius:8. interpolationQuality:kCGInterpolationHigh] ;
         if (image.size.width > 128) {
             float ratio = image.size.height/image.size.width;
-            self.processedImage = [image resizedImage:CGSizeMake(128., 128.*ratio) interpolationQuality:kCGInterpolationHigh];
+            float width  = IS_IPAD ? 256.:128.;
+            self.processedImage = [image resizedImage:CGSizeMake(width, width*ratio) interpolationQuality:kCGInterpolationHigh];
         }else{
             self.processedImage = image;
         }

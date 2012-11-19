@@ -195,6 +195,9 @@
     }else if (nextIndex == 1 ){
         //first item
         nextIndex = 0;
+    }else{
+        //normal item
+        nextIndex--;
     }
     
     
