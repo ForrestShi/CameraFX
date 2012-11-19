@@ -175,6 +175,7 @@
                         <outlet property="backButton" destination="uuA-9N-QM3" id="LbR-aN-Ccw"/>
                         <outlet property="filterItem" destination="ygC-Gp-L53" id="hi5-K9-djA"/>
                         <outlet property="switchButton" destination="8Hw-cn-ozc" id="jCy-5f-wOg"/>
+                        <outlet property="toolBar" destination="0a4-Zl-AQA" id="Vfn-qh-Qrq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ana-gz-VIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -231,6 +232,7 @@
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="filterItem" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="switchButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
             </relationships>
         </class>
         <class className="ViewController" superclassName="UIViewController">

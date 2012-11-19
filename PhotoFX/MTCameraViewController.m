@@ -15,6 +15,7 @@
 @property (nonatomic,weak) IBOutlet UIBarButtonItem *filterItem;
 @property (nonatomic,weak) IBOutlet UIButton *switchButton;
 @property (nonatomic,weak) IBOutlet UIButton *backButton;
+@property (nonatomic,weak) IBOutlet UIToolbar *toolBar;
 
 - (IBAction)captureImage:(id)sender;
 - (IBAction)adjust0:(id)sender;
@@ -49,12 +50,6 @@
     previewFiltersVC = [[PreviewFilterViewController alloc] initWithProcessedImage:modelImage dynamic:NO];
     previewFiltersVC.delegate = self;
 
-    
-    // Add Filter Button to Interface
-//    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(applyImageFilter:)];
-//    self.navigationItem.rightBarButtonItem = filterButton;
-//    self.navigationItem.leftBarButtonItem.style = UIBarButtonSystemItemOrganize;
-//
     if (!filter) {
         // Setup initial camera filter
         filter = [[CameraFXManager sharedInstance] filter];
@@ -74,6 +69,10 @@
  
     }
     
+    if ([stillCamera isFrontFacingCameraPresent] == NO ) {
+        self.switchButton.hidden = YES;
+    }
+    
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
     doubleTap.delegate = self;
     doubleTap.numberOfTapsRequired = 2;
@@ -90,7 +89,7 @@
     panGesture.delegate = self;
 
     //[singleTap requireGestureRecognizerToFail:panGesture];
-    //[self.view addGestureRecognizer:singleTap];
+    [self.view addGestureRecognizer:singleTap];
     [self.view addGestureRecognizer:doubleTap];
 
     //[self.view addGestureRecognizer:panGesture];
@@ -98,19 +97,15 @@
 }
 
 - (void)singleTap:(UITapGestureRecognizer*)gesture{
-    if (stillCamera) {
-        DLog(@"switch camera");
-        
-        CATransition *animation = [CATransition animation];
-        animation.delegate = self;
-        animation.duration = .6;
-        animation.timingFunction = UIViewAnimationCurveEaseInOut;
-        animation.type = @"cameraIris";
-        //animation.type = @"flip";
-        //animation.subtype = @"fromLeft";
-        [self.view.layer addAnimation:animation forKey:nil];
-
-        [stillCamera rotateCamera];
+    @synchronized(self){
+        static BOOL hideCtrls = NO;
+        [UIView animateWithDuration:0.3 animations:^{
+            if ([stillCamera isFrontFacingCameraPresent]) {
+                self.switchButton.alpha = hideCtrls ? 0.:1.;
+            }
+            self.backButton.alpha = hideCtrls ? 0.:1.;
+            hideCtrls = !hideCtrls;
+        }];
     }
 }
 - (IBAction)back:(id)sender{
@@ -129,17 +124,6 @@
         //animation.type = @"flip";
         //animation.subtype = @"fromLeft";
         [self.view.layer addAnimation:animation forKey:nil];
-        
-        
-//        CATransition *animation2 = [CATransition animation];
-//        animation2.delegate = self;
-//        animation2.duration = .3;
-//        animation2.timingFunction = UIViewAnimationCurveEaseInOut;
-//        animation2.type = @"flip";
-//        animation2.subtype = @"fromLeft";
-//        [self.switchButton.layer addAnimation:animation2 forKey:nil];
-//        [self.backButton.layer addAnimation:animation2 forKey:nil];
-//        
         
         [stillCamera rotateCamera];
     }
@@ -231,22 +215,11 @@
 }
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
     
-    CGRect captureBtnFrame = ((UIButton*)[self.view viewWithTag:1000]).frame;
-    CGRect sliderFrame = ((UISlider*)[self.view viewWithTag:1001]).frame;
-//    CRect sliderFrame2 = ((UISlider*)[self.view viewWithTag:1002]).frame;
-//    CGRect sliderFrame3 = ((UISlider*)[self.view viewWithTag:1003]).frame;
-//
-//    if ( CGRectContainsPoint(captureBtnFrame, [gestureRecognizer locationInView:self.view]) ||
-//        CGRectContainsPoint(sliderFrame3, [gestureRecognizer locationInView:self.view]) || CGRectContainsPoint(sliderFrame, [gestureRecognizer locationInView:self.view]) || CGRectContainsPoint(sliderFrame2, [gestureRecognizer locationInView:self.view]))
-//    {
-//        return NO;
-//    }
-//    
-    if ( CGRectContainsPoint(captureBtnFrame, [gestureRecognizer locationInView:self.view]) ||CGRectContainsPoint(self.filterItem.customView.frame, [gestureRecognizer locationInView:self.view]) || CGRectContainsPoint(sliderFrame, [gestureRecognizer locationInView:self.view]) )
+
+    if (CGRectContainsPoint(self.filterItem.customView.frame, [gestureRecognizer locationInView:self.view]) || CGRectContainsPoint(self.switchButton.frame, [gestureRecognizer locationInView:self.view] ) || CGRectContainsPoint(self.backButton.frame, [gestureRecognizer locationInView:self.view] ) || CGRectContainsPoint(self.toolBar.frame, [gestureRecognizer locationInView:self.view] ) )
     {
         return NO;
     }
-
     return YES;
 }
 
