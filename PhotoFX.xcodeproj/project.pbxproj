@@ -31,6 +31,7 @@
 		18A28CFA165A0A8D00ABF876 /* switch2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A28CF7165A0A8D00ABF876 /* switch2.png */; };
 		18A28CFC165A0AA600ABF876 /* switch3.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A28CFB165A0AA500ABF876 /* switch3.png */; };
 		18A28D00165A0F9900ABF876 /* switch0.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A28CFF165A0F9900ABF876 /* switch0.png */; };
+		18A28D03165A23D000ABF876 /* ParameterSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A28D02165A23D000ABF876 /* ParameterSliderView.m */; };
 		18A4331C164E1D0300C58F27 /* CameraFXManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4331B164E1D0300C58F27 /* CameraFXManager.m */; };
 		18A43325164E22EF00C58F27 /* FXImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A43322164E22EF00C58F27 /* FXImageView.m */; };
 		18A43326164E22EF00C58F27 /* UIImage+FX.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A43324164E22EF00C58F27 /* UIImage+FX.m */; };
@@ -379,6 +380,8 @@
 		18A28CF7165A0A8D00ABF876 /* switch2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch2.png; sourceTree = "<group>"; };
 		18A28CFB165A0AA500ABF876 /* switch3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch3.png; sourceTree = "<group>"; };
 		18A28CFF165A0F9900ABF876 /* switch0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch0.png; sourceTree = "<group>"; };
+		18A28D01165A23D000ABF876 /* ParameterSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterSliderView.h; sourceTree = "<group>"; };
+		18A28D02165A23D000ABF876 /* ParameterSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParameterSliderView.m; sourceTree = "<group>"; };
 		18A4331A164E1D0300C58F27 /* CameraFXManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraFXManager.h; sourceTree = "<group>"; };
 		18A4331B164E1D0300C58F27 /* CameraFXManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraFXManager.m; sourceTree = "<group>"; };
 		18A43321164E22EE00C58F27 /* FXImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXImageView.h; sourceTree = "<group>"; };
@@ -461,6 +464,8 @@
 		1827BB5E164F688800A869B9 /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				18A28D01165A23D000ABF876 /* ParameterSliderView.h */,
+				18A28D02165A23D000ABF876 /* ParameterSliderView.m */,
 				18938D141659ED7C007196D0 /* MBProgressHUD.h */,
 				18938D151659ED7C007196D0 /* MBProgressHUD.m */,
 				18A43327164E22F900C58F27 /* FXImageView */,
@@ -1043,6 +1048,7 @@
 				18963ED2164FC9FD0087B1E6 /* FSGPUImageFilterManager.m in Sources */,
 				189A0C911658B747003ED0D5 /* PreviewFilterViewController.m in Sources */,
 				18938D161659ED7C007196D0 /* MBProgressHUD.m in Sources */,
+				18A28D03165A23D000ABF876 /* ParameterSliderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

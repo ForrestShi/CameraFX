@@ -4,13 +4,15 @@
 #import "FSGPUImageFilterManager.h"
 #import "PreviewFilterViewController.h"
 #import "MBProgressHUD.h"
+#import "ParameterSliderView.h"
 
-@interface MTCameraViewController () <UIActionSheetDelegate, UIGestureRecognizerDelegate , PreviewFilterDelegate>
+@interface MTCameraViewController () <UIActionSheetDelegate, UIGestureRecognizerDelegate , PreviewFilterDelegate , ParameterSliderViewDelegate>
 {
     GPUImageStillCamera *stillCamera;
     GPUImageFilter *filter;
     
     PreviewFilterViewController *previewFiltersVC;
+    ParameterSliderView         *sliderView;
 }
 @property (nonatomic,weak) IBOutlet UIBarButtonItem *filterItem;
 @property (nonatomic,weak) IBOutlet UIButton *switchButton;
@@ -35,10 +37,21 @@
 #pragma mark -
 #pragma mark View Controller Lifecycle
 
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     DLog(@"...");
     [self.navigationController setNavigationBarHidden:YES];
+    
+    if (filter == nil || ![filter isKindOfClass:[GPUImageSepiaFilter class]]) {
+        if (sliderView) {
+            sliderView.hidden = YES;
+        }
+    }else{
+        if (sliderView) {
+            sliderView.hidden = NO; 
+        }
+    }
     
 }
 
@@ -71,6 +84,16 @@
  
     }
     
+    CGSize viewSize = self.view.frame.size;
+    
+    sliderView = [[ParameterSliderView alloc] initWithFrame:CGRectMake(IS_IPAD ? 100. : 20., viewSize.height/2,viewSize.width - (IS_IPAD ? 100. : 20 )*2 , IS_IPAD ? 22. : 14.)];
+    sliderView.delegate = self;
+    [sliderView setInitialValue:0.5]; // 0. -- 1.
+    [sliderView setMaxValue:1.];
+    [sliderView setMinValue:0.];
+    
+    [self.view addSubview:sliderView];
+    
     if ([stillCamera isFrontFacingCameraPresent] == NO ) {
         self.switchButton.hidden = YES;
     }
@@ -93,21 +116,31 @@
     UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(onPinch:)];
     pinchGesture.delegate = self;
 
+    UIRotationGestureRecognizer *roateGesture = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(onRotate:)];
+    roateGesture.delegate = self;
+
     [singleTap requireGestureRecognizerToFail:panGesture];
     [self.view addGestureRecognizer:singleTap];
     [self.view addGestureRecognizer:doubleTap];
     [self.view addGestureRecognizer:pinchGesture];
+    [self.view addGestureRecognizer:roateGesture];
+    //[self.view addGestureRecognizer:panGesture];
+    //[sliderView addGestureRecognizer:panGesture];
     
 }
 
 - (void)singleTap:(UITapGestureRecognizer*)gesture{
     @synchronized(self){
+        self.cameraView.transform = CGAffineTransformIdentity;
+
         static BOOL hideCtrls = NO;
         [UIView animateWithDuration:0.3 animations:^{
             if ([stillCamera isFrontFacingCameraPresent]) {
                 self.switchButton.alpha = hideCtrls ? 0.:1.;
             }
             self.backButton.alpha = hideCtrls ? 0.:1.;
+            sliderView.alpha = hideCtrls ? 0.:1.;
+            
             hideCtrls = !hideCtrls;
         }];
     }
@@ -139,49 +172,37 @@
     gesture.scale = 1.;
 }
 
+- (void)onRotate:(UIRotationGestureRecognizer*)gesture{
+    //float angle = atan2f(self.cameraView.transform.b, self.cameraView.transform.a) + gesture.rotation;
+    self.cameraView.transform = CGAffineTransformRotate(self.cameraView.transform, [gesture rotation]*M_PI/180.);
+}
+
 - (void)doubleTap:(UITapGestureRecognizer*)gesture{
-//    if (stillCamera && [filter isKindOfClass:[GPUImageSepiaFilter class]] ) {
-//        DLog(@"show advanced sliders");
-//        
-//        static BOOL firstTimeOn = NO;
-//        firstTimeOn = !firstTimeOn;
-//        
-//        UISlider *slider0 = (UISlider*)[self.view viewWithTag:1001];
-//        [UIView animateWithDuration:0.3 animations:^{
-//            slider0.alpha = (firstTimeOn ? 0:1.);
-//        }];
-//
-//    }
     //short cut to capture
+    self.cameraView.transform = CGAffineTransformIdentity;
     [self captureImage:nil];
 }
+
 - (void)onPan:(UIPanGestureRecognizer*)gesture{
     DLog(@"%@",@"paning");
-    
-    if (gesture.state == UIGestureRecognizerStateEnded) {
-        
-        if (stillCamera  ) {
-            DLog(@"show advanced sliders");
-            
-            static BOOL firstTimeOn = YES;
-            firstTimeOn = !firstTimeOn;
-            
-            [UIView animateWithDuration:0.3 animations:^{
-                for (UIView *v in [self.view subviews]) {
-                    //DLog(@"on %d",firstTimeOn);
-                    //DLog(@"v %@",v);
-                    if (v.tag == 1001 ) {
-                        v.alpha = (firstTimeOn == YES ? 0.:1.);
-                    }
-                }
-            }];
-            
-            
-        }
+    //TODO: transfer all pan event to sliderview 
+}
 
+-(void)parameterSliderValueChanged:(ParameterSliderView*)_parameterSlider{
+    DLog(@"slider %f",sliderView.value);
+    if (filter) {
+        //        if ([filter isKindOfClass:[GPUImageSmoothToonFilter class]]) {
+        //            GPUImageSmoothToonFilter *toonFilter = (GPUImageSmoothToonFilter*)filter;
+        //            [toonFilter setBlurSize:slider.value];
+        //        }
+        if ([filter isKindOfClass:[GPUImageSepiaFilter class]]) {
+            GPUImageSepiaFilter *sepiaFilter = (GPUImageSepiaFilter*)filter;
+            [sepiaFilter setIntensity:sliderView.value * 3. ];
+        }
     }
 
 }
+
 
 //tag: 1001
 - (IBAction)adjust0:(id)sender{

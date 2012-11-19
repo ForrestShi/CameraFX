@@ -238,6 +238,7 @@
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="cameraView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="filterItem" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="sliderView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="switchButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
             </relationships>
