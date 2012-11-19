@@ -229,8 +229,7 @@
 }
 
 - (void) selectImageWithFilterType:(GPUImageShowcaseFilterType)filterType{
-    
- 
+     
     [stillCamera removeAllTargets];
     [filter removeAllTargets];
     
@@ -240,6 +239,16 @@
     [filter addTarget:filterView];
     [stillCamera addTarget:filter];
     
+    if (filter == nil || ![filter isKindOfClass:[GPUImageSepiaFilter class]]) {
+        if (sliderView) {
+            sliderView.hidden = YES;
+        }
+    }else{
+        if (sliderView) {
+            sliderView.hidden = NO;
+        }
+    }
+
     [self dismissModalViewControllerAnimated:YES];
 }
 

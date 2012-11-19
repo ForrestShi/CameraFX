@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PhotoFX/ViewController.m"
-         timestampString = "375015521.501942"
+         timestampString = "375016581.056767"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "431"
-         endingLineNumber = "431"
+         startingLineNumber = "434"
+         endingLineNumber = "434"
          landmarkName = "-onSingleTap:"
          landmarkType = "5">
       </FileBreakpoint>
