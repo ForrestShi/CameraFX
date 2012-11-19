@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1827BB6F164F8FBD00A869B9 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1827BB6D164F8FBD00A869B9 /* MainStoryboard_iPad.storyboard */; };
 		1827BB77164F929900A869B9 /* Icon48.png in Resources */ = {isa = PBXBuildFile; fileRef = 1827BB70164F929800A869B9 /* Icon48.png */; };
 		1827BB78164F929900A869B9 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1827BB71164F929800A869B9 /* Icon.png */; };
 		1827BB79164F929900A869B9 /* Icon57.png in Resources */ = {isa = PBXBuildFile; fileRef = 1827BB72164F929800A869B9 /* Icon57.png */; };
@@ -32,6 +31,7 @@
 		18A28CFC165A0AA600ABF876 /* switch3.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A28CFB165A0AA500ABF876 /* switch3.png */; };
 		18A28D00165A0F9900ABF876 /* switch0.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A28CFF165A0F9900ABF876 /* switch0.png */; };
 		18A28D03165A23D000ABF876 /* ParameterSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A28D02165A23D000ABF876 /* ParameterSliderView.m */; };
+		18A28D06165A3FBE00ABF876 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A28D04165A3FBE00ABF876 /* MainStoryboard_iPad.storyboard */; };
 		18A4331C164E1D0300C58F27 /* CameraFXManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4331B164E1D0300C58F27 /* CameraFXManager.m */; };
 		18A43325164E22EF00C58F27 /* FXImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A43322164E22EF00C58F27 /* FXImageView.m */; };
 		18A43326164E22EF00C58F27 /* UIImage+FX.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A43324164E22EF00C58F27 /* UIImage+FX.m */; };
@@ -353,7 +353,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1827BB6E164F8FBD00A869B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		1827BB70164F929800A869B9 /* Icon48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon48.png; sourceTree = "<group>"; };
 		1827BB71164F929800A869B9 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		1827BB72164F929800A869B9 /* Icon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon57.png; sourceTree = "<group>"; };
@@ -382,6 +381,7 @@
 		18A28CFF165A0F9900ABF876 /* switch0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch0.png; sourceTree = "<group>"; };
 		18A28D01165A23D000ABF876 /* ParameterSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterSliderView.h; sourceTree = "<group>"; };
 		18A28D02165A23D000ABF876 /* ParameterSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParameterSliderView.m; sourceTree = "<group>"; };
+		18A28D05165A3FBE00ABF876 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		18A4331A164E1D0300C58F27 /* CameraFXManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraFXManager.h; sourceTree = "<group>"; };
 		18A4331B164E1D0300C58F27 /* CameraFXManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraFXManager.m; sourceTree = "<group>"; };
 		18A43321164E22EE00C58F27 /* FXImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXImageView.h; sourceTree = "<group>"; };
@@ -591,7 +591,7 @@
 				18A4331A164E1D0300C58F27 /* CameraFXManager.h */,
 				18A4331B164E1D0300C58F27 /* CameraFXManager.m */,
 				1F92414515F741B90089AAAF /* MainStoryboard.storyboard */,
-				1827BB6D164F8FBD00A869B9 /* MainStoryboard_iPad.storyboard */,
+				18A28D04165A3FBE00ABF876 /* MainStoryboard_iPad.storyboard */,
 				1F92414815F741B90089AAAF /* ViewController.h */,
 				1F92414915F741B90089AAAF /* ViewController.m */,
 				1F12BD2B15FEFC0200DD8284 /* MTCameraViewController.h */,
@@ -1001,7 +1001,6 @@
 				18A5541B164948C1007AF252 /* README.md in Resources */,
 				18A4332B164E2CAE00C58F27 /* zune.jpg in Resources */,
 				18AEE4CF164E9B7E00D1A3D3 /* MySHKSharers.plist in Resources */,
-				1827BB6F164F8FBD00A869B9 /* MainStoryboard_iPad.storyboard in Resources */,
 				1827BB77164F929900A869B9 /* Icon48.png in Resources */,
 				1827BB78164F929900A869B9 /* Icon.png in Resources */,
 				1827BB79164F929900A869B9 /* Icon57.png in Resources */,
@@ -1022,6 +1021,7 @@
 				18A28CFA165A0A8D00ABF876 /* switch2.png in Resources */,
 				18A28CFC165A0AA600ABF876 /* switch3.png in Resources */,
 				18A28D00165A0F9900ABF876 /* switch0.png in Resources */,
+				18A28D06165A3FBE00ABF876 /* MainStoryboard_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1073,10 +1073,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1827BB6D164F8FBD00A869B9 /* MainStoryboard_iPad.storyboard */ = {
+		18A28D04165A3FBE00ABF876 /* MainStoryboard_iPad.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				1827BB6E164F8FBD00A869B9 /* en */,
+				18A28D05165A3FBE00ABF876 /* en */,
 			);
 			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";

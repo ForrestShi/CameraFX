@@ -169,21 +169,7 @@
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
 
-    DLog(@"1. select item %d", index);
-    
-    runOnMainQueueWithoutDeadlocking(^{
-        
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        
-        [delegate selectImageWithFilterType:index];
-        
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-
-        
-    });
-    
-    
-    DLog(@"2. select item %d", index);
+    [delegate selectImageWithFilterType:index];
 
 }
 

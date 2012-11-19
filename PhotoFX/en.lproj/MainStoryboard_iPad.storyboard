@@ -9,15 +9,15 @@
             <objects>
                 <viewController modalTransitionStyle="flipHorizontal" id="2" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="94" width="768" height="930"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="zune.jpg" id="ZLM-er-djg">
-                                <rect key="frame" x="0.0" y="-72" width="768" height="997"/>
+                                <rect key="frame" x="0.0" y="22" width="768" height="997"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" id="4uW-05-3PN" customClass="iCarousel">
-                                <rect key="frame" x="0.0" y="-93" width="768" height="979"/>
+                                <rect key="frame" x="308" y="0.0" width="768" height="980"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -25,13 +25,13 @@
                                     <outlet property="delegate" destination="2" id="jkj-Pc-PJ7"/>
                                 </connections>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="5jI-7Y-lB7">
-                                <rect key="frame" x="0.0" y="886" width="768" height="44"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="5jI-7Y-lB7">
+                                <rect key="frame" x="0.0" y="980" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem title="Album" id="Vpe-Rx-cOs">
                                         <connections>
-                                            <action selector="photoFromAlbum:" destination="2" id="zEP-ta-hXZ"/>
+                                            <action selector="photoFromAlbum:" destination="2" id="Zw2-XQ-1yN"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem systemItem="camera" id="U1T-P5-uNl">
@@ -45,7 +45,7 @@
                                             <action selector="deleteImage" destination="2" id="0Mq-50-dJq"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem enabled="NO" systemItem="add" id="eD4-rR-jhT">
+                                    <barButtonItem enabled="NO" title="Filter" id="eD4-rR-jhT">
                                         <connections>
                                             <action selector="applyImageFilter:" destination="2" id="RSo-jI-1jJ"/>
                                         </connections>
@@ -68,8 +68,8 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackTranslucent" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
@@ -82,21 +82,63 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="204" y="631"/>
+            <point key="canvasLocation" x="514" y="713"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="Men-zD-Zy7">
             <objects>
                 <viewController id="idv-MW-BFP" customClass="MTCameraViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tYG-iW-Bgh" customClass="GPUImageView">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                    <view key="view" contentMode="scaleToFill" id="tYG-iW-Bgh">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" tag="1000" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XyG-Li-6BW">
-                                <rect key="frame" x="344" y="933" width="80" height="80"/>
+                            <view contentMode="scaleToFill" id="PHE-4b-zBF" customClass="GPUImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8Hw-cn-ozc">
+                                        <rect key="frame" x="666" y="22" width="82" height="56"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="switch0.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="switchCamera:" destination="idv-MW-BFP" eventType="touchUpInside" id="p2E-UZ-33X"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="0a4-Zl-AQA">
+                                <rect key="frame" x="0.0" y="960" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem systemItem="flexibleSpace" id="RbP-nl-MpX">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="done" systemItem="camera" id="vXG-5y-D1y">
+                                        <connections>
+                                            <action selector="captureImage:" destination="idv-MW-BFP" id="vox-jc-rMm"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="SmO-XF-svG"/>
+                                    <barButtonItem title="Filter" id="ygC-Gp-L53">
+                                        <connections>
+                                            <action selector="applyImageFilter:" destination="idv-MW-BFP" id="goh-2t-5Zw"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uuA-9N-QM3">
+                                <rect key="frame" x="13" y="20" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" backgroundImage="camera_action.png">
+                                <state key="normal" title="Button" image="back.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -104,41 +146,28 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="captureImage:" destination="idv-MW-BFP" eventType="touchUpInside" id="bcg-lN-SeF"/>
+                                    <action selector="back:" destination="idv-MW-BFP" eventType="touchUpInside" id="iQu-Rb-EkH"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.050000000000000003" maxValue="1" id="J23-3x-mCl">
-                                <rect key="frame" x="106" y="788" width="557" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="minimumTrackTintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="thumbTintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="adjust0:" destination="idv-MW-BFP" eventType="valueChanged" id="eIY-rL-nx0"/>
-                                </connections>
-                            </slider>
-                            <slider hidden="YES" opaque="NO" tag="1002" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.050000000000000003" maxValue="1" id="LLY-hQ-fmi">
-                                <rect key="frame" x="40" y="293" width="250" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="minimumTrackTintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="thumbTintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </slider>
-                            <slider hidden="YES" opaque="NO" tag="1003" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.050000000000000003" maxValue="1" id="iAd-7d-Eh3">
-                                <rect key="frame" x="40" y="160" width="250" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="minimumTrackTintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="thumbTintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </slider>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackTranslucent" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="backButton" destination="uuA-9N-QM3" id="LbR-aN-Ccw"/>
+                        <outlet property="cameraView" destination="PHE-4b-zBF" id="tdh-HS-9Nd"/>
+                        <outlet property="filterItem" destination="ygC-Gp-L53" id="hi5-K9-djA"/>
+                        <outlet property="switchButton" destination="8Hw-cn-ozc" id="jCy-5f-wOg"/>
+                        <outlet property="toolBar" destination="0a4-Zl-AQA" id="Vfn-qh-Qrq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ana-gz-VIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1108" y="498"/>
+            <point key="canvasLocation" x="1570" y="699"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QWX-Xi-OS3">
@@ -149,6 +178,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackTranslucent"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="2Qw-DA-Tim">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -164,11 +194,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jfj-Je-9WK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-570" y="637"/>
+            <point key="canvasLocation" x="-496" y="713"/>
         </scene>
     </scenes>
     <resources>
-        <image name="camera_action.png" width="72" height="72"/>
+        <image name="back.png" width="128" height="128"/>
+        <image name="switch0.png" width="95" height="47"/>
         <image name="zune.jpg" width="640" height="960"/>
     </resources>
     <classes>
@@ -181,7 +212,14 @@
                 <relationship kind="action" name="adjust0:"/>
                 <relationship kind="action" name="adjust1:"/>
                 <relationship kind="action" name="adjust2:"/>
+                <relationship kind="action" name="back:"/>
                 <relationship kind="action" name="captureImage:"/>
+                <relationship kind="action" name="switchCamera:"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cameraView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="filterItem" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="switchButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
             </relationships>
         </class>
         <class className="ViewController" superclassName="UIViewController">

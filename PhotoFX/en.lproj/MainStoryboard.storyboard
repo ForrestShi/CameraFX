@@ -97,27 +97,6 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <slider hidden="YES" opaque="NO" tag="1003" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.050000000000000003" maxValue="1" id="J23-3x-mCl">
-                                <rect key="frame" x="35" y="148" width="250" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="minimumTrackTintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="thumbTintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </slider>
-                            <slider hidden="YES" opaque="NO" tag="1002" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.050000000000000003" maxValue="1" id="LLY-hQ-fmi">
-                                <rect key="frame" x="35" y="100" width="250" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="minimumTrackTintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="thumbTintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </slider>
-                            <slider hidden="YES" opaque="NO" tag="1001" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.050000000000000003" maxValue="1" id="iAd-7d-Eh3">
-                                <rect key="frame" x="35" y="192" width="250" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="minimumTrackTintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="thumbTintColor" red="0.875" green="0.81820654719999997" blue="0.70626003790000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="adjust0:" destination="idv-MW-BFP" eventType="valueChanged" id="tie-FU-EYj"/>
-                                </connections>
-                            </slider>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="0a4-Zl-AQA">
                                 <rect key="frame" x="0.0" y="416" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -231,14 +210,12 @@
                 <relationship kind="action" name="adjust0:"/>
                 <relationship kind="action" name="adjust1:"/>
                 <relationship kind="action" name="adjust2:"/>
-                <relationship kind="action" name="applyImageFilter:"/>
                 <relationship kind="action" name="back:"/>
                 <relationship kind="action" name="captureImage:"/>
                 <relationship kind="action" name="switchCamera:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="cameraView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="filterItem" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="sliderView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="switchButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
             </relationships>

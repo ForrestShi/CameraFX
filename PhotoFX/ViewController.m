@@ -19,7 +19,7 @@
     UIPopoverController *popOver;
 }
 
-@property(nonatomic, weak) IBOutlet iCarousel *photoCarousel;
+@property(nonatomic, assign) IBOutlet iCarousel *photoCarousel;
 @property(nonatomic, weak) IBOutlet UIBarButtonItem *filterButton;
 @property(nonatomic, weak) IBOutlet UIBarButtonItem *shareButton;
 @property(nonatomic, weak) IBOutlet UIBarButtonItem *deleteButton;
@@ -70,6 +70,7 @@
     [super viewWillAppear:animated];
     DLog(@"...");
     [self.navigationController setNavigationBarHidden:NO];
+    
     
 }
 
@@ -144,10 +145,22 @@
      iCarouselTypeCustom
 
      */
-    UIActionSheet *styleSheet = [[UIActionSheet alloc] initWithTitle:@"Display Style" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Linear",@"Rotary",@"InvertedRotary",@"Cylinder",@"InvertedCylinder",@"Wheel",@"InvertedWheel",@"CoverFlow",@"CoverFlow2",@"TimeMachine",@"TimeMachine2",@"Custom", nil];
+    UIActionSheet *styleSheet = [[UIActionSheet alloc] initWithTitle:@"Display Style" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Linear",@"Rotary",@"Rotary 2",@"Cylinder",@"Cylinder2",@"Wheel",@"Wheel 2",@"CoverFlow",@"CoverFlow 2",@"TimeMachine",@"TimeMachine 2", nil];
     [styleSheet showFromBarButtonItem:self.refreshButton animated:YES];
     
 #endif
+}
+
+- (void)refreshCarousel{
+    
+    if (self.photoCarousel.type == iCarouselTypeWheel || self.photoCarousel.type == iCarouselTypeInvertedWheel ||self.photoCarousel.type == iCarouselTypeRotary || self.photoCarousel.type == iCarouselTypeInvertedRotary ||
+        self.photoCarousel.type == iCarouselTypeCylinder || self.photoCarousel.type == iCarouselTypeInvertedCylinder) {
+        [self.photoCarousel scrollToItemAtIndex:([displayImages count]-1) duration:1.];
+        
+    }else{
+        [self.photoCarousel scrollToItemAtIndex:[displayImages count] duration:1.];
+    }
+
 }
 
 - (void)refreshUI{
@@ -174,11 +187,16 @@
     
     NSInteger nextIndex = self.photoCarousel.currentItemIndex + 1 ;
     if (nextIndex >= [displayImages count] ) {
+        //last item
         nextIndex = self.photoCarousel.currentItemIndex-1;
         if (nextIndex < 0 ) {
             nextIndex = 0;
         }
+    }else if (nextIndex == 1 ){
+        //first item
+        nextIndex = 0;
     }
+    
     
     [self.photoCarousel scrollToItemAtIndex:nextIndex duration:1.];
 
@@ -210,35 +228,36 @@
 - (IBAction)applyImageFilter:(id)sender
 {
     
-    CATransition* transition = [CATransition animation];
-    transition.duration = 0.5;
-    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    transition.type = kCATransitionMoveIn; //kCATransitionMoveIn; //, kCATransitionPush, kCATransitionReveal, kCATransitionFade
-    //transition.subtype = kCATransitionFromBottom; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
-    [self.navigationController.view.layer addAnimation:transition forKey:nil];
-    [[self navigationController] popViewControllerAnimated:NO];
+//    CATransition* transition = [CATransition animation];
+//    transition.duration = 0.5;
+//    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//    transition.type = kCATransitionMoveIn; //kCATransitionMoveIn; //, kCATransitionPush, kCATransitionReveal, kCATransitionFade
+//    transition.subtype = kCATransitionFromBottom; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
+//    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+//    [[self navigationController] popViewControllerAnimated:NO];
+//    
+//    PreviewFilterViewController *previewFiltersVC = [[PreviewFilterViewController alloc] initWithProcessedImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex] dynamic:YES];
+//    previewFiltersVC.delegate = self;
+//    
+//    
+//    [self.navigationController pushViewController:previewFiltersVC animated:NO];
+//    
     
     PreviewFilterViewController *previewFiltersVC = [[PreviewFilterViewController alloc] initWithProcessedImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex] dynamic:YES];
     previewFiltersVC.delegate = self;
-    
-    
-    [self.navigationController pushViewController:previewFiltersVC animated:NO];
-    
+    previewFiltersVC.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+    [self presentModalViewController:previewFiltersVC animated:YES];
 }
 
 - (void) selectImageWithFilterType:(GPUImageShowcaseFilterType)filterType{
     
-
     GPUImageFilter *selectedFilter = [[FSGPUImageFilterManager sharedFSGPUImageFilterManager] createGPUImageFilter:filterType];
     UIImage *filteredImage = [selectedFilter imageByFilteringImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex]];
     [displayImages addObject:filteredImage];
-    //[self.photoCarousel reloadDataToLastItem];
     [self.photoCarousel reloadData];
-    [self.photoCarousel scrollToItemAtIndex:[displayImages count] duration:1.];
-
+    [self refreshCarousel];
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
-
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -277,8 +296,8 @@
     
     //[self.photoCarousel reloadDataToLastItem];
     [self.photoCarousel reloadData];
-    [self.photoCarousel scrollToItemAtIndex:[displayImages count] duration:1.];
-        
+    [self refreshCarousel];
+    
     [photoPicker dismissViewControllerAnimated:YES completion:NULL];
     
     [self refreshUI];
@@ -314,8 +333,7 @@
         runOnMainQueueWithoutDeadlocking(^{
 
             [self.photoCarousel reloadData];
-            [self.photoCarousel scrollToItemAtIndex:[displayImages count] duration:1.];
-
+            [self refreshCarousel];
             [self refreshUI];
         });
         

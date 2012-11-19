@@ -21,9 +21,6 @@
 @property (nonatomic,weak) IBOutlet UIView *cameraView;
 
 - (IBAction)captureImage:(id)sender;
-- (IBAction)adjust0:(id)sender;
-- (IBAction)adjust1:(id)sender;
-- (IBAction)adjust2:(id)sender;
 - (IBAction)switchCamera:(id)sender;
 - (IBAction)back:(id)sender;
 
@@ -86,7 +83,7 @@
     
     CGSize viewSize = self.view.frame.size;
     
-    sliderView = [[ParameterSliderView alloc] initWithFrame:CGRectMake(IS_IPAD ? 100. : 20., viewSize.height/2,viewSize.width - (IS_IPAD ? 100. : 20 )*2 , IS_IPAD ? 22. : 14.)];
+    sliderView = [[ParameterSliderView alloc] initWithFrame:CGRectMake(IS_IPAD ? 100. : 40., viewSize.height/2,viewSize.width - (IS_IPAD ? 100. : 40 )*2 , IS_IPAD ? 22. : 14.)];
     sliderView.delegate = self;
     [sliderView setInitialValue:0.5]; // 0. -- 1.
     [sliderView setMaxValue:1.];
@@ -202,49 +199,6 @@
     }
 
 }
-
-
-//tag: 1001
-- (IBAction)adjust0:(id)sender{
-    UISlider *slider = (UISlider*)sender;
-    
-    if (filter) {
-//        if ([filter isKindOfClass:[GPUImageSmoothToonFilter class]]) {
-//            GPUImageSmoothToonFilter *toonFilter = (GPUImageSmoothToonFilter*)filter;
-//            [toonFilter setBlurSize:slider.value];
-//        }
-        if ([filter isKindOfClass:[GPUImageSepiaFilter class]]) {
-            GPUImageSepiaFilter *sepiaFilter = (GPUImageSepiaFilter*)filter;
-            [sepiaFilter setIntensity:slider.value * 3. ];
-        }
-    }
-}
-//tag: 1002
-- (IBAction)adjust1:(id)sender{
-    UISlider *slider = (UISlider*)sender;
-
-    if (filter) {
-        if ([filter isKindOfClass:[GPUImageSmoothToonFilter class]]) {
-            GPUImageSmoothToonFilter *toonFilter = (GPUImageSmoothToonFilter*)filter;
-            [toonFilter setThreshold:slider.value];
-        }
-
-    }
-
-}
-//tag: 1003
-- (IBAction)adjust2:(id)sender{
-    UISlider *slider = (UISlider*)sender;
-    
-    if (filter) {
-        if ([filter isKindOfClass:[GPUImageSmoothToonFilter class]]) {
-            GPUImageSmoothToonFilter *toonFilter = (GPUImageSmoothToonFilter*)filter;
-            [toonFilter setQuantizationLevels:slider.value * 20.];
-
-        }
-    }
-    
-}
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
     
 
@@ -268,7 +222,9 @@
 - (IBAction)applyImageFilter:(id)sender
 {
     if (previewFiltersVC) {
-        [self.navigationController pushViewController:previewFiltersVC animated:YES];
+        //[self.navigationController pushViewController:previewFiltersVC animated:YES];
+        previewFiltersVC.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+        [self presentModalViewController:previewFiltersVC animated:YES];
     }
 }
 
@@ -279,33 +235,12 @@
     [filter removeAllTargets];
     
     GPUImageFilter *selectedFilter = [[FSGPUImageFilterManager sharedFSGPUImageFilterManager] createGPUImageFilter:filterType];
-    
-    /*
-    UISlider *slider0 = (UISlider*)[self.view viewWithTag:1001];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (![selectedFilter isKindOfClass:[GPUImageSepiaFilter class]]) {
-            [UIView animateWithDuration:0.3 animations:^{
-                slider0.alpha = 0.;
-            }];
-            
-        }else{
-            slider0.hidden = NO;
-            [UIView animateWithDuration:0.3 animations:^{
-                slider0.alpha = 1.;
-            }];
-            
-        }
-
-    });
-    */
     filter = selectedFilter;
     GPUImageView *filterView = (GPUImageView *)self.cameraView;
     [filter addTarget:filterView];
     [stillCamera addTarget:filter];
     
-    [self.navigationController popToViewController:self animated:YES];
-    
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 
