@@ -3,36 +3,58 @@
 #import "CameraFXManager.h"
 #import "FSGPUImageFilterManager.h"
 #import "PreviewFilterViewController.h"
+#import "MBProgressHUD.h"
 
 @interface MTCameraViewController () <UIActionSheetDelegate, UIGestureRecognizerDelegate , PreviewFilterDelegate>
 {
     GPUImageStillCamera *stillCamera;
     GPUImageFilter *filter;
+    
+    PreviewFilterViewController *previewFiltersVC;
 }
+@property (nonatomic,weak) IBOutlet UIBarButtonItem *filterItem;
+@property (nonatomic,weak) IBOutlet UIButton *switchButton;
+@property (nonatomic,weak) IBOutlet UIButton *backButton;
 
 - (IBAction)captureImage:(id)sender;
 - (IBAction)adjust0:(id)sender;
 - (IBAction)adjust1:(id)sender;
 - (IBAction)adjust2:(id)sender;
+- (IBAction)switchCamera:(id)sender;
+- (IBAction)back:(id)sender;
 
 @end
 
 @implementation MTCameraViewController 
 @synthesize delegate;
+@synthesize filterItem;
 
 #pragma mark -
 #pragma mark View Controller Lifecycle
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    DLog(@"...");
+    [self.navigationController setNavigationBarHidden:YES];
+    
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    // Add Filter Button to Interface
-    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(applyImageFilter:)];
-    self.navigationItem.rightBarButtonItem = filterButton;
-    self.navigationItem.leftBarButtonItem.style = UIBarButtonSystemItemOrganize;
+    [self.navigationController setNavigationBarHidden:YES];
+    
+    UIImage *modelImage = [UIImage imageNamed:@"s2.png"];
+    previewFiltersVC = [[PreviewFilterViewController alloc] initWithProcessedImage:modelImage dynamic:NO];
+    previewFiltersVC.delegate = self;
 
+    
+    // Add Filter Button to Interface
+//    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(applyImageFilter:)];
+//    self.navigationItem.rightBarButtonItem = filterButton;
+//    self.navigationItem.leftBarButtonItem.style = UIBarButtonSystemItemOrganize;
+//
     if (!filter) {
         // Setup initial camera filter
         filter = [[CameraFXManager sharedInstance] filter];
@@ -68,7 +90,7 @@
     panGesture.delegate = self;
 
     //[singleTap requireGestureRecognizerToFail:panGesture];
-    [self.view addGestureRecognizer:singleTap];
+    //[self.view addGestureRecognizer:singleTap];
     [self.view addGestureRecognizer:doubleTap];
 
     //[self.view addGestureRecognizer:panGesture];
@@ -91,6 +113,37 @@
         [stillCamera rotateCamera];
     }
 }
+- (IBAction)back:(id)sender{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (IBAction)switchCamera:(id)sender{
+    if (stillCamera) {
+        DLog(@"switch camera");
+        
+        CATransition *animation = [CATransition animation];
+        animation.delegate = self;
+        animation.duration = .3;
+        animation.timingFunction = UIViewAnimationCurveEaseInOut;
+        animation.type = @"cameraIris";
+        //animation.type = @"flip";
+        //animation.subtype = @"fromLeft";
+        [self.view.layer addAnimation:animation forKey:nil];
+        
+        
+//        CATransition *animation2 = [CATransition animation];
+//        animation2.delegate = self;
+//        animation2.duration = .3;
+//        animation2.timingFunction = UIViewAnimationCurveEaseInOut;
+//        animation2.type = @"flip";
+//        animation2.subtype = @"fromLeft";
+//        [self.switchButton.layer addAnimation:animation2 forKey:nil];
+//        [self.backButton.layer addAnimation:animation2 forKey:nil];
+//        
+        
+        [stillCamera rotateCamera];
+    }
+}
 
 
 - (void)doubleTap:(UITapGestureRecognizer*)gesture{
@@ -107,9 +160,6 @@
 
     }
 }
-
-
-
 - (void)onPan:(UIPanGestureRecognizer*)gesture{
     DLog(@"%@",@"paning");
     
@@ -192,8 +242,7 @@
 //        return NO;
 //    }
 //    
-    if ( CGRectContainsPoint(captureBtnFrame, [gestureRecognizer locationInView:self.view]) ||
-        CGRectContainsPoint(sliderFrame, [gestureRecognizer locationInView:self.view]) )
+    if ( CGRectContainsPoint(captureBtnFrame, [gestureRecognizer locationInView:self.view]) ||CGRectContainsPoint(self.filterItem.customView.frame, [gestureRecognizer locationInView:self.view]) || CGRectContainsPoint(sliderFrame, [gestureRecognizer locationInView:self.view]) )
     {
         return NO;
     }
@@ -213,19 +262,14 @@
 
 - (IBAction)applyImageFilter:(id)sender
 {
-    
-    UIImage *modelImage = [UIImage imageNamed:@"s2.png"];
-    
-    PreviewFilterViewController *previewFiltersVC = [[PreviewFilterViewController alloc] initWithProcessedImage:modelImage dynamic:NO];
-    
-    previewFiltersVC.delegate = self;
-    
-    [self.navigationController pushViewController:previewFiltersVC animated:NO];
-
+    if (previewFiltersVC) {
+        [self.navigationController pushViewController:previewFiltersVC animated:YES];
+    }
 }
 
 - (void) selectImageWithFilterType:(GPUImageShowcaseFilterType)filterType{
     
+ 
     [stillCamera removeAllTargets];
     [filter removeAllTargets];
     

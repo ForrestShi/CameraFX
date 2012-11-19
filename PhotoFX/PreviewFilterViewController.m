@@ -10,6 +10,7 @@
 #import "GPUImage.h"
 #import "FXImageView.h"
 #import "UIImage+Resize.h"
+#import "MBProgressHUD.h"
 
 @interface PreviewFilterViewController (){
 
@@ -61,9 +62,19 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    DLog(@"...");
+    [self.navigationController setNavigationBarHidden:NO];
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.navigationController setNavigationBarHidden:NO];
+
 	// Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor grayColor];
     
@@ -76,6 +87,8 @@
     
     [self.view addSubview:self.previewCarousel];
     
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
     
@@ -114,9 +127,10 @@
         
     }
     
-    
     [self.previewCarousel reloadData];
     
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -155,10 +169,22 @@
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
 
-    DLog(@"select item %d", index);
+    DLog(@"1. select item %d", index);
     
-    [delegate selectImageWithFilterType:index];
+    runOnMainQueueWithoutDeadlocking(^{
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        [delegate selectImageWithFilterType:index];
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
+        
+    });
     
+    
+    DLog(@"2. select item %d", index);
+
 }
 
 

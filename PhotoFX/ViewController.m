@@ -66,6 +66,14 @@
 #pragma mark -
 #pragma mark View Lifecycle
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    DLog(@"...");
+    [self.navigationController setNavigationBarHidden:NO];
+    
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

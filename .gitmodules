@@ -4,3 +4,6 @@
 [submodule "submodules/sharekit"]
 	path = submodules/sharekit
 	url = git://github.com/ShareKit/ShareKit.git
+[submodule "submodules/mbprogresshud"]
+	path = submodules/mbprogresshud
+	url = git://github.com/jdg/MBProgressHUD.git

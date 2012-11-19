@@ -20,11 +20,17 @@
 		1827BB83164F94E900A869B9 /* camera_action.png in Resources */ = {isa = PBXBuildFile; fileRef = 1827BB82164F94E900A869B9 /* camera_action.png */; };
 		1827BB87164FA4C300A869B9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1827BB86164FA4C300A869B9 /* Default.png */; };
 		183948A71658268C00FD7A99 /* fx.png in Resources */ = {isa = PBXBuildFile; fileRef = 183948A61658268C00FD7A99 /* fx.png */; };
+		18938D161659ED7C007196D0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 18938D151659ED7C007196D0 /* MBProgressHUD.m */; };
 		18963ED2164FC9FD0087B1E6 /* FSGPUImageFilterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18963ED1164FC9FD0087B1E6 /* FSGPUImageFilterManager.m */; };
 		189A0C911658B747003ED0D5 /* PreviewFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A0C901658B747003ED0D5 /* PreviewFilterViewController.m */; };
 		189C5A3316593817000378DA /* s3.png in Resources */ = {isa = PBXBuildFile; fileRef = 189C5A3016593817000378DA /* s3.png */; };
 		189C5A3416593817000378DA /* s2.png in Resources */ = {isa = PBXBuildFile; fileRef = 189C5A3116593817000378DA /* s2.png */; };
 		189C5A3516593817000378DA /* s1.png in Resources */ = {isa = PBXBuildFile; fileRef = 189C5A3216593817000378DA /* s1.png */; };
+		18A28CF4165A03D700ABF876 /* switch.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A28CF3165A03D700ABF876 /* switch.png */; };
+		18A28CF8165A0A8D00ABF876 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A28CF5165A0A8D00ABF876 /* back.png */; };
+		18A28CFA165A0A8D00ABF876 /* switch2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A28CF7165A0A8D00ABF876 /* switch2.png */; };
+		18A28CFC165A0AA600ABF876 /* switch3.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A28CFB165A0AA500ABF876 /* switch3.png */; };
+		18A28D00165A0F9900ABF876 /* switch0.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A28CFF165A0F9900ABF876 /* switch0.png */; };
 		18A4331C164E1D0300C58F27 /* CameraFXManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4331B164E1D0300C58F27 /* CameraFXManager.m */; };
 		18A43325164E22EF00C58F27 /* FXImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A43322164E22EF00C58F27 /* FXImageView.m */; };
 		18A43326164E22EF00C58F27 /* UIImage+FX.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A43324164E22EF00C58F27 /* UIImage+FX.m */; };
@@ -359,6 +365,8 @@
 		1827BB82164F94E900A869B9 /* camera_action.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_action.png; sourceTree = "<group>"; };
 		1827BB86164FA4C300A869B9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		183948A61658268C00FD7A99 /* fx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fx.png; sourceTree = "<group>"; };
+		18938D141659ED7C007196D0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		18938D151659ED7C007196D0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		18963ED0164FC9FD0087B1E6 /* FSGPUImageFilterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGPUImageFilterManager.h; sourceTree = "<group>"; };
 		18963ED1164FC9FD0087B1E6 /* FSGPUImageFilterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGPUImageFilterManager.m; sourceTree = "<group>"; };
 		189A0C8F1658B747003ED0D5 /* PreviewFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewFilterViewController.h; sourceTree = "<group>"; };
@@ -366,6 +374,11 @@
 		189C5A3016593817000378DA /* s3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = s3.png; sourceTree = "<group>"; };
 		189C5A3116593817000378DA /* s2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = s2.png; sourceTree = "<group>"; };
 		189C5A3216593817000378DA /* s1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = s1.png; sourceTree = "<group>"; };
+		18A28CF3165A03D700ABF876 /* switch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch.png; sourceTree = "<group>"; };
+		18A28CF5165A0A8D00ABF876 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		18A28CF7165A0A8D00ABF876 /* switch2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch2.png; sourceTree = "<group>"; };
+		18A28CFB165A0AA500ABF876 /* switch3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch3.png; sourceTree = "<group>"; };
+		18A28CFF165A0F9900ABF876 /* switch0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch0.png; sourceTree = "<group>"; };
 		18A4331A164E1D0300C58F27 /* CameraFXManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraFXManager.h; sourceTree = "<group>"; };
 		18A4331B164E1D0300C58F27 /* CameraFXManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraFXManager.m; sourceTree = "<group>"; };
 		18A43321164E22EE00C58F27 /* FXImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXImageView.h; sourceTree = "<group>"; };
@@ -448,6 +461,8 @@
 		1827BB5E164F688800A869B9 /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				18938D141659ED7C007196D0 /* MBProgressHUD.h */,
+				18938D151659ED7C007196D0 /* MBProgressHUD.m */,
 				18A43327164E22F900C58F27 /* FXImageView */,
 				1F8C30D11600FE0100FEBB7B /* MGImageUtiltiies */,
 				1FFFD6181600359B006FD8FB /* UIImage+Categories */,
@@ -588,6 +603,11 @@
 		1F92413A15F741B90089AAAF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				18A28CFF165A0F9900ABF876 /* switch0.png */,
+				18A28CF5165A0A8D00ABF876 /* back.png */,
+				18A28CFB165A0AA500ABF876 /* switch3.png */,
+				18A28CF7165A0A8D00ABF876 /* switch2.png */,
+				18A28CF3165A03D700ABF876 /* switch.png */,
 				189C5A3016593817000378DA /* s3.png */,
 				189C5A3116593817000378DA /* s2.png */,
 				189C5A3216593817000378DA /* s1.png */,
@@ -992,6 +1012,11 @@
 				189C5A3316593817000378DA /* s3.png in Resources */,
 				189C5A3416593817000378DA /* s2.png in Resources */,
 				189C5A3516593817000378DA /* s1.png in Resources */,
+				18A28CF4165A03D700ABF876 /* switch.png in Resources */,
+				18A28CF8165A0A8D00ABF876 /* back.png in Resources */,
+				18A28CFA165A0A8D00ABF876 /* switch2.png in Resources */,
+				18A28CFC165A0AA600ABF876 /* switch3.png in Resources */,
+				18A28D00165A0F9900ABF876 /* switch0.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1017,6 +1042,7 @@
 				18AEE496164E6E8C00D1A3D3 /* MySHKConfigurator.m in Sources */,
 				18963ED2164FC9FD0087B1E6 /* FSGPUImageFilterManager.m in Sources */,
 				189A0C911658B747003ED0D5 /* PreviewFilterViewController.m in Sources */,
+				18938D161659ED7C007196D0 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
