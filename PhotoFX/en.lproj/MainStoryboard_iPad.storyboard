@@ -12,10 +12,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="zune.jpg" id="ZLM-er-djg">
-                                <rect key="frame" x="0.0" y="22" width="768" height="997"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
                             <view contentMode="scaleToFill" id="4uW-05-3PN" customClass="iCarousel">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -198,7 +194,6 @@
     <resources>
         <image name="back.png" width="128" height="128"/>
         <image name="switch0.png" width="95" height="47"/>
-        <image name="zune.jpg" width="640" height="960"/>
     </resources>
     <classes>
         <class className="GPUImageView" superclassName="UIView">

@@ -70,8 +70,6 @@
     [super viewWillAppear:animated];
     DLog(@"...");
     [self.navigationController setNavigationBarHidden:NO];
-    
-    
 }
 
 
@@ -79,6 +77,8 @@
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"linen.jpg"]];
+
     self.photoCarousel.backgroundColor = [UIColor clearColor];
     // iCarousel Configuration
     self.photoCarousel.type = iCarouselTypeCoverFlow;

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18172B7D165A515D0073C8E2 /* linen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18172B7C165A515D0073C8E2 /* linen.jpg */; };
+		18172B7F165A52FB0073C8E2 /* linen_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 18172B7E165A52FB0073C8E2 /* linen_light.png */; };
 		1827BB77164F929900A869B9 /* Icon48.png in Resources */ = {isa = PBXBuildFile; fileRef = 1827BB70164F929800A869B9 /* Icon48.png */; };
 		1827BB78164F929900A869B9 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1827BB71164F929800A869B9 /* Icon.png */; };
 		1827BB79164F929900A869B9 /* Icon57.png in Resources */ = {isa = PBXBuildFile; fileRef = 1827BB72164F929800A869B9 /* Icon57.png */; };
@@ -353,6 +355,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18172B7C165A515D0073C8E2 /* linen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = linen.jpg; sourceTree = "<group>"; };
+		18172B7E165A52FB0073C8E2 /* linen_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linen_light.png; sourceTree = "<group>"; };
 		1827BB70164F929800A869B9 /* Icon48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon48.png; sourceTree = "<group>"; };
 		1827BB71164F929800A869B9 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		1827BB72164F929800A869B9 /* Icon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon57.png; sourceTree = "<group>"; };
@@ -608,6 +612,8 @@
 		1F92413A15F741B90089AAAF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				18172B7E165A52FB0073C8E2 /* linen_light.png */,
+				18172B7C165A515D0073C8E2 /* linen.jpg */,
 				18A28CFF165A0F9900ABF876 /* switch0.png */,
 				18A28CF5165A0A8D00ABF876 /* back.png */,
 				18A28CFB165A0AA500ABF876 /* switch3.png */,
@@ -1022,6 +1028,8 @@
 				18A28CFC165A0AA600ABF876 /* switch3.png in Resources */,
 				18A28D00165A0F9900ABF876 /* switch0.png in Resources */,
 				18A28D06165A3FBE00ABF876 /* MainStoryboard_iPad.storyboard in Resources */,
+				18172B7D165A515D0073C8E2 /* linen.jpg in Resources */,
+				18172B7F165A52FB0073C8E2 /* linen_light.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -77,7 +77,7 @@
     [self.navigationController setNavigationBarHidden:NO];
 
 	// Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor grayColor];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"linen_light.png"]];
     
     self.previewCarousel = [[iCarousel alloc] initWithFrame:self.view.frame];
     self.previewCarousel.type = iCarouselTypeCylinder;

@@ -1,6 +1,11 @@
 CameraFX
 ========
 
+UI resource
+http://icongal.com/gallery/icon/60973/128/switch_user_person_customer_face
+http://icongal.com/gallery/icon/60955/128/switch_user_person_customer_face
+
+
 Found memory issue:
 -11-06 21:41:39.145 PhotoFX[8505:707] Received memory warning.
 2012-11-06 21:41:55.891 PhotoFX[8505:707] Received memory warning.
