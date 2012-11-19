@@ -19,7 +19,7 @@
 
 @interface PreviewFilterViewController : UIViewController<iCarouselDataSource, iCarouselDelegate>
 
-- (id)initWithImage:(UIImage*)image;
+- (id)initWithProcessedImage:(UIImage*)image dynamic:(BOOL)flag;
 
 @property (nonatomic,weak)  id<PreviewFilterDelegate> delegate;
 

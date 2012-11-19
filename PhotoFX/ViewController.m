@@ -188,12 +188,6 @@
 
 - (IBAction)applyImageFilter:(id)sender
 {
-#if 0
-    UIActionSheet *filterActionSheet = [[FSGPUImageFilterManager sharedFSGPUImageFilterManager] createSepiaCameraAppSheetWithDelegate:self];
-    
-    [filterActionSheet showInView:self.parentViewController.view];
-    
-#else
     
     CATransition* transition = [CATransition animation];
     transition.duration = 0.5;
@@ -203,14 +197,11 @@
     [self.navigationController.view.layer addAnimation:transition forKey:nil];
     [[self navigationController] popViewControllerAnimated:NO];
     
-    PreviewFilterViewController *previewFiltersVC = [[PreviewFilterViewController alloc] initWithImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex]];
+    PreviewFilterViewController *previewFiltersVC = [[PreviewFilterViewController alloc] initWithProcessedImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex] dynamic:YES];
     previewFiltersVC.delegate = self;
     
     
     [self.navigationController pushViewController:previewFiltersVC animated:NO];
-    
-    
-#endif
     
 }
 

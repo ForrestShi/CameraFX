@@ -14,6 +14,7 @@
 @interface PreviewFilterViewController (){
 
     NSMutableArray *_previewThumnails;
+    BOOL    dynamicGenerate;
 }
 @property (nonatomic,strong) UIImage *processedImage;
 @property (nonatomic,strong) iCarousel *previewCarousel;
@@ -33,12 +34,24 @@
     return self;
 }
 
-- (id)initWithImage:(UIImage*)image{
+- (id)initWithProcessedImage:(UIImage*)image dynamic:(BOOL)flag{
 
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         
-        self.processedImage = [image thumbnailImage:128. transparentBorder:6. cornerRadius:8. interpolationQuality:kCGInterpolationHigh] ;
+        dynamicGenerate = flag;
+        
+        //self.processedImage = [image thumbnailImage:128. transparentBorder:6. cornerRadius:8. interpolationQuality:kCGInterpolationHigh] ;
+        if (image.size.width > 128) {
+            float ratio = image.size.height/image.size.width;
+            self.processedImage = [image resizedImage:CGSizeMake(128., 128.*ratio) interpolationQuality:kCGInterpolationHigh];
+        }else{
+            self.processedImage = image;
+        }
+        
+        if (self.processedImage == nil ) {
+            self.processedImage = [UIImage imageNamed:@"s2.png"];
+        }
         
         NSAssert(self.processedImage, @"can not be nil");
         
@@ -52,9 +65,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor grayColor];
     
     self.previewCarousel = [[iCarousel alloc] initWithFrame:self.view.frame];
-    self.previewCarousel.type = iCarouselTypeLinear;
+    self.previewCarousel.type = iCarouselTypeCylinder;
     self.previewCarousel.vertical = NO;
     self.previewCarousel.bounces = NO;
     self.previewCarousel.delegate = self;
@@ -62,13 +76,42 @@
     
     [self.view addSubview:self.previewCarousel];
     
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    
     for (int i = 0 ; i < 24; i++) {
         DLog(@"filter i %d",i);
         
         GPUImageFilter *selectedFilter = [[FSGPUImageFilterManager sharedFSGPUImageFilterManager] createGPUImageFilter:i];
-        UIImage *filteredImage = [selectedFilter imageByFilteringImage:self.processedImage];
-        [_previewThumnails addObject:filteredImage];
- 
+        NSString *filePath = [basePath stringByAppendingPathComponent:[NSString stringWithFormat:@"thumb_%d",i]];
+        
+        UIImage *filteredImage = nil;
+        
+        if (dynamicGenerate) {
+            filteredImage = [selectedFilter imageByFilteringImage:self.processedImage];
+            
+        }else{
+            
+            if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+                DLog(@"%@ existed", filePath);
+                filteredImage = [UIImage imageWithContentsOfFile:filePath];
+                
+            }else{
+                DLog(@"%@ NOT existed", filePath);
+                
+                filteredImage = [selectedFilter imageByFilteringImage:self.processedImage];
+                [UIImagePNGRepresentation(filteredImage) writeToFile:filePath atomically:YES];
+                
+            }
+            
+            
+        }
+        
+        if (filteredImage) {
+            [_previewThumnails addObject:filteredImage];
+        }
+
+        
     }
     
     
