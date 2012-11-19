@@ -16,6 +16,7 @@
 @property (nonatomic,weak) IBOutlet UIButton *switchButton;
 @property (nonatomic,weak) IBOutlet UIButton *backButton;
 @property (nonatomic,weak) IBOutlet UIToolbar *toolBar;
+@property (nonatomic,weak) IBOutlet UIView *cameraView;
 
 - (IBAction)captureImage:(id)sender;
 - (IBAction)adjust0:(id)sender;
@@ -29,6 +30,7 @@
 @implementation MTCameraViewController 
 @synthesize delegate;
 @synthesize filterItem;
+@synthesize cameraView;
 
 #pragma mark -
 #pragma mark View Controller Lifecycle
@@ -54,7 +56,7 @@
         // Setup initial camera filter
         filter = [[CameraFXManager sharedInstance] filter];
         //[filter prepareForImageCapture];
-        GPUImageView *filterView = (GPUImageView *)self.view;
+        GPUImageView *filterView = (GPUImageView *)self.cameraView;
         [filter addTarget:filterView];
 
     }
@@ -87,12 +89,14 @@
     
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
     panGesture.delegate = self;
+    
+    UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(onPinch:)];
+    pinchGesture.delegate = self;
 
-    //[singleTap requireGestureRecognizerToFail:panGesture];
+    [singleTap requireGestureRecognizerToFail:panGesture];
     [self.view addGestureRecognizer:singleTap];
     [self.view addGestureRecognizer:doubleTap];
-
-    //[self.view addGestureRecognizer:panGesture];
+    [self.view addGestureRecognizer:pinchGesture];
     
 }
 
@@ -129,20 +133,27 @@
     }
 }
 
+- (void)onPinch:(UIPinchGestureRecognizer*)gesture{
+    
+    self.cameraView.transform = CGAffineTransformScale(self.cameraView.transform, [gesture scale], [gesture scale]);
+    gesture.scale = 1.;
+}
 
 - (void)doubleTap:(UITapGestureRecognizer*)gesture{
-    if (stillCamera && [filter isKindOfClass:[GPUImageSepiaFilter class]] ) {
-        DLog(@"show advanced sliders");
-        
-        static BOOL firstTimeOn = NO;
-        firstTimeOn = !firstTimeOn;
-        
-        UISlider *slider0 = (UISlider*)[self.view viewWithTag:1001];
-        [UIView animateWithDuration:0.3 animations:^{
-            slider0.alpha = (firstTimeOn ? 0:1.);
-        }];
-
-    }
+//    if (stillCamera && [filter isKindOfClass:[GPUImageSepiaFilter class]] ) {
+//        DLog(@"show advanced sliders");
+//        
+//        static BOOL firstTimeOn = NO;
+//        firstTimeOn = !firstTimeOn;
+//        
+//        UISlider *slider0 = (UISlider*)[self.view viewWithTag:1001];
+//        [UIView animateWithDuration:0.3 animations:^{
+//            slider0.alpha = (firstTimeOn ? 0:1.);
+//        }];
+//
+//    }
+    //short cut to capture
+    [self captureImage:nil];
 }
 - (void)onPan:(UIPanGestureRecognizer*)gesture{
     DLog(@"%@",@"paning");
@@ -268,7 +279,7 @@
     });
     */
     filter = selectedFilter;
-    GPUImageView *filterView = (GPUImageView *)self.view;
+    GPUImageView *filterView = (GPUImageView *)self.cameraView;
     [filter addTarget:filterView];
     [stillCamera addTarget:filter];
     
@@ -380,7 +391,7 @@
 
     }
     filter = selectedFilter;
-    GPUImageView *filterView = (GPUImageView *)self.view;
+    GPUImageView *filterView = (GPUImageView *)self.cameraView;
     [filter addTarget:filterView];
     [stillCamera addTarget:filter];
     
