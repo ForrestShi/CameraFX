@@ -398,6 +398,13 @@
     singleTap.numberOfTouchesRequired = 1;
     [view addGestureRecognizer:singleTap];
     
+    UITapGestureRecognizer *single2Tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSingle2Tap:)];
+    single2Tap.numberOfTapsRequired = 2;
+    single2Tap.numberOfTouchesRequired = 1;
+    [view addGestureRecognizer:single2Tap];
+    
+    [singleTap requireGestureRecognizerToFail:single2Tap];
+    
     UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(onPinch:)];
     [view addGestureRecognizer:pinchGesture];
     
@@ -417,7 +424,15 @@
     
     FXImageView *selectedImageView = (FXImageView*)gesture.view;
     selectedImageView.transform = CGAffineTransformScale([selectedImageView transform], [gesture scale], [gesture scale]);
+    
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        [UIView animateWithDuration:0.3 animations:^{
+            selectedImageView.transform = CGAffineTransformMakeScale(1., 1.);
+        }];
+    }
+    
     gesture.scale = 1.;
+
     
 }
 - (void)onSingleTap:(UITapGestureRecognizer*)gesture{
@@ -427,10 +442,30 @@
         [UIView animateWithDuration:0.3 animations:^{
             // make it not clear after multiple times
             //selectedImageView.frame = CGRectMake(0, 0, 250.0f, 250.0f);
-            
+            //float ratio = self.view.frame.size.width/selectedImageView.frame.size.width;
             selectedImageView.transform =CGAffineTransformMakeScale(1., 1.);
         }];
     }
 }
+
+- (void)onSingle2Tap:(UITapGestureRecognizer*)gesture{
+    
+    static BOOL zoomin = YES;
+    FXImageView *selectedImageView = (FXImageView*)gesture.view;
+    if (selectedImageView) {
+        [UIView animateWithDuration:0.3 animations:^{
+            // make it not clear after multiple times
+            //selectedImageView.frame = CGRectMake(0, 0, 250.0f, 250.0f);
+            if (zoomin) {
+                selectedImageView.transform =CGAffineTransformMakeScale(3., 3.);
+            }else{
+                selectedImageView.transform =CGAffineTransformMakeScale(1., 1.);
+            }
+            zoomin = !zoomin;
+
+        }];
+    }
+}
+
 
 @end
