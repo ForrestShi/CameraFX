@@ -65,7 +65,8 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    //return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 }
 
 
@@ -89,8 +90,10 @@
     self.previewCarousel.type = iCarouselTypeCylinder;
     self.previewCarousel.vertical = NO;
     self.previewCarousel.bounces = NO;
+    self.previewCarousel.clipsToBounds = YES;
     self.previewCarousel.delegate = self;
     self.previewCarousel.dataSource = self;
+    self.previewCarousel.transform = CGAffineTransformMakeRotation(45.);
     
     [self.view addSubview:self.previewCarousel];
     

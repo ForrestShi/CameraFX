@@ -26,7 +26,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "452"
          endingLineNumber = "452"
-         landmarkName = "-onSingleTap:"
+         landmarkName = "-onSingle2Tap:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -79,6 +79,19 @@
          startingLineNumber = "429"
          endingLineNumber = "429"
          landmarkName = "-onPinch:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "PhotoFX/PreviewFilterViewController.m"
+         timestampString = "375283442.950772"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "68"
+         endingLineNumber = "68"
+         landmarkName = "-shouldAutorotateToInterfaceOrientation:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
