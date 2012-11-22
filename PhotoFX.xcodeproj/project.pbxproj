@@ -1137,6 +1137,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Sepia Camera Pro.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shi Lin";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoFX/PhotoFX-Prefix.pch";
 				HEADER_SEARCH_PATHS = "Submodules/GPUImage/framework/**";
@@ -1147,6 +1148,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3E9D8913-8F2F-4E9B-BBCD-C23BB9CA98BA";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "./submodules/sharekit/Classes/ShareKit/** ./submodules/sharekit/Submodules/**";
 				WRAPPER_EXTENSION = app;
@@ -1213,6 +1215,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Sepia Camera Pro.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoFX/PhotoFX-Prefix.pch";
 				HEADER_SEARCH_PATHS = "Submodules/GPUImage/framework/**";
@@ -1224,6 +1227,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "./submodules/sharekit/Classes/ShareKit/** ./submodules/sharekit/Submodules/**";
 				WRAPPER_EXTENSION = app;
