@@ -408,6 +408,12 @@
     UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(onPinch:)];
     [view addGestureRecognizer:pinchGesture];
     
+    
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(onLongPressing:)];
+    [longPressGesture setMinimumPressDuration:1.];
+    //longPressGesture.delegate = self;
+    [view addGestureRecognizer:longPressGesture];
+    
     return view;
 }
 
@@ -418,6 +424,25 @@
     [self.photoCarousel reloadData];
     [self.photoCarousel scrollToItemAtIndex:self.photoCarousel.currentItemIndex animated:YES];
 }
+
+- (void)onLongPressing:(UILongPressGestureRecognizer*)gesture{
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        DLog(@"start pressing...");
+        UIImage *curImage = [displayImages objectAtIndex:self.photoCarousel.currentItemIndex];
+        GPUImageSepiaFilter *sepiaFlt =[[GPUImageSepiaFilter alloc] init];
+        sepiaFlt.intensity = .7;
+        //UIImage *newImage = [sepiaFlt imageByFilteringImage:curImage];
+        //[displayImages replaceObjectAtIndex:self.photoCarousel.currentItemIndex withObject:newImage];
+        //[self.photoCarousel reloadData];
+        curImage = [sepiaFlt imageByFilteringImage:curImage];
+        [displayImages replaceObjectAtIndex:self.photoCarousel.currentItemIndex withObject:curImage];
+        [self.photoCarousel reloadItemAtIndex:self.photoCarousel.currentItemIndex animated:YES];
+        
+    }else if(gesture.state == UIGestureRecognizerStateEnded){
+        DLog(@"end pressing...");        
+    }
+}
+
 
 - (void)onPinch:(UIPinchGestureRecognizer*)gesture{
     DLog(@"pinching... %@ scale : %f", gesture , [gesture scale] );

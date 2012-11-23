@@ -115,12 +115,17 @@
 
     UIRotationGestureRecognizer *roateGesture = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(onRotate:)];
     roateGesture.delegate = self;
+    
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(onLongPressing:)];
+    [longPressGesture setMinimumPressDuration:1.];
+    longPressGesture.delegate = self;
 
     [singleTap requireGestureRecognizerToFail:panGesture];
     [self.view addGestureRecognizer:singleTap];
     [self.view addGestureRecognizer:doubleTap];
     [self.view addGestureRecognizer:pinchGesture];
     [self.view addGestureRecognizer:roateGesture];
+    [self.view addGestureRecognizer:longPressGesture];
     //[self.view addGestureRecognizer:panGesture];
     //[sliderView addGestureRecognizer:panGesture];
     
@@ -142,6 +147,14 @@
         }];
     }
 }
+
+- (void)onLongPressing:(UILongPressGestureRecognizer*)gesture{
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+    }else if(gesture.state == UIGestureRecognizerStateEnded){
+        
+    }
+}
+
 - (IBAction)back:(id)sender{
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
