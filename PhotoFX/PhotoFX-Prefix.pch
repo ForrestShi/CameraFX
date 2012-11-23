@@ -38,3 +38,6 @@ return shared##classname;                           \
 #endif
 
 #define IS_IPAD ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+
+#define APP_ID @"578137731"  //SEPIA CAMERO 
+

@@ -7,3 +7,6 @@
 [submodule "submodules/mbprogresshud"]
 	path = submodules/mbprogresshud
 	url = git://github.com/jdg/MBProgressHUD.git
+[submodule "submodules/rate"]
+	path = submodules/rate
+	url = git://github.com/arashpayan/appirater.git
