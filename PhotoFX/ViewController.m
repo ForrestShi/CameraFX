@@ -87,6 +87,40 @@
     self.photoCarousel.type = iCarouselTypeCoverFlow;
     self.photoCarousel.bounces = YES;
 
+    BOOL firstTimeToRun = NO; //[[[NSUserDefaults standardUserDefaults] objectForKey:@"firstTime"] boolValue];
+    if (!firstTimeToRun) {
+        //first time run
+        
+        UIImage *scarlett = [UIImage imageNamed:@"scarlett.jpg"];
+        
+        sepiaFlt = [[GPUImageSepiaFilter alloc] init];
+        [sepiaFlt setIntensity:0.2];
+        UIImage *s1 = [sepiaFlt imageByFilteringImage:scarlett];
+        
+        sepiaFlt = [[GPUImageSepiaFilter alloc] init];
+        [sepiaFlt setIntensity:0.5];
+        UIImage *s2 = [sepiaFlt imageByFilteringImage:scarlett];
+        
+        sepiaFlt = [[GPUImageSepiaFilter alloc] init];
+        [sepiaFlt setIntensity:0.8];
+        UIImage *s3 = [sepiaFlt imageByFilteringImage:scarlett];
+        
+        sepiaFlt = [[GPUImageSepiaFilter alloc] init];
+        [sepiaFlt setIntensity:1.];
+        UIImage *s4 = [sepiaFlt imageByFilteringImage:scarlett];
+        
+        [displayImages addObject:scarlett];
+        [displayImages addObject:s1];
+        [displayImages addObject:s2];
+        [displayImages addObject:s3];
+        [displayImages addObject:s4];
+        [self.photoCarousel reloadData];
+        [self refreshUI];
+        [self.photoCarousel scrollToItemAtIndex:[displayImages count]/2 animated:YES];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstTime"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
     
 }
 

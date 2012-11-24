@@ -11,6 +11,8 @@
 #import "FXImageView.h"
 #import "Appirater.h"
 #import "SHK.h"
+#import "FXLabel.h"
+
 @interface MyApp : NSObject
 
 @property (nonatomic,retain) NSString *appName;
@@ -38,6 +40,19 @@
 
 @implementation MyAppsViewController
 @synthesize apps,iconCarousel,titleLabel;
+
+-(UILabel*)createLabelWithFrame:(CGRect)frame andFontSize:(float)fontSize andText:(NSString*)text
+{
+    UILabel* label = [[UILabel alloc] initWithFrame:frame];
+    [label setFont:[UIFont systemFontOfSize:fontSize]];
+    [label setTextColor:[UIColor whiteColor]];
+    [label setShadowColor:[UIColor blackColor]];
+    [label setShadowOffset:CGSizeMake(0, -1)];
+    [label setTextAlignment:UITextAlignmentCenter];
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setText:text];
+    return label;
+}
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -69,7 +84,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"linen_light.png"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ipadbk.jpeg"]];
 
     if (!self.iconCarousel) {
         self.iconCarousel = [[iCarousel alloc] initWithFrame:self.view.bounds];
@@ -81,11 +96,8 @@
     }
     [self.view addSubview:self.iconCarousel];
     
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2 - 300/2, self.view.bounds.size.height/4, 300., 44)];
-    self.titleLabel.backgroundColor = [UIColor clearColor];
-    self.titleLabel.textAlignment = UITextAlignmentCenter;
-    self.titleLabel.textColor = [UIColor darkGrayColor];
-    
+    self.titleLabel = [self createLabelWithFrame:CGRectMake(self.view.bounds.size.width/2 - 300/2, self.view.bounds.size.height/4, 300., 44) andFontSize:10. andText:@""];
+    self.titleLabel.textAlignment = UITextAlignmentCenter;    
     [self.view addSubview:self.titleLabel];
     
     CGRect rateBtnFrame = CGRectMake(self.view.bounds.size.width/2 -22., self.view.bounds.size.height - 44.*2, 44., 44.);
@@ -94,13 +106,9 @@
     [rateBtn addTarget:self action:@selector(rateMe:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rateBtn];
     
-    copyrightLabel = [[UILabel alloc] init];
-    copyrightLabel.backgroundColor = [UIColor clearColor];
-    copyrightLabel.frame = CGRectMake(0, self.view.bounds.size.height - 30., self.view.bounds.size.width, 30);
+    copyrightLabel = [self createLabelWithFrame:CGRectMake(0, self.view.bounds.size.height - 30., self.view.bounds.size.width, 30) andFontSize:6. andText:[NSString stringWithFormat:@"%@ %@ Design4Apple@gmail.com ", APPIRATER_APP_NAME,APP_VERSION ]];
     copyrightLabel.textAlignment = UITextAlignmentRight;
-    [copyrightLabel sizeToFit];
-    copyrightLabel.text = [NSString stringWithFormat:@"%@ %@ Design4Apple@gmail.com ", APPIRATER_APP_NAME,APP_VERSION ];
-    copyrightLabel.textColor = [UIColor lightTextColor];
+    
     [self.view addSubview:copyrightLabel];
     
     [self.iconCarousel scrollToItemAtIndex:[self.apps count]/2 animated:YES];
@@ -186,7 +194,7 @@
     copyrightLabel.frame = CGRectMake(0, self.view.bounds.size.height - 30., self.view.bounds.size.width, 30);
 
     if (UIInterfaceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
-        self.titleLabel.frame = CGRectMake(self.view.bounds.size.width/2 - 150., self.view.bounds.size.height/4 - 60., 300., 44);
+        self.titleLabel.frame = CGRectMake(self.view.bounds.size.width/2 - 150., self.view.bounds.size.height/4 - 70., 300., 44);
         rateBtn.frame = CGRectMake(self.view.bounds.size.width/2 -22., self.view.bounds.size.height - 44., 44., 44.);
 
     }

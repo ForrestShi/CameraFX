@@ -10,3 +10,6 @@
 [submodule "submodules/rate"]
 	path = submodules/rate
 	url = git://github.com/arashpayan/appirater.git
+[submodule "submodules/fxlabel"]
+	path = submodules/fxlabel
+	url = git://github.com/nicklockwood/FXLabel.git

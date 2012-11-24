@@ -35,6 +35,11 @@
 		1899451216608FD200C3C8F4 /* stickies.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899450A16608FD200C3C8F4 /* stickies.png */; };
 		189945151660A92400C3C8F4 /* thumbs_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 189945131660A92300C3C8F4 /* thumbs_down.png */; };
 		189945161660A92400C3C8F4 /* thumbs_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 189945141660A92300C3C8F4 /* thumbs_up.png */; };
+		1899451A1660B19100C3C8F4 /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 189945191660B19100C3C8F4 /* FXLabel.m */; };
+		1899451E1660B3F200C3C8F4 /* apple-shirt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1899451B1660B3F000C3C8F4 /* apple-shirt.jpg */; };
+		1899451F1660B3F200C3C8F4 /* dark_gray_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1899451C1660B3F000C3C8F4 /* dark_gray_background.jpg */; };
+		189945201660B3F200C3C8F4 /* ipadbk.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1899451D1660B3F100C3C8F4 /* ipadbk.jpeg */; };
+		189945221660B6E900C3C8F4 /* scarlett.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 189945211660B6E900C3C8F4 /* scarlett.jpg */; };
 		189A0C911658B747003ED0D5 /* PreviewFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A0C901658B747003ED0D5 /* PreviewFilterViewController.m */; };
 		189C5A3316593817000378DA /* s3.png in Resources */ = {isa = PBXBuildFile; fileRef = 189C5A3016593817000378DA /* s3.png */; };
 		189C5A3416593817000378DA /* s2.png in Resources */ = {isa = PBXBuildFile; fileRef = 189C5A3116593817000378DA /* s2.png */; };
@@ -402,6 +407,12 @@
 		1899450A16608FD200C3C8F4 /* stickies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stickies.png; sourceTree = "<group>"; };
 		189945131660A92300C3C8F4 /* thumbs_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbs_down.png; sourceTree = "<group>"; };
 		189945141660A92300C3C8F4 /* thumbs_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbs_up.png; sourceTree = "<group>"; };
+		189945181660B19100C3C8F4 /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
+		189945191660B19100C3C8F4 /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
+		1899451B1660B3F000C3C8F4 /* apple-shirt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "apple-shirt.jpg"; sourceTree = "<group>"; };
+		1899451C1660B3F000C3C8F4 /* dark_gray_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dark_gray_background.jpg; sourceTree = "<group>"; };
+		1899451D1660B3F100C3C8F4 /* ipadbk.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ipadbk.jpeg; sourceTree = "<group>"; };
+		189945211660B6E900C3C8F4 /* scarlett.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scarlett.jpg; sourceTree = "<group>"; };
 		189A0C8F1658B747003ED0D5 /* PreviewFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewFilterViewController.h; sourceTree = "<group>"; };
 		189A0C901658B747003ED0D5 /* PreviewFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewFilterViewController.m; sourceTree = "<group>"; };
 		189C5A3016593817000378DA /* s3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = s3.png; sourceTree = "<group>"; };
@@ -524,6 +535,7 @@
 		1827BB5E164F688800A869B9 /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				189945171660B19100C3C8F4 /* FXLabel */,
 				18AE6858165FCF7500144952 /* rate */,
 				18A28D01165A23D000ABF876 /* ParameterSliderView.h */,
 				18A28D02165A23D000ABF876 /* ParameterSliderView.m */,
@@ -535,6 +547,15 @@
 				1FEECF7915FF54B500C4FB0A /* iCarousel */,
 			);
 			name = 3rdParty;
+			sourceTree = "<group>";
+		};
+		189945171660B19100C3C8F4 /* FXLabel */ = {
+			isa = PBXGroup;
+			children = (
+				189945181660B19100C3C8F4 /* FXLabel.h */,
+				189945191660B19100C3C8F4 /* FXLabel.m */,
+			);
+			path = FXLabel;
 			sourceTree = "<group>";
 		};
 		18A43327164E22F900C58F27 /* FXImageView */ = {
@@ -684,6 +705,10 @@
 		1F92413A15F741B90089AAAF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				189945211660B6E900C3C8F4 /* scarlett.jpg */,
+				1899451B1660B3F000C3C8F4 /* apple-shirt.jpg */,
+				1899451C1660B3F000C3C8F4 /* dark_gray_background.jpg */,
+				1899451D1660B3F100C3C8F4 /* ipadbk.jpeg */,
 				189945131660A92300C3C8F4 /* thumbs_down.png */,
 				189945141660A92300C3C8F4 /* thumbs_up.png */,
 				1899450316608FD200C3C8F4 /* ape.png */,
@@ -1148,6 +1173,10 @@
 				1899451216608FD200C3C8F4 /* stickies.png in Resources */,
 				189945151660A92400C3C8F4 /* thumbs_down.png in Resources */,
 				189945161660A92400C3C8F4 /* thumbs_up.png in Resources */,
+				1899451E1660B3F200C3C8F4 /* apple-shirt.jpg in Resources */,
+				1899451F1660B3F200C3C8F4 /* dark_gray_background.jpg in Resources */,
+				189945201660B3F200C3C8F4 /* ipadbk.jpeg in Resources */,
+				189945221660B6E900C3C8F4 /* scarlett.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1177,6 +1206,7 @@
 				18A28D03165A23D000ABF876 /* ParameterSliderView.m in Sources */,
 				18AE6876165FCF7600144952 /* Appirater.m in Sources */,
 				1899450016608B0000C3C8F4 /* MyAppsViewController.m in Sources */,
+				1899451A1660B19100C3C8F4 /* FXLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
