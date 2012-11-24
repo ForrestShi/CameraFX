@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="4uW-05-3PN" customClass="iCarousel">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <rect key="frame" x="0.0" y="3" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -21,6 +21,14 @@
                                     <outlet property="delegate" destination="2" id="jkj-Pc-PJ7"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="1Sg-PB-mFH">
+                                <rect key="frame" x="722" y="82" width="18" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <connections>
+                                    <action selector="showInfo" destination="2" eventType="touchUpInside" id="PN0-9m-Tg4"/>
+                                </connections>
+                            </button>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="5jI-7Y-lB7">
                                 <rect key="frame" x="0.0" y="980" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -220,6 +228,7 @@
                 <relationship kind="action" name="photoFromAlbum:"/>
                 <relationship kind="action" name="refreshCarouselStyle"/>
                 <relationship kind="action" name="shareImage"/>
+                <relationship kind="action" name="showInfo"/>
                 <relationship kind="outlet" name="deleteButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="filterButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="photoCarousel" candidateClass="iCarousel"/>

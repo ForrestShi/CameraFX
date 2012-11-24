@@ -8,7 +8,7 @@
 #import "SHKActionSheet.h"
 #import "FSGPUImageFilterManager.h"
 #import "PreviewFilterViewController.h"
-
+#import "MyAppsViewController.h"
 
 @interface ViewController () <PreviewFilterDelegate>
 {
@@ -17,6 +17,8 @@
     GPUImageFilter      *filter;
     MTCameraViewController *cameraViewController;
     UIPopoverController *popOver;
+    NSTimer *adjustFXTimer;
+    GPUImageSepiaFilter *sepiaFlt ;
 }
 
 @property(nonatomic, assign) IBOutlet iCarousel *photoCarousel;
@@ -30,6 +32,7 @@
 - (IBAction)deleteImage;
 - (IBAction)shareImage;
 - (IBAction)applyImageFilter:(id)sender;
+- (IBAction)showInfo;
 
 @end
 
@@ -263,7 +266,12 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-
+- (IBAction)showInfo{
+    MyAppsViewController *infoVC = [[MyAppsViewController alloc] init];
+    infoVC.modalPresentationStyle = UIModalPresentationCurrentContext;
+    infoVC.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+    [self presentModalViewController:infoVC animated:YES];
+}
 
 #pragma mark -
 #pragma mark Album Picking/Saving Code
@@ -408,11 +416,11 @@
     UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(onPinch:)];
     [view addGestureRecognizer:pinchGesture];
     
-    
-    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(onLongPressing:)];
-    [longPressGesture setMinimumPressDuration:1.];
-    //longPressGesture.delegate = self;
-    [view addGestureRecognizer:longPressGesture];
+    //do not try this because hard to control 
+//    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(onLongPressing:)];
+//    [longPressGesture setMinimumPressDuration:1./2.];
+//    //longPressGesture.delegate = self;
+//    [view addGestureRecognizer:longPressGesture];
     
     return view;
 }
@@ -425,21 +433,54 @@
     [self.photoCarousel scrollToItemAtIndex:self.photoCarousel.currentItemIndex animated:YES];
 }
 
-- (void)onLongPressing:(UILongPressGestureRecognizer*)gesture{
-    if (gesture.state == UIGestureRecognizerStateBegan) {
-        DLog(@"start pressing...");
+- (void)adjustFX{
+    DLog(@"run fx adjust...");
+    
+    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+        static int i = 0;
         UIImage *curImage = [displayImages objectAtIndex:self.photoCarousel.currentItemIndex];
-        GPUImageSepiaFilter *sepiaFlt =[[GPUImageSepiaFilter alloc] init];
-        sepiaFlt.intensity = .7;
+        if (!sepiaFlt) {
+            sepiaFlt =[[GPUImageSepiaFilter alloc] init];
+        }
+        sepiaFlt.intensity = 1. - i++ * 0.01;
+        if (sepiaFlt.intensity < 0 ) {
+            sepiaFlt.intensity = 1.;
+            i = 0;
+        }
+        
         //UIImage *newImage = [sepiaFlt imageByFilteringImage:curImage];
         //[displayImages replaceObjectAtIndex:self.photoCarousel.currentItemIndex withObject:newImage];
         //[self.photoCarousel reloadData];
-        curImage = [sepiaFlt imageByFilteringImage:curImage];
-        [displayImages replaceObjectAtIndex:self.photoCarousel.currentItemIndex withObject:curImage];
-        [self.photoCarousel reloadItemAtIndex:self.photoCarousel.currentItemIndex animated:YES];
+   
+        UIImage *newImage = [sepiaFlt imageByFilteringImage:curImage];
+        [displayImages replaceObjectAtIndex:self.photoCarousel.currentItemIndex withObject:newImage];
+        
+        [self.photoCarousel reloadItemAtIndex:self.photoCarousel.currentItemIndex animated:NO];
+    //});
+}
+
+- (void)onLongPressing:(UILongPressGestureRecognizer*)gesture{
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        DLog(@"start pressing...");
+        if (!adjustFXTimer) {
+            adjustFXTimer = [NSTimer timerWithTimeInterval:1/30. target:self selector:@selector(adjustFX) userInfo:nil repeats:YES];
+            [[NSRunLoop currentRunLoop] addTimer:adjustFXTimer forMode:NSDefaultRunLoopMode];
+            
+            [adjustFXTimer fire];
+        }else{
+            
+            [adjustFXTimer invalidate];
+            adjustFXTimer = nil;
+        }
         
     }else if(gesture.state == UIGestureRecognizerStateEnded){
-        DLog(@"end pressing...");        
+        DLog(@"end pressing...");
+        
+        if (adjustFXTimer) {
+            [adjustFXTimer invalidate];
+            adjustFXTimer = nil;
+        }
     }
 }
 

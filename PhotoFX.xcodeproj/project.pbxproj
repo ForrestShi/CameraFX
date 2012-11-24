@@ -23,6 +23,18 @@
 		183948A71658268C00FD7A99 /* fx.png in Resources */ = {isa = PBXBuildFile; fileRef = 183948A61658268C00FD7A99 /* fx.png */; };
 		18938D161659ED7C007196D0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 18938D151659ED7C007196D0 /* MBProgressHUD.m */; };
 		18963ED2164FC9FD0087B1E6 /* FSGPUImageFilterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18963ED1164FC9FD0087B1E6 /* FSGPUImageFilterManager.m */; };
+		1899450016608B0000C3C8F4 /* MyAppsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189944FF16608B0000C3C8F4 /* MyAppsViewController.m */; };
+		1899450216608B5300C3C8F4 /* myApps.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1899450116608B5300C3C8F4 /* myApps.plist */; };
+		1899450B16608FD200C3C8F4 /* ape.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899450316608FD200C3C8F4 /* ape.png */; };
+		1899450C16608FD200C3C8F4 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899450416608FD200C3C8F4 /* menu.png */; };
+		1899450D16608FD200C3C8F4 /* note.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899450516608FD200C3C8F4 /* note.png */; };
+		1899450E16608FD200C3C8F4 /* noteplus.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899450616608FD200C3C8F4 /* noteplus.png */; };
+		1899450F16608FD200C3C8F4 /* oil.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899450716608FD200C3C8F4 /* oil.png */; };
+		1899451016608FD200C3C8F4 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899450816608FD200C3C8F4 /* search.png */; };
+		1899451116608FD200C3C8F4 /* sepia_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899450916608FD200C3C8F4 /* sepia_icon.png */; };
+		1899451216608FD200C3C8F4 /* stickies.png in Resources */ = {isa = PBXBuildFile; fileRef = 1899450A16608FD200C3C8F4 /* stickies.png */; };
+		189945151660A92400C3C8F4 /* thumbs_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 189945131660A92300C3C8F4 /* thumbs_down.png */; };
+		189945161660A92400C3C8F4 /* thumbs_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 189945141660A92300C3C8F4 /* thumbs_up.png */; };
 		189A0C911658B747003ED0D5 /* PreviewFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A0C901658B747003ED0D5 /* PreviewFilterViewController.m */; };
 		189C5A3316593817000378DA /* s3.png in Resources */ = {isa = PBXBuildFile; fileRef = 189C5A3016593817000378DA /* s3.png */; };
 		189C5A3416593817000378DA /* s2.png in Resources */ = {isa = PBXBuildFile; fileRef = 189C5A3116593817000378DA /* s2.png */; };
@@ -377,6 +389,19 @@
 		18938D151659ED7C007196D0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		18963ED0164FC9FD0087B1E6 /* FSGPUImageFilterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGPUImageFilterManager.h; sourceTree = "<group>"; };
 		18963ED1164FC9FD0087B1E6 /* FSGPUImageFilterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGPUImageFilterManager.m; sourceTree = "<group>"; };
+		189944FE16608B0000C3C8F4 /* MyAppsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppsViewController.h; sourceTree = "<group>"; };
+		189944FF16608B0000C3C8F4 /* MyAppsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppsViewController.m; sourceTree = "<group>"; };
+		1899450116608B5300C3C8F4 /* myApps.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = myApps.plist; sourceTree = "<group>"; };
+		1899450316608FD200C3C8F4 /* ape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ape.png; sourceTree = "<group>"; };
+		1899450416608FD200C3C8F4 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		1899450516608FD200C3C8F4 /* note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note.png; sourceTree = "<group>"; };
+		1899450616608FD200C3C8F4 /* noteplus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noteplus.png; sourceTree = "<group>"; };
+		1899450716608FD200C3C8F4 /* oil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oil.png; sourceTree = "<group>"; };
+		1899450816608FD200C3C8F4 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		1899450916608FD200C3C8F4 /* sepia_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sepia_icon.png; sourceTree = "<group>"; };
+		1899450A16608FD200C3C8F4 /* stickies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stickies.png; sourceTree = "<group>"; };
+		189945131660A92300C3C8F4 /* thumbs_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbs_down.png; sourceTree = "<group>"; };
+		189945141660A92300C3C8F4 /* thumbs_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbs_up.png; sourceTree = "<group>"; };
 		189A0C8F1658B747003ED0D5 /* PreviewFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewFilterViewController.h; sourceTree = "<group>"; };
 		189A0C901658B747003ED0D5 /* PreviewFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewFilterViewController.m; sourceTree = "<group>"; };
 		189C5A3016593817000378DA /* s3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = s3.png; sourceTree = "<group>"; };
@@ -649,6 +674,8 @@
 				18AEE495164E6E8C00D1A3D3 /* MySHKConfigurator.m */,
 				189A0C8F1658B747003ED0D5 /* PreviewFilterViewController.h */,
 				189A0C901658B747003ED0D5 /* PreviewFilterViewController.m */,
+				189944FE16608B0000C3C8F4 /* MyAppsViewController.h */,
+				189944FF16608B0000C3C8F4 /* MyAppsViewController.m */,
 				1F92413A15F741B90089AAAF /* Supporting Files */,
 			);
 			path = PhotoFX;
@@ -657,6 +684,17 @@
 		1F92413A15F741B90089AAAF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				189945131660A92300C3C8F4 /* thumbs_down.png */,
+				189945141660A92300C3C8F4 /* thumbs_up.png */,
+				1899450316608FD200C3C8F4 /* ape.png */,
+				1899450416608FD200C3C8F4 /* menu.png */,
+				1899450516608FD200C3C8F4 /* note.png */,
+				1899450616608FD200C3C8F4 /* noteplus.png */,
+				1899450716608FD200C3C8F4 /* oil.png */,
+				1899450816608FD200C3C8F4 /* search.png */,
+				1899450916608FD200C3C8F4 /* sepia_icon.png */,
+				1899450A16608FD200C3C8F4 /* stickies.png */,
+				1899450116608B5300C3C8F4 /* myApps.plist */,
 				18172B80165A62160073C8E2 /* Default.png */,
 				18172B7E165A52FB0073C8E2 /* linen_light.png */,
 				18172B7C165A515D0073C8E2 /* linen.jpg */,
@@ -1099,6 +1137,17 @@
 				18AE6875165FCF7600144952 /* .gitignore in Resources */,
 				18AE6877165FCF7600144952 /* AppiraterLocalizable.strings in Resources */,
 				18AE6878165FCF7600144952 /* README.md in Resources */,
+				1899450216608B5300C3C8F4 /* myApps.plist in Resources */,
+				1899450B16608FD200C3C8F4 /* ape.png in Resources */,
+				1899450C16608FD200C3C8F4 /* menu.png in Resources */,
+				1899450D16608FD200C3C8F4 /* note.png in Resources */,
+				1899450E16608FD200C3C8F4 /* noteplus.png in Resources */,
+				1899450F16608FD200C3C8F4 /* oil.png in Resources */,
+				1899451016608FD200C3C8F4 /* search.png in Resources */,
+				1899451116608FD200C3C8F4 /* sepia_icon.png in Resources */,
+				1899451216608FD200C3C8F4 /* stickies.png in Resources */,
+				189945151660A92400C3C8F4 /* thumbs_down.png in Resources */,
+				189945161660A92400C3C8F4 /* thumbs_up.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1127,6 +1176,7 @@
 				18938D161659ED7C007196D0 /* MBProgressHUD.m in Sources */,
 				18A28D03165A23D000ABF876 /* ParameterSliderView.m in Sources */,
 				18AE6876165FCF7600144952 /* Appirater.m in Sources */,
+				1899450016608B0000C3C8F4 /* MyAppsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>1.note</key>
+	<dict>
+		<key>info</key>
+		<string>This is another noting application ? Yes, absolute this is a handwritten note application with your finger. Record your ideas with your finger just like a pen. 
+But this is a quiet different noting app with following characteristics:
+
+1. Easy to Use 
+2. Fastest speed of writing
+3. It is colorful 
+
+So simple to use ! That is the most important for most uses. You will understand how to use any functions without any confusion.
+
+Core features also include:
+
+1. Choose 7 different color of the note;
+2. 6 different color of pen;
+3. Easy to erase;
+4. One click to clear all;
+5. Easy share with your friends;
+6. Save your note securely;
+
+Where to use ?
+
+-&gt; Take quick notes during conference meeting;
+-&gt; Brainstorm or thinking 
+-&gt; In classroom
+-&gt; Draw for fun with color
+-&gt; More …</string>
+		<key>icon</key>
+		<string>note.png</string>
+		<key>link</key>
+		<string>itunes.apple.com/app/note-plus/id486030925?ign-mpt=uo%3D6&amp;mt=8#</string>
+		<key>name</key>
+		<string>Note Plus</string>
+	</dict>
+	<key>2.stickies</key>
+	<dict>
+		<key>info</key>
+		<string>Stickies converts your iPad to a handwriting stickies tool. Like the stickies or post-it you used everyday !
+
+Take notes in meeting, brainstorm ideas , illustrate thoughts,paint funny arts, or just quick memo ......
+Depends on your imaginations !
+
+
+1. It is very simple to use
+*************************
+
+Once you open the application, anyone could use it in 3 seconds. That is our goal for design. Keep it simple and useful.
+
+
+2. It is a real sticky note with your finger on iPad 
+***************************************************
+You can turn your iPad into the sticky notes with finger ! Just touch then you get it. That is our pursuit, make iPad better than physical object.
+
+
+Features include:
+*****************
+Create new note and manage note list
+Change pen size,color
+Change note type,color
+Erase function
+Clear All by one click
+Save note as image and email to friends easily
+
+Any questions,please feel free to contact us by email to design4app@gmail.com</string>
+		<key>icon</key>
+		<string>stickies.png</string>
+		<key>link</key>
+		<string>itunes.apple.com/app/stickies/id455507673?l=en&amp;mt=8</string>
+		<key>name</key>
+		<string>Stickies</string>
+	</dict>
+	<key>3.ape</key>
+	<dict>
+		<key>info</key>
+		<string>This application helps to create cool photo effects with professional photography knowledge. 
+If you are PS fan,or just want to share some photo with effect to your friends,you will love this one. 
+
+Compared with other apps,the biggest advantage is the easiness to use with just only one adjustment slider. 
+We have wrapped complex magic algorithm behind and we will continue to concetrate on this.
+
+Easy to share with twitter,facebook,email etc.
+
+Here are some demo result from Flickr 
+http://www.flickr.com/photos/16779604@N03/sets/72157626037242142/
+
+Current supported special effects:
+*** Sepia color,build old photo style ***
+*** Oil Painting ***
+*** Charcoal ***
+*** Sketch, pencil effect ***
+*** Spread ***
+*** Swirl ***
+*** Blur ***
+*** Implode with fun ***
+*** Emboss ***
+*** Vignette ***
+*** Shade ***
+*** Flip&amp;flop ***
+
+More to be continued ......
+
+Supported iOS devices:
+iPad,iPhone,iPod ( iOS 4.0+ )
+
+
+Welcome for further communication via email design4apple@gmail.com
+twitter @design4apple</string>
+		<key>icon</key>
+		<string>ape.png</string>
+		<key>link</key>
+		<string>itunes.apple.com/app/advanced-photo-effects/id417958436?mt=8</string>
+		<key>name</key>
+		<string>Advanced Photo Effects</string>
+	</dict>
+	<key>4.search</key>
+	<dict>
+		<key>info</key>
+		<string>Search photos from flickr gallery for iPhone/iPod (all from 3.0 ) without flickr account login. 
+
+
+It is most easy way to search photos with key words,firstly 32 thumbnail images loaded, load more as you like. When you need see details of interest photo, just click the thumbnail, and you will download the details on demand. This way will help you save traffic cost. 
+
+
+This application can help you find favorite wallpaper and set up as yours. 
+
+
+We provide email for you input feedbacks for us improve more. Also give you easy chance to give rate or comments about this application. 
+</string>
+		<key>icon</key>
+		<string>search.png</string>
+		<key>link</key>
+		<string>itunes.apple.com/app/search-wallpaper-photo-keywords/id406132513?l=en&amp;mt=8</string>
+		<key>name</key>
+		<string>Search Wallpaper Photo with Keywords</string>
+	</dict>
+	<key>5.sepia</key>
+	<dict>
+		<key>info</key>
+		<string>This application provide one-slider controller for you to generate sepia toning effects, and integrate Facebook,Twitter,EMail etc.
+
+Share with your friends, you will get a lot fun ! 
+
+What is sepia toning effects ? 
+from wiki http://en.wikipedia.org/wiki/Photographic_print_toning#Sepia_toning
+
+Popular social network such as facebook and twitter are supported in this app. 
+
+This version is supported both for iPhone&amp;iPad from iOS 3.2. One time purchase for both devices. 
+We are focusing on professional image processing, with simple finger touch application to replace complicated operations using PhotoShop.
+Maximum ease and comfort in usage were our main goals when creating the user interface. Just enjoy experimenting with your photos and leave other concerns aside!
+And that’s not all! Focus one point and make it best !!! </string>
+		<key>icon</key>
+		<string>sepia_icon.png</string>
+		<key>link</key>
+		<string>itunes.apple.com/app/photo-fun-with-sepia-effect/id404779889?mt=8</string>
+		<key>name</key>
+		<string>Photo Fun with Sepia Effect</string>
+	</dict>
+	<key>6.oil</key>
+	<dict>
+		<key>info</key>
+		<string>Turn any photos into oil painting effects with your finger, share with your friends immediately with facebook,twitter,or email.
+
+This version is supported both for iPhone&amp;iPad from iOS 3.2. One time purchase for both devices. 
+
+This application is unique professional oil painting photo effects &amp; filters application. 
+We are focusing on professional image processing, with simple finger touch application to replace complicated operations using PhotoShop.
+Maximum ease and comfort in usage were our main goals when creating the user interface. Just enjoy experimenting with your photos and leave other concerns aside!</string>
+		<key>icon</key>
+		<string>oil.png</string>
+		<key>link</key>
+		<string>itunes.apple.com/app/photo-fun-with-oil-painting/id404555631?mt=8</string>
+		<key>name</key>
+		<string>Photo Fun with Oil Painting</string>
+	</dict>
+	<key>7.menu</key>
+	<dict>
+		<key>info</key>
+		<string>Photo is the key to let you know more before ordering, or eating any Chinese food. This app provides 400+ thumbnail photos for each dish, 400+ big detailed photo for each. 
+
+
+For each dish, following information are given: 
+
+--- 5 main categories: breakfast,vegetable,meat,soup and snack; 
+--- table list show in each category; 
+--- thumb photo for each dish; 
+--- standard English name ; 
+--- Chinese name and Pinyin; 
+--- high quality detail photo; 
+
+Why develop this application ? 
+
+--- Help people to know more about real Chinese food. 
+
+Who could use this application ? 
+
+--- If you want to order carry out food from Chinese restaurants; 
+--- If you travel to China; 
+--- If you live in China and do not know much about Chinese; 
+
+
+How to use ? 
+
+--- Very easy to use, photo and English name can really help you. You can show the photo to Chinese waiters, or pronounce according to PinYIn. </string>
+		<key>icon</key>
+		<string>menu.png</string>
+		<key>link</key>
+		<string>itunes.apple.com/app/handy-menu/id375283593?l=en&amp;mt=8</string>
+		<key>name</key>
+		<string>Hany Chinese Food Menu</string>
+	</dict>
+</dict>
+</plist>
