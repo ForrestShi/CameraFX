@@ -73,6 +73,10 @@
     [super viewWillAppear:animated];
     DLog(@"...");
     [self.navigationController setNavigationBarHidden:NO];
+    if (self.photoCarousel) {
+        [self.photoCarousel reloadData];
+        [self.photoCarousel scrollToItemAtIndex:[displayImages count] animated:YES];
+    }
 }
 
 
@@ -122,6 +126,7 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     
+    [self refreshUI];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -188,18 +193,6 @@
 #endif
 }
 
-- (void)refreshCarousel{
-    
-    if (self.photoCarousel.type == iCarouselTypeWheel || self.photoCarousel.type == iCarouselTypeInvertedWheel ||self.photoCarousel.type == iCarouselTypeRotary || self.photoCarousel.type == iCarouselTypeInvertedRotary ||
-        self.photoCarousel.type == iCarouselTypeCylinder || self.photoCarousel.type == iCarouselTypeInvertedCylinder) {
-        [self.photoCarousel scrollToItemAtIndex:([displayImages count]-1) duration:1.];
-        
-    }else{
-        [self.photoCarousel scrollToItemAtIndex:[displayImages count] duration:1.];
-    }
-
-}
-
 - (void)refreshUI{
     if ([displayImages count] == 0 ) {
         self.filterButton.enabled = NO;
@@ -216,35 +209,21 @@
 }
 
 - (IBAction)deleteImage{
-    
     if ([displayImages count] == 0 ) {
         [self refreshUI];
         return;
     }
+    static BOOL sureToDelete = YES;
+    sureToDelete = !sureToDelete;
     
-    NSInteger nextIndex = self.photoCarousel.currentItemIndex + 1 ;
-    if (nextIndex >= [displayImages count] ) {
-        //last item
-        nextIndex = self.photoCarousel.currentItemIndex-1;
-        if (nextIndex < 0 ) {
-            nextIndex = 0;
-        }
-    }else if (nextIndex == 1 ){
-        //first item
-        nextIndex = 0;
+    if (sureToDelete) {
+        [displayImages removeObjectAtIndex:self.photoCarousel.currentItemIndex];
+        [self.photoCarousel removeItemAtIndex:self.photoCarousel.currentItemIndex animated:YES];
+        [self refreshUI];
+        [self.deleteButton setTintColor:[UIColor clearColor]];
     }else{
-        //normal item
-        nextIndex--;
+        [self.deleteButton setTintColor:[UIColor redColor]];
     }
-    
-    
-    [self.photoCarousel scrollToItemAtIndex:nextIndex duration:1.];
-
-    [displayImages removeObjectAtIndex:self.photoCarousel.currentItemIndex];
-    [self.photoCarousel reloadData];
-    
-    [self refreshUI];
-
 }
 
 - (IBAction)shareImage
@@ -293,10 +272,9 @@
     
     GPUImageFilter *selectedFilter = [[FSGPUImageFilterManager sharedFSGPUImageFilterManager] createGPUImageFilter:filterType];
     UIImage *filteredImage = [selectedFilter imageByFilteringImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex]];
-    [displayImages addObject:filteredImage];
-    [self.photoCarousel reloadData];
-    [self refreshCarousel];
-    
+    [displayImages insertObject:filteredImage atIndex:self.photoCarousel.currentItemIndex+1];
+    [self.photoCarousel insertItemAtIndex:self.photoCarousel.currentItemIndex+1 animated:YES];
+    [self.photoCarousel scrollToItemAtIndex:self.photoCarousel.currentItemIndex+1 animated:YES];
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -336,12 +314,15 @@
 
 - (void)imagePickerController:(UIImagePickerController *)photoPicker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    
-    [displayImages addObject:[info valueForKey:UIImagePickerControllerOriginalImage]];
-    
-    //[self.photoCarousel reloadDataToLastItem];
-    [self.photoCarousel reloadData];
-    [self refreshCarousel];
+    if (self.photoCarousel.currentItemIndex >= 0 && self.photoCarousel.currentItemIndex < 1000 ) {
+        [displayImages insertObject:[info valueForKey:UIImagePickerControllerOriginalImage] atIndex:self.photoCarousel.currentItemIndex];
+        [self.photoCarousel insertItemAtIndex:self.photoCarousel.currentItemIndex animated:YES];
+
+    }else{
+        [displayImages insertObject:[info valueForKey:UIImagePickerControllerOriginalImage] atIndex:0];
+        [self.photoCarousel insertItemAtIndex:0 animated:YES];
+
+    }
     
     [photoPicker dismissViewControllerAnimated:YES completion:NULL];
     
@@ -374,14 +355,30 @@
     {
         UIImage *image = [[UIImage alloc] initWithData:imageData];
         [displayImages addObject:image];
-    
+        
         runOnMainQueueWithoutDeadlocking(^{
-
+            
             [self.photoCarousel reloadData];
-            [self refreshCarousel];
+            //[self refreshCarousel];
             [self refreshUI];
         });
         
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Capture Error" message:@"Unable to capture photo." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [alert show];
+    }
+}
+
+- (void)addStillImage:(NSData *)imageData withError:(NSError *)error
+{
+    if(!error)
+    {
+        UIImage *image = [[UIImage alloc] initWithData:imageData];
+        [displayImages addObject:image];
+        [self.photoCarousel reloadData];
     }
     else
     {
@@ -483,10 +480,6 @@
             i = 0;
         }
         
-        //UIImage *newImage = [sepiaFlt imageByFilteringImage:curImage];
-        //[displayImages replaceObjectAtIndex:self.photoCarousel.currentItemIndex withObject:newImage];
-        //[self.photoCarousel reloadData];
-   
         UIImage *newImage = [sepiaFlt imageByFilteringImage:curImage];
         [displayImages replaceObjectAtIndex:self.photoCarousel.currentItemIndex withObject:newImage];
         

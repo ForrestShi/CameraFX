@@ -19,7 +19,6 @@
 		1827BB7D164F929900A869B9 /* Icon512.png in Resources */ = {isa = PBXBuildFile; fileRef = 1827BB76164F929900A869B9 /* Icon512.png */; };
 		1827BB7F164F935500A869B9 /* Icon72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1827BB7E164F935500A869B9 /* Icon72@2x.png */; };
 		1827BB81164F93CD00A869B9 /* Icon58.png in Resources */ = {isa = PBXBuildFile; fileRef = 1827BB80164F93CD00A869B9 /* Icon58.png */; };
-		1827BB83164F94E900A869B9 /* camera_action.png in Resources */ = {isa = PBXBuildFile; fileRef = 1827BB82164F94E900A869B9 /* camera_action.png */; };
 		183948A71658268C00FD7A99 /* fx.png in Resources */ = {isa = PBXBuildFile; fileRef = 183948A61658268C00FD7A99 /* fx.png */; };
 		18938D161659ED7C007196D0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 18938D151659ED7C007196D0 /* MBProgressHUD.m */; };
 		18963ED2164FC9FD0087B1E6 /* FSGPUImageFilterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18963ED1164FC9FD0087B1E6 /* FSGPUImageFilterManager.m */; };
@@ -54,7 +53,6 @@
 		18A4331C164E1D0300C58F27 /* CameraFXManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4331B164E1D0300C58F27 /* CameraFXManager.m */; };
 		18A43325164E22EF00C58F27 /* FXImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A43322164E22EF00C58F27 /* FXImageView.m */; };
 		18A43326164E22EF00C58F27 /* UIImage+FX.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A43324164E22EF00C58F27 /* UIImage+FX.m */; };
-		18A4332B164E2CAE00C58F27 /* zune.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18A4332A164E2CAE00C58F27 /* zune.jpg */; };
 		18A5541B164948C1007AF252 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 18A5541A164948C1007AF252 /* README.md */; };
 		18AE6875165FCF7600144952 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 18AE6859165FCF7500144952 /* .gitignore */; };
 		18AE6876165FCF7600144952 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AE685B165FCF7500144952 /* Appirater.m */; };
@@ -388,7 +386,6 @@
 		1827BB76164F929900A869B9 /* Icon512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon512.png; sourceTree = "<group>"; };
 		1827BB7E164F935500A869B9 /* Icon72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon72@2x.png"; sourceTree = "<group>"; };
 		1827BB80164F93CD00A869B9 /* Icon58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon58.png; sourceTree = "<group>"; };
-		1827BB82164F94E900A869B9 /* camera_action.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_action.png; sourceTree = "<group>"; };
 		183948A61658268C00FD7A99 /* fx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fx.png; sourceTree = "<group>"; };
 		18938D141659ED7C007196D0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		18938D151659ED7C007196D0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
@@ -432,7 +429,6 @@
 		18A43322164E22EF00C58F27 /* FXImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXImageView.m; sourceTree = "<group>"; };
 		18A43323164E22EF00C58F27 /* UIImage+FX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FX.h"; sourceTree = "<group>"; };
 		18A43324164E22EF00C58F27 /* UIImage+FX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FX.m"; sourceTree = "<group>"; };
-		18A4332A164E2CAE00C58F27 /* zune.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zune.jpg; sourceTree = "<group>"; };
 		18A5541A164948C1007AF252 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		18AE6859165FCF7500144952 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		18AE685A165FCF7500144952 /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appirater.h; sourceTree = "<group>"; };
@@ -732,7 +728,6 @@
 				189C5A3116593817000378DA /* s2.png */,
 				189C5A3216593817000378DA /* s1.png */,
 				183948A61658268C00FD7A99 /* fx.png */,
-				1827BB82164F94E900A869B9 /* camera_action.png */,
 				1827BB80164F93CD00A869B9 /* Icon58.png */,
 				1827BB7E164F935500A869B9 /* Icon72@2x.png */,
 				1827BB70164F929800A869B9 /* Icon48.png */,
@@ -743,7 +738,6 @@
 				1827BB75164F929900A869B9 /* Icon114.png */,
 				1827BB76164F929900A869B9 /* Icon512.png */,
 				18AEE4CE164E9B7E00D1A3D3 /* MySHKSharers.plist */,
-				18A4332A164E2CAE00C58F27 /* zune.jpg */,
 				1F92413B15F741B90089AAAF /* PhotoFX-Info.plist */,
 				1F92413C15F741B90089AAAF /* InfoPlist.strings */,
 				1F92413F15F741B90089AAAF /* main.m */,
@@ -1134,7 +1128,6 @@
 				1F92413E15F741B90089AAAF /* InfoPlist.strings in Resources */,
 				1F92414715F741B90089AAAF /* MainStoryboard.storyboard in Resources */,
 				18A5541B164948C1007AF252 /* README.md in Resources */,
-				18A4332B164E2CAE00C58F27 /* zune.jpg in Resources */,
 				18AEE4CF164E9B7E00D1A3D3 /* MySHKSharers.plist in Resources */,
 				1827BB77164F929900A869B9 /* Icon48.png in Resources */,
 				1827BB78164F929900A869B9 /* Icon.png in Resources */,
@@ -1145,7 +1138,6 @@
 				1827BB7D164F929900A869B9 /* Icon512.png in Resources */,
 				1827BB7F164F935500A869B9 /* Icon72@2x.png in Resources */,
 				1827BB81164F93CD00A869B9 /* Icon58.png in Resources */,
-				1827BB83164F94E900A869B9 /* camera_action.png in Resources */,
 				183948A71658268C00FD7A99 /* fx.png in Resources */,
 				189C5A3316593817000378DA /* s3.png in Resources */,
 				189C5A3416593817000378DA /* s2.png in Resources */,
@@ -1329,7 +1321,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3E9D8913-8F2F-4E9B-BBCD-C23BB9CA98BA";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "./submodules/sharekit/Classes/ShareKit/** ./submodules/sharekit/Submodules/**";
+				USER_HEADER_SEARCH_PATHS = "./submodules/sharekit/Classes/ShareKit/** ./submodules/sharekit/Submodules/** ./submodules/fppopover/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = AppStore;
@@ -1408,7 +1400,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "./submodules/sharekit/Classes/ShareKit/** ./submodules/sharekit/Submodules/**";
+				USER_HEADER_SEARCH_PATHS = "./submodules/sharekit/Classes/ShareKit/** ./submodules/sharekit/Submodules/** ./submodules/fppopover/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1428,7 +1420,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "./submodules/sharekit/Classes/ShareKit/** ./submodules/sharekit/Submodules/**";
+				USER_HEADER_SEARCH_PATHS = "./submodules/sharekit/Classes/ShareKit/** ./submodules/sharekit/Submodules/** ./submodules/fppopover/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

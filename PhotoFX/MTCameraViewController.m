@@ -12,7 +12,8 @@
     GPUImageFilter *filter;
     
     PreviewFilterViewController *previewFiltersVC;
-    ParameterSliderView         *sliderView;
+    NSTimer *captureTimer;
+    
 }
 @property (nonatomic,weak) IBOutlet UIBarButtonItem *filterItem;
 @property (nonatomic,weak) IBOutlet UIButton *switchButton;
@@ -39,17 +40,6 @@
     [super viewWillAppear:animated];
     DLog(@"...");
     [self.navigationController setNavigationBarHidden:YES];
-    
-    if (filter == nil || ![filter isKindOfClass:[GPUImageSepiaFilter class]]) {
-        if (sliderView) {
-            sliderView.hidden = YES;
-        }
-    }else{
-        if (sliderView) {
-            sliderView.hidden = NO; 
-        }
-    }
-    
 }
 
 - (void)viewDidLoad
@@ -80,17 +70,7 @@
         [stillCamera startCameraCapture];
  
     }
-    
-    CGSize viewSize = self.view.frame.size;
-    
-    sliderView = [[ParameterSliderView alloc] initWithFrame:CGRectMake(IS_IPAD ? 100. : 40., viewSize.height/2,viewSize.width - (IS_IPAD ? 100. : 40 )*2 , IS_IPAD ? 22. : 14.)];
-    sliderView.delegate = self;
-    [sliderView setInitialValue:0.5]; // 0. -- 1.
-    [sliderView setMaxValue:1.];
-    [sliderView setMinValue:0.];
-    
-    [self.view addSubview:sliderView];
-    
+        
     if ([stillCamera isFrontFacingCameraPresent] == NO ) {
         self.switchButton.hidden = YES;
     }
@@ -126,7 +106,7 @@
     [self.view addGestureRecognizer:pinchGesture];
     [self.view addGestureRecognizer:roateGesture];
     [self.view addGestureRecognizer:longPressGesture];
-    //[self.view addGestureRecognizer:panGesture];
+    [self.view addGestureRecognizer:panGesture];
     //[sliderView addGestureRecognizer:panGesture];
     
 }
@@ -141,17 +121,52 @@
                 self.switchButton.alpha = hideCtrls ? 0.:1.;
             }
             self.backButton.alpha = hideCtrls ? 0.:1.;
-            sliderView.alpha = hideCtrls ? 0.:1.;
             
             hideCtrls = !hideCtrls;
         }];
     }
 }
 
+- (void)capturePhotoAuto{
+    DLog(@"capture auto");
+    
+    // Snap Image from GPU camera, send back to main view controller
+    [stillCamera capturePhotoAsPNGProcessedUpToFilter:filter withCompletionHandler:^(NSData *processedPNG, NSError *error)
+     {
+         if([self.delegate respondsToSelector:@selector(addStillImage:withError:)])
+         {
+             [self.delegate addStillImage:processedPNG withError:error];
+         }
+     }];
+
+}
+
 - (void)onLongPressing:(UILongPressGestureRecognizer*)gesture{
-    if (gesture.state == UIGestureRecognizerStateBegan) {
+    
+    if (gesture.state == UIGestureRecognizerStateChanged) {
+        
+        if (!captureTimer) {
+//            captureTimer = [NSTimer timerWithTimeInterval:1. target:self selector:@selector(capturePhotoAuto) userInfo:nil repeats:YES];
+//            [[NSRunLoop currentRunLoop] addTimer:captureTimer forMode:NSDefaultRunLoopMode];
+            
+            captureTimer = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(capturePhotoAuto) userInfo:nil repeats:YES];
+            [captureTimer fire];
+        }
+
     }else if(gesture.state == UIGestureRecognizerStateEnded){
         
+        if (captureTimer) {
+            [captureTimer invalidate];
+            captureTimer = nil;
+        }
+        
+        [stillCamera removeAllTargets];
+        [filter removeAllTargets];
+        
+        runOnMainQueueWithoutDeadlocking(^{
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        });
+
     }
 }
 
@@ -163,16 +178,18 @@
     if (stillCamera) {
         DLog(@"switch camera");
         
+        static BOOL front = YES;
         CATransition *animation = [CATransition animation];
         animation.delegate = self;
         animation.duration = .3;
         animation.timingFunction = UIViewAnimationCurveEaseInOut;
-        animation.type = @"cameraIris";
-        //animation.type = @"flip";
-        //animation.subtype = @"fromLeft";
+        //animation.type = @"cameraIris";
+        animation.type = @"flip";
+        animation.subtype = front ? @"fromLeft":@"fromRight";
         [self.view.layer addAnimation:animation forKey:nil];
         
         [stillCamera rotateCamera];
+        front = !front;
     }
 }
 
@@ -193,28 +210,47 @@
     [self captureImage:nil];
 }
 
-- (void)onPan:(UIPanGestureRecognizer*)gesture{
-    DLog(@"%@",@"paning");
-    //TODO: transfer all pan event to sliderview 
-}
 
--(void)parameterSliderValueChanged:(ParameterSliderView*)_parameterSlider{
-    DLog(@"slider %f",sliderView.value);
-    if (filter) {
-        //        if ([filter isKindOfClass:[GPUImageSmoothToonFilter class]]) {
-        //            GPUImageSmoothToonFilter *toonFilter = (GPUImageSmoothToonFilter*)filter;
-        //            [toonFilter setBlurSize:slider.value];
-        //        }
-        if ([filter isKindOfClass:[GPUImageSepiaFilter class]]) {
-            GPUImageSepiaFilter *sepiaFilter = (GPUImageSepiaFilter*)filter;
-            [sepiaFilter setIntensity:sliderView.value * 3. ];
-        }
+- (void)adjustFilter:(float)intensity{
+
+    if ([filter isKindOfClass:[GPUImageSepiaFilter class]]) {
+        GPUImageSepiaFilter *sepiaFilter = (GPUImageSepiaFilter*)filter;
+        [sepiaFilter setIntensity:intensity ];
     }
 
 }
+
+- (void)onPan:(UIPanGestureRecognizer*)gesture{
+    
+    CGPoint translate = [gesture translationInView:self.view];
+    
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    }else if (gesture.state == UIGestureRecognizerStateEnded){
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }else if (gesture.state == UIGestureRecognizerStateChanged){
+    
+        static float intensity = 1.;
+        if (translate.x > 0 ) {
+            intensity += fabsf(translate.x)/self.view.bounds.size.width/10.;
+            if (intensity > 2.) {
+                intensity = 2.;
+                return;
+            }
+        }else{
+            intensity -= fabsf(translate.x)/self.view.bounds.size.width/10.;
+            if (intensity < -1.) {
+                intensity = -1.;
+                return;
+            }
+        }
+        [self adjustFilter:intensity];
+
+    }
+}
+
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
     
-
     if (CGRectContainsPoint(self.filterItem.customView.frame, [gestureRecognizer locationInView:self.view]) || CGRectContainsPoint(self.switchButton.frame, [gestureRecognizer locationInView:self.view] ) || CGRectContainsPoint(self.backButton.frame, [gestureRecognizer locationInView:self.view] ) || CGRectContainsPoint(self.toolBar.frame, [gestureRecognizer locationInView:self.view] ) )
     {
         return NO;
@@ -253,16 +289,6 @@
     [filter addTarget:filterView];
     [stillCamera addTarget:filter];
     
-    if (filter == nil || ![filter isKindOfClass:[GPUImageSepiaFilter class]]) {
-        if (sliderView) {
-            sliderView.hidden = YES;
-        }
-    }else{
-        if (sliderView) {
-            sliderView.hidden = NO;
-        }
-    }
-
     [self dismissModalViewControllerAnimated:YES];
 }
 

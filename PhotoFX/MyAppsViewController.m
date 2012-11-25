@@ -186,6 +186,10 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+    
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
+    
+    //support all , not perfect now
     self.titleLabel.frame = CGRectMake(self.view.bounds.size.width/2 - 150., self.view.bounds.size.height/4, 300., 44);
     self.iconCarousel.frame = self.view.bounds;
     
@@ -200,7 +204,7 @@
     }
     
         
-    return YES;
+    //return YES;
 }
 
 - (MyApp*)currentApp{
