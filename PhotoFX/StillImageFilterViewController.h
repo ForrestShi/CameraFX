@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "GPUImage.h"
+#import "FSGPUImageFilterManager.h"
 
 @interface StillImageFilterViewController : UIViewController
 
 
 @property (nonatomic,strong) UIImage *processImage;
-@property (nonatomic,strong) GPUImageFilter *imageFilter;
+@property(nonatomic, unsafe_unretained) id delegate;
 
-- (id)initWithImage:(UIImage*)image andFilter:(GPUImageFilter*)filter;
+- (id)initWithImage:(UIImage*)image andFilterType:(GPUImageShowcaseFilterType)filterType;
 
 @end

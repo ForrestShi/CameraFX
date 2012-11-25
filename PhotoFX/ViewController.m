@@ -17,8 +17,6 @@ static BOOL sureToDelete = YES;
 @interface ViewController () <PreviewFilterDelegate , UIGestureRecognizerDelegate>
 {
     NSMutableArray *displayImages;
-    GPUImageStillCamera *stillCamera;
-    GPUImageFilter      *filter;
     MTCameraViewController *cameraViewController;
     UIPopoverController *popOver;
     NSTimer *adjustFXTimer;
@@ -79,10 +77,10 @@ static BOOL sureToDelete = YES;
     [super viewWillAppear:animated];
     DLog(@"...");
     [self.navigationController setNavigationBarHidden:NO];
-    if (self.photoCarousel) {
-        [self.photoCarousel reloadData];
-        [self.photoCarousel scrollToItemAtIndex:[displayImages count] animated:YES];
-    }
+//    if (self.photoCarousel) {
+//        [self.photoCarousel reloadData];
+//        [self.photoCarousel scrollToItemAtIndex:[displayImages count] animated:YES];
+//    }
 }
 
 
@@ -276,11 +274,8 @@ static BOOL sureToDelete = YES;
 
 - (IBAction)stillImageFilterAdjust{
     
-    if (!sepiaFlt) {
-        sepiaFlt = [[GPUImageSepiaFilter alloc] init];
-    }
-    StillImageFilterViewController *filterVC = [[StillImageFilterViewController alloc] initWithImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex] andFilter:sepiaFlt];
-
+    StillImageFilterViewController *filterVC = [[StillImageFilterViewController alloc] initWithImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex] andFilterType:GPUIMAGE_SEPIA];
+    filterVC.delegate = self;
     
     filterVC.modalTransitionStyle = UIModalTransitionStylePartialCurl;
     [self presentModalViewController:filterVC animated:YES];
@@ -403,6 +398,7 @@ static BOOL sureToDelete = YES;
             
             [self.photoCarousel reloadData];
             //[self refreshCarousel];
+            [self.photoCarousel scrollToItemAtIndex:[displayImages count] animated:YES];
             [self refreshUI];
         });
         
@@ -422,6 +418,7 @@ static BOOL sureToDelete = YES;
         UIImage *image = [[UIImage alloc] initWithData:imageData];
         [displayImages addObject:image];
         [self.photoCarousel reloadData];
+        [self.photoCarousel scrollToItemAtIndex:[displayImages count] animated:YES];
     }
     else
     {
@@ -429,6 +426,11 @@ static BOOL sureToDelete = YES;
         
         [alert show];
     }
+}
+
+- (void)updateStillImage:(UIImage*)newImage{
+    [displayImages replaceObjectAtIndex:self.photoCarousel.currentItemIndex withObject:newImage];
+    [self.photoCarousel reloadData];
 }
 
 #pragma mark 
@@ -529,7 +531,6 @@ static BOOL sureToDelete = YES;
     
     UIImage *newImage = [sepiaFlt imageFromCurrentlyProcessedOutput];
     
-        //UIImage *newImage = [sepiaFlt imageByFilteringImage:curImage];
         [displayImages replaceObjectAtIndex:self.photoCarousel.currentItemIndex withObject:newImage];
         
         [self.photoCarousel reloadItemAtIndex:self.photoCarousel.currentItemIndex animated:NO];

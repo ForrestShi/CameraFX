@@ -6,6 +6,7 @@
 
 - (void)didSelectStillImage:(NSData *)image withError:(NSError *)error;
 - (void)addStillImage:(NSData *)image withError:(NSError *)error;
+- (void)updateStillImage:(UIImage *)image;
 
 @end
 

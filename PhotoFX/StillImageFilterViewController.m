@@ -8,21 +8,27 @@
 
 #import "StillImageFilterViewController.h"
 #import "MBProgressHUD.h"
+#import "CMPopTipView.h"
+#import "MTCameraViewController.h"
 
-@interface StillImageFilterViewController (){
-    UIImageView *processImgView;    
+@interface StillImageFilterViewController ()<CMPopTipViewDelegate>{
+    UIImageView *processImgView;
+    GPUImageFilter *_filter;
+    GPUImageShowcaseFilterType _filterType;
+    GPUImagePicture *_stllCamera;
 }
-
+@property (nonatomic,strong) CMPopTipView *roundRectButtonPopTipView;
 @end
 
 @implementation StillImageFilterViewController
-@synthesize processImage,imageFilter;
+@synthesize processImage,delegate;
+@synthesize roundRectButtonPopTipView;
 
-- (id)initWithImage:(UIImage*)image andFilter:(GPUImageFilter*)filter{
+- (id)initWithImage:(UIImage*)image andFilterType:(GPUImageShowcaseFilterType)filterType{
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         self.processImage = image;
-        self.imageFilter = filter;
+        _filterType = filterType;
     }
     return self;
 }
@@ -40,8 +46,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    processImgView = [[UIImageView alloc] initWithImage:self.processImage];
+    processImgView = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:self.processImage.CGImage]];
     processImgView.autoresizingMask = YES;
+    processImgView.contentMode = UIViewContentModeScaleAspectFit;
     processImgView.frame = self.view.frame;
     [self.view addSubview:processImgView];
     
@@ -50,7 +57,61 @@
 
     [self.view addGestureRecognizer:panGesture];
     
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap)];
+    doubleTap.numberOfTapsRequired = 2;
+    [self.view addGestureRecognizer:doubleTap];
     
+    UIButton *tipBtn = [UIButton buttonWithType:UIButtonTypeInfoDark];
+    tipBtn.frame = CGRectMake(self.view.bounds.size.width - 60., 50., 44., 44.);
+    [tipBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:tipBtn];
+    
+    _stllCamera = [[GPUImagePicture alloc] initWithImage:self.processImage];
+    if (_filterType == GPUIMAGE_SEPIA) {
+        _filter = [[GPUImageSepiaFilter alloc] init];
+    }
+    [_stllCamera addTarget:_filter];
+    
+}
+
+- (void)doubleTap{
+    
+    if([self.delegate respondsToSelector:@selector(updateStillImage:)])
+    {
+        self.processImage = processImgView.image;
+        [self.delegate updateStillImage:self.processImage];
+    }
+    else
+    {
+        DLog(@"Delegate did not respond to message");
+    }
+
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)buttonAction:(id)sender {
+    // Toggle popTipView when a standard UIButton is pressed
+    if (nil == self.roundRectButtonPopTipView) {
+        self.roundRectButtonPopTipView = [[CMPopTipView alloc] initWithMessage:@"Tips:1.Return back by top touch.2.Adjust effect by paning left/right. 3.Save and return by double taps."];
+        self.roundRectButtonPopTipView.delegate = self;
+        self.roundRectButtonPopTipView.backgroundColor = [UIColor lightGrayColor];
+        self.roundRectButtonPopTipView.textColor = [UIColor darkTextColor];
+        self.roundRectButtonPopTipView.alpha = 0.8;
+        
+        UIButton *button = (UIButton *)sender;
+        [self.roundRectButtonPopTipView presentPointingAtView:button inView:self.view animated:YES];
+    }
+    else {
+        // Dismiss
+        [self.roundRectButtonPopTipView dismissAnimated:YES];
+        self.roundRectButtonPopTipView = nil;
+    }
+}
+
+#pragma mark CMPopTipViewDelegate methods
+- (void)popTipViewWasDismissedByUser:(CMPopTipView *)popTipView {
+    // User can tap CMPopTipView to dismiss it
+    self.roundRectButtonPopTipView = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,29 +120,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)adjustFilter:(float)intensity{
-    
-    if ([self.imageFilter isKindOfClass:[GPUImageSepiaFilter class]]) {
-        GPUImageSepiaFilter *sepiaFilter = (GPUImageSepiaFilter*)self.imageFilter;
-        [sepiaFilter setIntensity:intensity ];
-    }
-}
-
 - (void)onPan:(UIPanGestureRecognizer*)gesture{
     
     CGPoint translate = [gesture translationInView:self.view];
     
+    UIImage *newImg = nil;
     if (gesture.state == UIGestureRecognizerStateBegan) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     }else if (gesture.state == UIGestureRecognizerStateEnded){
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }else if (gesture.state == UIGestureRecognizerStateChanged){
         
-        if ([self.imageFilter isKindOfClass:[GPUImageSepiaFilter class]]) {
-            GPUImageSepiaFilter *sepiaFilter = (GPUImageSepiaFilter*)self.imageFilter;
+        if (_filterType  == GPUIMAGE_SEPIA ) {
             
+            GPUImageSepiaFilter *sepiaFlt = [[GPUImageSepiaFilter alloc] init];
             static float intensity = 1.;
-            intensity = sepiaFilter.intensity;
             if (translate.x > 0 ) {
                 intensity += fabsf(translate.x)/self.view.bounds.size.width/10.;
                 if (intensity > 2.) {
@@ -95,8 +148,10 @@
                     return;
                 }
             }
-            [sepiaFilter setIntensity:intensity];
-            UIImage *newImg = [sepiaFilter imageFromCurrentlyProcessedOutput];
+            DLog(@"update image %f",intensity);
+            
+            [sepiaFlt setIntensity:intensity];
+            newImg = [sepiaFlt imageByFilteringImage:self.processImage];
             [processImgView setImage:newImg];
         }
     }

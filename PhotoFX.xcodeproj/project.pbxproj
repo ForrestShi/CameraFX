@@ -24,6 +24,7 @@
 		189495B31661DD5C002F53AC /* fx44.png in Resources */ = {isa = PBXBuildFile; fileRef = 189495B11661DD5C002F53AC /* fx44.png */; };
 		189495B41661DD5C002F53AC /* fx57.png in Resources */ = {isa = PBXBuildFile; fileRef = 189495B21661DD5C002F53AC /* fx57.png */; };
 		189495B71661DEC8002F53AC /* StillImageFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189495B61661DEC8002F53AC /* StillImageFilterViewController.m */; };
+		189495BB1661F24F002F53AC /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 189495BA1661F24F002F53AC /* CMPopTipView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18963ED2164FC9FD0087B1E6 /* FSGPUImageFilterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18963ED1164FC9FD0087B1E6 /* FSGPUImageFilterManager.m */; };
 		1899450016608B0000C3C8F4 /* MyAppsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189944FF16608B0000C3C8F4 /* MyAppsViewController.m */; };
 		1899450216608B5300C3C8F4 /* myApps.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1899450116608B5300C3C8F4 /* myApps.plist */; };
@@ -396,6 +397,8 @@
 		189495B21661DD5C002F53AC /* fx57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fx57.png; sourceTree = "<group>"; };
 		189495B51661DEC8002F53AC /* StillImageFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StillImageFilterViewController.h; sourceTree = "<group>"; };
 		189495B61661DEC8002F53AC /* StillImageFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StillImageFilterViewController.m; sourceTree = "<group>"; };
+		189495B91661F24F002F53AC /* CMPopTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPopTipView.h; sourceTree = "<group>"; };
+		189495BA1661F24F002F53AC /* CMPopTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPopTipView.m; sourceTree = "<group>"; };
 		18963ED0164FC9FD0087B1E6 /* FSGPUImageFilterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGPUImageFilterManager.h; sourceTree = "<group>"; };
 		18963ED1164FC9FD0087B1E6 /* FSGPUImageFilterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGPUImageFilterManager.m; sourceTree = "<group>"; };
 		189944FE16608B0000C3C8F4 /* MyAppsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppsViewController.h; sourceTree = "<group>"; };
@@ -538,6 +541,7 @@
 		1827BB5E164F688800A869B9 /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				189495B81661F24F002F53AC /* CMPopTipView */,
 				189945171660B19100C3C8F4 /* FXLabel */,
 				18AE6858165FCF7500144952 /* rate */,
 				18A28D01165A23D000ABF876 /* ParameterSliderView.h */,
@@ -551,6 +555,16 @@
 			);
 			name = 3rdParty;
 			sourceTree = "<group>";
+		};
+		189495B81661F24F002F53AC /* CMPopTipView */ = {
+			isa = PBXGroup;
+			children = (
+				189495B91661F24F002F53AC /* CMPopTipView.h */,
+				189495BA1661F24F002F53AC /* CMPopTipView.m */,
+			);
+			name = CMPopTipView;
+			path = submodules/tipview/CMPopTipView;
+			sourceTree = SOURCE_ROOT;
 		};
 		189945171660B19100C3C8F4 /* FXLabel */ = {
 			isa = PBXGroup;
@@ -1213,6 +1227,7 @@
 				1899450016608B0000C3C8F4 /* MyAppsViewController.m in Sources */,
 				1899451A1660B19100C3C8F4 /* FXLabel.m in Sources */,
 				189495B71661DEC8002F53AC /* StillImageFilterViewController.m in Sources */,
+				189495BB1661F24F002F53AC /* CMPopTipView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

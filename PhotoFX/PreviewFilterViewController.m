@@ -84,16 +84,16 @@
     [self.navigationController setNavigationBarHidden:NO];
 
 	// Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"linen_light.png"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dark_gray_background.jpg"]];
     
     self.previewCarousel = [[iCarousel alloc] initWithFrame:self.view.frame];
-    self.previewCarousel.type = iCarouselTypeCylinder;
+    self.previewCarousel.type = iCarouselTypeInvertedWheel;
     //self.previewCarousel.vertical = NO;
     self.previewCarousel.bounces = NO;
     self.previewCarousel.clipsToBounds = YES;
     self.previewCarousel.delegate = self;
     self.previewCarousel.dataSource = self;
-    self.previewCarousel.transform = CGAffineTransformMakeRotation(45.);
+    //self.previewCarousel.transform = CGAffineTransformMakeRotation(45.);
     self.previewCarousel.autoresizingMask = YES;
     self.previewCarousel.autoresizesSubviews = YES;
     

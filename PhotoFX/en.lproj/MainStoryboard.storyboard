@@ -62,12 +62,6 @@
                         <color key="backgroundColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="qlM-Gs-z9a">
-                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="FX" width="7" id="eD4-rR-jhT">
-                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="stillImageFilterAdjust" destination="2" id="56k-t9-vZN"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="action" id="4FO-qN-WxZ">
                             <connections>
                                 <action selector="shareImage" destination="2" id="91u-nz-dfv"/>
@@ -80,7 +74,6 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="deleteButton" destination="l46-mb-yvF" id="6V6-rX-SVy"/>
-                        <outlet property="filterButton" destination="eD4-rR-jhT" id="YEN-QY-yKg"/>
                         <outlet property="photoCarousel" destination="4uW-05-3PN" id="uFa-sZ-edU"/>
                         <outlet property="shareButton" destination="4FO-qN-WxZ" id="G9U-eE-3cB"/>
                     </connections>
@@ -115,7 +108,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="SmO-XF-svG"/>
-                                    <barButtonItem style="done" systemItem="pageCurl" id="ygC-Gp-L53">
+                                    <barButtonItem title="FX" style="done" id="ygC-Gp-L53">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <action selector="applyImageFilter:" destination="idv-MW-BFP" id="goh-2t-5Zw"/>
@@ -205,48 +198,6 @@
         <image name="back.png" width="128" height="128"/>
         <image name="switch0.png" width="95" height="47"/>
     </resources>
-    <classes>
-        <class className="GPUImageView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GPUImageView.h"/>
-        </class>
-        <class className="MTCameraViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTCameraViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="back:"/>
-                <relationship kind="action" name="captureImage:"/>
-                <relationship kind="action" name="switchCamera:"/>
-                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="cameraView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="filterItem" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="switchButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
-            </relationships>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="applyImageFilter:"/>
-                <relationship kind="action" name="deleteImage"/>
-                <relationship kind="action" name="photoFromAlbum:"/>
-                <relationship kind="action" name="refreshCarouselStyle"/>
-                <relationship kind="action" name="shareImage"/>
-                <relationship kind="action" name="showInfo"/>
-                <relationship kind="action" name="stillImageFilterAdjust"/>
-                <relationship kind="outlet" name="deleteButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="filterButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="photoCarousel" candidateClass="iCarousel"/>
-                <relationship kind="outlet" name="refreshButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="shareButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="iCarousel" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/iCarousel.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dataSource"/>
-                <relationship kind="outlet" name="delegate"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

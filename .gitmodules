@@ -16,3 +16,6 @@
 [submodule "submodules/fppopover"]
 	path = submodules/fppopover
 	url = git://github.com/50pixels/FPPopover.git
+[submodule "submodules/tipview"]
+	path = submodules/tipview
+	url = git://github.com/chrismiles/CMPopTipView.git
