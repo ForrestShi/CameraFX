@@ -75,6 +75,17 @@ static BOOL sureToDelete = YES;
         }
     }
     
+#elif defined(SEPIACAM_PRO)
+    DLog(@"Sepia Camera Pro");
+    if (!firstTimeToRun) {
+        //first time run
+        for (int i = 1 ; i < 6; i++) {
+            GPUImageSepiaFilter* imageFilter = [[GPUImageSepiaFilter alloc] init];
+            [imageFilter setIntensity:.2*i];
+            [displayImages addObject:[imageFilter imageByFilteringImage:scarlett]];
+        }
+    }
+    
 #endif
     
     [self.photoCarousel reloadData];
