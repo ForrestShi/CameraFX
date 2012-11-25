@@ -146,9 +146,6 @@
     if (gesture.state == UIGestureRecognizerStateChanged) {
         
         if (!captureTimer) {
-//            captureTimer = [NSTimer timerWithTimeInterval:1. target:self selector:@selector(capturePhotoAuto) userInfo:nil repeats:YES];
-//            [[NSRunLoop currentRunLoop] addTimer:captureTimer forMode:NSDefaultRunLoopMode];
-            
             captureTimer = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(capturePhotoAuto) userInfo:nil repeats:YES];
             [captureTimer fire];
         }

@@ -21,6 +21,9 @@
 		1827BB81164F93CD00A869B9 /* Icon58.png in Resources */ = {isa = PBXBuildFile; fileRef = 1827BB80164F93CD00A869B9 /* Icon58.png */; };
 		183948A71658268C00FD7A99 /* fx.png in Resources */ = {isa = PBXBuildFile; fileRef = 183948A61658268C00FD7A99 /* fx.png */; };
 		18938D161659ED7C007196D0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 18938D151659ED7C007196D0 /* MBProgressHUD.m */; };
+		189495B31661DD5C002F53AC /* fx44.png in Resources */ = {isa = PBXBuildFile; fileRef = 189495B11661DD5C002F53AC /* fx44.png */; };
+		189495B41661DD5C002F53AC /* fx57.png in Resources */ = {isa = PBXBuildFile; fileRef = 189495B21661DD5C002F53AC /* fx57.png */; };
+		189495B71661DEC8002F53AC /* StillImageFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189495B61661DEC8002F53AC /* StillImageFilterViewController.m */; };
 		18963ED2164FC9FD0087B1E6 /* FSGPUImageFilterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18963ED1164FC9FD0087B1E6 /* FSGPUImageFilterManager.m */; };
 		1899450016608B0000C3C8F4 /* MyAppsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189944FF16608B0000C3C8F4 /* MyAppsViewController.m */; };
 		1899450216608B5300C3C8F4 /* myApps.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1899450116608B5300C3C8F4 /* myApps.plist */; };
@@ -389,6 +392,10 @@
 		183948A61658268C00FD7A99 /* fx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fx.png; sourceTree = "<group>"; };
 		18938D141659ED7C007196D0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		18938D151659ED7C007196D0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		189495B11661DD5C002F53AC /* fx44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fx44.png; sourceTree = "<group>"; };
+		189495B21661DD5C002F53AC /* fx57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fx57.png; sourceTree = "<group>"; };
+		189495B51661DEC8002F53AC /* StillImageFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StillImageFilterViewController.h; sourceTree = "<group>"; };
+		189495B61661DEC8002F53AC /* StillImageFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StillImageFilterViewController.m; sourceTree = "<group>"; };
 		18963ED0164FC9FD0087B1E6 /* FSGPUImageFilterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSGPUImageFilterManager.h; sourceTree = "<group>"; };
 		18963ED1164FC9FD0087B1E6 /* FSGPUImageFilterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSGPUImageFilterManager.m; sourceTree = "<group>"; };
 		189944FE16608B0000C3C8F4 /* MyAppsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppsViewController.h; sourceTree = "<group>"; };
@@ -687,6 +694,8 @@
 				1F92414915F741B90089AAAF /* ViewController.m */,
 				1F12BD2B15FEFC0200DD8284 /* MTCameraViewController.h */,
 				1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */,
+				189495B51661DEC8002F53AC /* StillImageFilterViewController.h */,
+				189495B61661DEC8002F53AC /* StillImageFilterViewController.m */,
 				18AEE494164E6E8C00D1A3D3 /* MySHKConfigurator.h */,
 				18AEE495164E6E8C00D1A3D3 /* MySHKConfigurator.m */,
 				189A0C8F1658B747003ED0D5 /* PreviewFilterViewController.h */,
@@ -727,6 +736,8 @@
 				189C5A3016593817000378DA /* s3.png */,
 				189C5A3116593817000378DA /* s2.png */,
 				189C5A3216593817000378DA /* s1.png */,
+				189495B11661DD5C002F53AC /* fx44.png */,
+				189495B21661DD5C002F53AC /* fx57.png */,
 				183948A61658268C00FD7A99 /* fx.png */,
 				1827BB80164F93CD00A869B9 /* Icon58.png */,
 				1827BB7E164F935500A869B9 /* Icon72@2x.png */,
@@ -1169,6 +1180,8 @@
 				1899451F1660B3F200C3C8F4 /* dark_gray_background.jpg in Resources */,
 				189945201660B3F200C3C8F4 /* ipadbk.jpeg in Resources */,
 				189945221660B6E900C3C8F4 /* scarlett.jpg in Resources */,
+				189495B31661DD5C002F53AC /* fx44.png in Resources */,
+				189495B41661DD5C002F53AC /* fx57.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1199,6 +1212,7 @@
 				18AE6876165FCF7600144952 /* Appirater.m in Sources */,
 				1899450016608B0000C3C8F4 /* MyAppsViewController.m in Sources */,
 				1899451A1660B19100C3C8F4 /* FXLabel.m in Sources */,
+				189495B71661DEC8002F53AC /* StillImageFilterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

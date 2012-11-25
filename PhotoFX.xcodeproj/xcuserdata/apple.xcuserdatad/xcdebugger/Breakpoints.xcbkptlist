@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PhotoFX/ViewController.m"
-         timestampString = "375510240.403755"
+         timestampString = "375515686.657226"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "545"
-         endingLineNumber = "545"
+         startingLineNumber = "580"
+         endingLineNumber = "580"
          landmarkName = "-onSingle2Tap:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PhotoFX/ViewController.m"
-         timestampString = "375510240.403755"
+         timestampString = "375515608.926075"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "522"
-         endingLineNumber = "522"
+         startingLineNumber = "563"
+         endingLineNumber = "563"
          landmarkName = "-onPinch:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -112,12 +112,51 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PhotoFX/MTCameraViewController.m"
-         timestampString = "375457756.099301"
+         timestampString = "375511547.36893"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "158"
-         endingLineNumber = "158"
+         startingLineNumber = "155"
+         endingLineNumber = "155"
          landmarkName = "-onLongPressing:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "PhotoFX/ViewController.m"
+         timestampString = "375515310.391907"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "239"
+         endingLineNumber = "239"
+         landmarkName = "-tapToCancel"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "PhotoFX/ViewController.m"
+         timestampString = "375515310.391907"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "244"
+         endingLineNumber = "244"
+         landmarkName = "-deleteImage"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "PhotoFX/ViewController.m"
+         timestampString = "375515344.075593"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "237"
+         endingLineNumber = "237"
+         landmarkName = "-tapToCancel"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

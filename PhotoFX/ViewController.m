@@ -9,8 +9,12 @@
 #import "FSGPUImageFilterManager.h"
 #import "PreviewFilterViewController.h"
 #import "MyAppsViewController.h"
+#import "StillImageFilterViewController.h"
 
-@interface ViewController () <PreviewFilterDelegate>
+
+static BOOL sureToDelete = YES;
+
+@interface ViewController () <PreviewFilterDelegate , UIGestureRecognizerDelegate>
 {
     NSMutableArray *displayImages;
     GPUImageStillCamera *stillCamera;
@@ -19,6 +23,7 @@
     UIPopoverController *popOver;
     NSTimer *adjustFXTimer;
     GPUImageSepiaFilter *sepiaFlt ;
+    
 }
 
 @property(nonatomic, assign) IBOutlet iCarousel *photoCarousel;
@@ -33,6 +38,7 @@
 - (IBAction)shareImage;
 - (IBAction)applyImageFilter:(id)sender;
 - (IBAction)showInfo;
+- (IBAction)stillImageFilterAdjust;
 
 @end
 
@@ -90,6 +96,8 @@
     // iCarousel Configuration
     self.photoCarousel.type = iCarouselTypeCoverFlow;
     self.photoCarousel.bounces = YES;
+    self.photoCarousel.delegate = self;
+    self.photoCarousel.dataSource = self;
 
     BOOL firstTimeToRun = NO; //[[[NSUserDefaults standardUserDefaults] objectForKey:@"firstTime"] boolValue];
     if (!firstTimeToRun) {
@@ -125,6 +133,11 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstTime"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
+    
+    UITapGestureRecognizer *tapToCancelDeleteGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToCancel)];
+    tapToCancelDeleteGesture.delegate = self;
+    //[tapToCancelDeleteGesture setCancelsTouchesInView:NO];
+    [self.view addGestureRecognizer:tapToCancelDeleteGesture];
     
     [self refreshUI];
 }
@@ -208,12 +221,30 @@
 
 }
 
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    return YES;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+    if ([touch.view.superview isKindOfClass:[UIToolbar class]] || [touch.view isKindOfClass:[UIButton class]]) {
+        return NO;
+    }
+    return YES;
+}
+
+- (void)tapToCancel{
+    
+    if (sureToDelete == NO ) {
+        [self.deleteButton setTintColor:[UIColor clearColor]];
+        sureToDelete = YES;
+    }
+}
+
 - (IBAction)deleteImage{
     if ([displayImages count] == 0 ) {
         [self refreshUI];
         return;
     }
-    static BOOL sureToDelete = YES;
     sureToDelete = !sureToDelete;
     
     if (sureToDelete) {
@@ -243,6 +274,18 @@
 
 }
 
+- (IBAction)stillImageFilterAdjust{
+    
+    if (!sepiaFlt) {
+        sepiaFlt = [[GPUImageSepiaFilter alloc] init];
+    }
+    StillImageFilterViewController *filterVC = [[StillImageFilterViewController alloc] initWithImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex] andFilter:sepiaFlt];
+
+    
+    filterVC.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+    [self presentModalViewController:filterVC animated:YES];
+
+}
 
 - (IBAction)applyImageFilter:(id)sender
 {
@@ -479,8 +522,14 @@
             sepiaFlt.intensity = 1.;
             i = 0;
         }
-        
-        UIImage *newImage = [sepiaFlt imageByFilteringImage:curImage];
+    
+    GPUImagePicture *stillImageSource = [[GPUImagePicture alloc] initWithImage:curImage];
+    [stillImageSource addTarget:sepiaFlt];
+    [stillImageSource processImage];
+    
+    UIImage *newImage = [sepiaFlt imageFromCurrentlyProcessedOutput];
+    
+        //UIImage *newImage = [sepiaFlt imageByFilteringImage:curImage];
         [displayImages replaceObjectAtIndex:self.photoCarousel.currentItemIndex withObject:newImage];
         
         [self.photoCarousel reloadItemAtIndex:self.photoCarousel.currentItemIndex animated:NO];
@@ -491,16 +540,9 @@
     if (gesture.state == UIGestureRecognizerStateBegan) {
         DLog(@"start pressing...");
         if (!adjustFXTimer) {
-            adjustFXTimer = [NSTimer timerWithTimeInterval:1/30. target:self selector:@selector(adjustFX) userInfo:nil repeats:YES];
-            [[NSRunLoop currentRunLoop] addTimer:adjustFXTimer forMode:NSDefaultRunLoopMode];
-            
+            adjustFXTimer = [NSTimer scheduledTimerWithTimeInterval:1/30. target:self selector:@selector(adjustFX) userInfo:nil repeats:YES];
             [adjustFXTimer fire];
-        }else{
-            
-            [adjustFXTimer invalidate];
-            adjustFXTimer = nil;
         }
-        
     }else if(gesture.state == UIGestureRecognizerStateEnded){
         DLog(@"end pressing...");
         
@@ -529,16 +571,10 @@
     
 }
 - (void)onSingleTap:(UITapGestureRecognizer*)gesture{
-  
-    FXImageView *selectedImageView = (FXImageView*)gesture.view;
-    if (selectedImageView) {
-        [UIView animateWithDuration:0.3 animations:^{
-            // make it not clear after multiple times
-            //selectedImageView.frame = CGRectMake(0, 0, 250.0f, 250.0f);
-            //float ratio = self.view.frame.size.width/selectedImageView.frame.size.width;
-            selectedImageView.transform =CGAffineTransformMakeScale(1., 1.);
-        }];
+    if ([displayImages count] > 0) {
+        [self stillImageFilterAdjust];
     }
+    [self tapToCancel];
 }
 
 - (void)onSingle2Tap:(UITapGestureRecognizer*)gesture{

@@ -12,7 +12,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="4uW-05-3PN" customClass="iCarousel">
+                            <view autoresizesSubviews="NO" contentMode="scaleToFill" id="4uW-05-3PN" customClass="iCarousel">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -33,7 +33,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showInfo" destination="2" eventType="touchUpInside" id="psn-CA-6Ti"/>
+                                    <action selector="showInfo" destination="2" eventType="touchUpInside" id="Tju-aE-ojc"/>
                                 </connections>
                             </button>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="5jI-7Y-lB7">
@@ -56,21 +56,16 @@
                                             <action selector="deleteImage" destination="2" id="0Mq-50-dJq"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem enabled="NO" title="Filter" id="eD4-rR-jhT">
-                                        <connections>
-                                            <action selector="applyImageFilter:" destination="2" id="RSo-jI-1jJ"/>
-                                        </connections>
-                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="qlM-Gs-z9a">
-                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Display" id="tab-vu-Exj">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="FX" width="7" id="eD4-rR-jhT">
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="refreshCarouselStyle" destination="2" id="ThK-1W-fW3"/>
+                                <action selector="stillImageFilterAdjust" destination="2" id="56k-t9-vZN"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="action" id="4FO-qN-WxZ">
@@ -87,7 +82,6 @@
                         <outlet property="deleteButton" destination="l46-mb-yvF" id="6V6-rX-SVy"/>
                         <outlet property="filterButton" destination="eD4-rR-jhT" id="YEN-QY-yKg"/>
                         <outlet property="photoCarousel" destination="4uW-05-3PN" id="uFa-sZ-edU"/>
-                        <outlet property="refreshButton" destination="tab-vu-Exj" id="fBA-Xf-gw1"/>
                         <outlet property="shareButton" destination="4FO-qN-WxZ" id="G9U-eE-3cB"/>
                     </connections>
                 </viewController>
@@ -121,7 +115,8 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="SmO-XF-svG"/>
-                                    <barButtonItem title="Filter" id="ygC-Gp-L53">
+                                    <barButtonItem style="done" systemItem="pageCurl" id="ygC-Gp-L53">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <action selector="applyImageFilter:" destination="idv-MW-BFP" id="goh-2t-5Zw"/>
                                         </connections>
@@ -236,6 +231,7 @@
                 <relationship kind="action" name="refreshCarouselStyle"/>
                 <relationship kind="action" name="shareImage"/>
                 <relationship kind="action" name="showInfo"/>
+                <relationship kind="action" name="stillImageFilterAdjust"/>
                 <relationship kind="outlet" name="deleteButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="filterButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="photoCarousel" candidateClass="iCarousel"/>
