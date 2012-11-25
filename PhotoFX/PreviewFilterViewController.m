@@ -84,7 +84,7 @@
     [self.navigationController setNavigationBarHidden:NO];
 
 	// Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dark_gray_background.jpg"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"apple-shirt.jpg"]];
     
     self.previewCarousel = [[iCarousel alloc] initWithFrame:self.view.frame];
     self.previewCarousel.type = iCarouselTypeInvertedWheel;

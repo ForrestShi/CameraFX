@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>SepiaCam Pro copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>38</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>189495BC1662153B002F53AC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1F92412E15F741B90089AAAF</key>
 		<dict>
 			<key>primary</key>

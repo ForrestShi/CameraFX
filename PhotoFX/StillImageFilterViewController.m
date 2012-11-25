@@ -13,9 +13,7 @@
 
 @interface StillImageFilterViewController ()<CMPopTipViewDelegate>{
     UIImageView *processImgView;
-    GPUImageFilter *_filter;
     GPUImageShowcaseFilterType _filterType;
-    GPUImagePicture *_stllCamera;
 }
 @property (nonatomic,strong) CMPopTipView *roundRectButtonPopTipView;
 @end
@@ -42,6 +40,20 @@
     return self;
 }
 
+- (UISlider*)customizedSliderFromFrame:(CGRect)frame{
+    UIImage* sliderBarImage = [UIImage imageNamed:@"slider_bar_21.png"];
+    UIImage* sliderThumbImage= [UIImage imageNamed:@"slider_thumb_21.png"];
+    sliderBarImage=[sliderBarImage stretchableImageWithLeftCapWidth:8.0 topCapHeight:0.0];
+    UISlider *slider = [[UISlider alloc] initWithFrame:frame];
+    [slider setMinimumTrackImage:sliderBarImage forState:UIControlStateNormal];
+    [slider setMaximumTrackImage:sliderBarImage forState:UIControlStateNormal];
+    [slider setThumbImage:sliderThumbImage forState:UIControlStateNormal];
+    [slider setMinimumValue:0.001];
+    [slider setMaximumValue:1.];
+    [slider setValue:.5];
+    return slider;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -52,10 +64,23 @@
     processImgView.frame = self.view.frame;
     [self.view addSubview:processImgView];
     
+#if defined(SEPIACAM_PRO)
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
-    //panGesture.delegate = self;
-
     [self.view addGestureRecognizer:panGesture];
+#elif defined(TOONCAM_PRO)
+    float w = self.view.bounds.size.width;    float h = self.view.bounds.size.height;
+    float p = IS_IPAD ? 60.:40;
+    UISlider *slider1 = [self customizedSliderFromFrame:CGRectMake(w*0.2, h*0.7, w*0.6, 20)];
+    UISlider *slider2 = [self customizedSliderFromFrame:CGRectMake(w*0.2, h*0.7 + p, w*0.6, 20)];
+    UISlider *slider3 = [self customizedSliderFromFrame:CGRectMake(w*0.2, h*0.7+ p*2, w*0.6, 20)];
+    [slider1 addTarget:self action:@selector(onSlider1:) forControlEvents:UIControlEventTouchDown];
+    [slider2 addTarget:self action:@selector(onSlider2:) forControlEvents:UIControlEventTouchDown];
+    [slider3 addTarget:self action:@selector(onSlider3:) forControlEvents:UIControlEventTouchDown];
+    [self.view addSubview:slider1];
+    [self.view addSubview:slider2];
+    [self.view addSubview:slider3];
+    
+#endif
     
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap)];
     doubleTap.numberOfTapsRequired = 2;
@@ -66,12 +91,35 @@
     [tipBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:tipBtn];
     
-    _stllCamera = [[GPUImagePicture alloc] initWithImage:self.processImage];
-    if (_filterType == GPUIMAGE_SEPIA) {
-        _filter = [[GPUImageSepiaFilter alloc] init];
+}
+static float blur = 0.2;
+static float threshold = 0.5;
+static float quanize = 10.;
+
+- (void)onSlider1:(UISlider*)slider{
+    blur = slider.value;
+    [self adjustToonFilter];
+}
+- (void)onSlider2:(UISlider*)slider{
+    threshold = slider.value;
+    [self adjustToonFilter];
+}
+- (void)onSlider3:(UISlider*)slider{
+    quanize = slider.value*10 + 5.;
+    [self adjustToonFilter];    
+}
+
+- (void)adjustToonFilter{
+    @autoreleasepool {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        GPUImageSmoothToonFilter* imageFilter = [[GPUImageSmoothToonFilter alloc] init];
+        [imageFilter setBlurSize:blur];
+        [imageFilter setThreshold:threshold];
+        [imageFilter setQuantizationLevels:quanize];
+        UIImage  *newImg = [imageFilter imageByFilteringImage:self.processImage];
+        [processImgView setImage:newImg];
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }
-    [_stllCamera addTarget:_filter];
-    
 }
 
 - (void)doubleTap{
@@ -92,7 +140,14 @@
 - (IBAction)buttonAction:(id)sender {
     // Toggle popTipView when a standard UIButton is pressed
     if (nil == self.roundRectButtonPopTipView) {
-        self.roundRectButtonPopTipView = [[CMPopTipView alloc] initWithMessage:@"Tips:1.Return back by top touch.2.Adjust effect by paning left/right. 3.Save and return by double taps."];
+      
+        NSString *message = @"";
+#if defined(TOONCAM_PRO)
+        message = @"Tips:1.Return back by top touch. 2.Save and return by double taps.";
+#elif defined(SEPIACAM_RPO)
+        message = @"Tips:1.Return back by top touch.2.Adjust effect by paning left/right. 3.Save and return by double taps."
+#endif
+        self.roundRectButtonPopTipView = [[CMPopTipView alloc] initWithMessage:message];
         self.roundRectButtonPopTipView.delegate = self;
         self.roundRectButtonPopTipView.backgroundColor = [UIColor lightGrayColor];
         self.roundRectButtonPopTipView.textColor = [UIColor darkTextColor];

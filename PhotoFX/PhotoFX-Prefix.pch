@@ -39,6 +39,9 @@ return shared##classname;                           \
 
 #define IS_IPAD ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
 
+
+#define TOONCAM_PRO 1
+
 #define APP_VERSION  [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey]
 //Sepia
 #define APP_ID @"578137731"  //SEPIA CAMERO 
