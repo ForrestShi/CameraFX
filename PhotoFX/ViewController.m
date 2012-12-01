@@ -142,7 +142,6 @@ static BOOL sureToDelete = YES;
     self.photoCarousel.delegate = self;
     self.photoCarousel.dataSource = self;
 
-    
     UITapGestureRecognizer *tapToCancelDeleteGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToCancel)];
     tapToCancelDeleteGesture.delegate = self;
     //[tapToCancelDeleteGesture setCancelsTouchesInView:NO];

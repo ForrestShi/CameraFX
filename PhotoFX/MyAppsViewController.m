@@ -96,6 +96,11 @@
     }
     [self.view addSubview:self.iconCarousel];
     
+    UILabel *introLabel = [self createLabelWithFrame:CGRectMake(30., self.view.bounds.size.height/4 - 40., 300., 44) andFontSize:10. andText:@"More apps from Design4Apple:"];
+    introLabel.textAlignment = UITextAlignmentLeft;
+    introLabel.textColor = [UIColor lightGrayColor];
+    [self.view addSubview:introLabel];
+    
     self.titleLabel = [self createLabelWithFrame:CGRectMake(self.view.bounds.size.width/2 - 300/2, self.view.bounds.size.height/4, 300., 44) andFontSize:10. andText:@""];
     self.titleLabel.textAlignment = UITextAlignmentCenter;    
     [self.view addSubview:self.titleLabel];
