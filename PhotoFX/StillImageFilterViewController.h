@@ -16,6 +16,6 @@
 @property (nonatomic,strong) UIImage *processImage;
 @property(nonatomic, unsafe_unretained) id delegate;
 
-- (id)initWithImage:(UIImage*)image andFilterType:(GPUImageShowcaseFilterType)filterType;
+- (id)initWithImage:(UIImage*)image withFilter:(GPUImageFilter*)filter;
 
 @end

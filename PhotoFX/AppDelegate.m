@@ -4,6 +4,8 @@
 #import "SHKConfiguration.h"
 #import "SHKFacebook.h"
 #import "Appirater.h"
+#import "Flurry.h"
+
 
 @implementation AppDelegate
 @synthesize window;
@@ -33,6 +35,7 @@
 {
     // Override point for customization after application launch.
     [Appirater setAppId:APP_ID];
+    [Flurry startSession:@"4C56JGJS5P2PF39W5JSS"];
 
     MySHKConfigurator *configurator = [[MySHKConfigurator alloc] init];
     [SHKConfiguration sharedInstanceWithConfigurator:configurator];

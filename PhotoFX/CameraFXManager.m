@@ -31,7 +31,11 @@ static CameraFXManager* instance = nil;
     
     if (!_filter) {
         // Setup initial camera filter
+#if SEPIACAM_PRO
         _filter = [[GPUImageSepiaFilter alloc] init];
+#elif TOONCAM_PRO
+        _filter = [[GPUImageSmoothToonFilter alloc] init];
+#endif
     }
 
 

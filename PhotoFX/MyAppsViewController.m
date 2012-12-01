@@ -96,12 +96,12 @@
     }
     [self.view addSubview:self.iconCarousel];
     
-    UILabel *introLabel = [self createLabelWithFrame:CGRectMake(30., self.view.bounds.size.height/4 - 40., 300., 44) andFontSize:10. andText:@"More apps from Design4Apple:"];
+    UILabel *introLabel = [self createLabelWithFrame:CGRectMake(30., self.view.bounds.size.height/4 - (IS_IPAD ? 55.:40.), 300., 44) andFontSize:(IS_IPAD?15:10.) andText:@"More apps from Design4Apple:"];
     introLabel.textAlignment = UITextAlignmentLeft;
     introLabel.textColor = [UIColor lightGrayColor];
     [self.view addSubview:introLabel];
     
-    self.titleLabel = [self createLabelWithFrame:CGRectMake(self.view.bounds.size.width/2 - 300/2, self.view.bounds.size.height/4, 300., 44) andFontSize:10. andText:@""];
+    self.titleLabel = [self createLabelWithFrame:CGRectMake(self.view.bounds.size.width/2 - 300/2, self.view.bounds.size.height/4, 300., 44) andFontSize:(IS_IPAD?15:10.) andText:@""];
     self.titleLabel.textAlignment = UITextAlignmentCenter;    
     [self.view addSubview:self.titleLabel];
     
@@ -136,7 +136,7 @@
     {
         CGRect cellFrame = CGRectMake(0, 0, 128., 128.);
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            cellFrame = CGRectMake(0, 0, 512., 512.);
+            cellFrame = CGRectMake(0, 0, 256, 256);
         }
         FXImageView *imageView = [[[FXImageView alloc] initWithFrame:cellFrame] autorelease];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -224,6 +224,8 @@
 }
 
 - (void)rateMe:(id)sender{
+    [Flurry logEvent:@"rate me"];
+    
     [Appirater userDidSignificantEvent:YES];
     [Appirater rateApp];
 }
@@ -231,6 +233,9 @@
 - (void)buyApp:(id)sender{
     NSMutableString *appURL = [NSMutableString stringWithString:@"itms-apps://"];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[appURL stringByAppendingString: [self currentApp].appLink]]];
+    
+    [Flurry logEvent:@"buy..."];
+
 }
 //Not used
 - (void)recommendApp:(id)sender{

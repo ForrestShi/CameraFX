@@ -161,7 +161,7 @@ And that’s not all! Focus one point and make it best !!! </string>
 		<key>name</key>
 		<string>Photo Fun with Sepia Effect</string>
 	</dict>
-	<key>6.oil</key>
+	<key>6.camera+sepia</key>
 	<dict>
 		<key>info</key>
 		<string>Turn any photos into oil painting effects with your finger, share with your friends immediately with facebook,twitter,or email.
@@ -172,11 +172,11 @@ This application is unique professional oil painting photo effects &amp; filters
 We are focusing on professional image processing, with simple finger touch application to replace complicated operations using PhotoShop.
 Maximum ease and comfort in usage were our main goals when creating the user interface. Just enjoy experimenting with your photos and leave other concerns aside!</string>
 		<key>icon</key>
-		<string>oil.png</string>
+		<string>sepia_icon.png</string>
 		<key>link</key>
-		<string>itunes.apple.com/app/photo-fun-with-oil-painting/id404555631?mt=8</string>
+		<string>https://itunes.apple.com/us/app/camera-+-sepia-pro/id578137731?mt=8</string>
 		<key>name</key>
-		<string>Photo Fun with Oil Painting</string>
+		<string>New Sepia Camera </string>
 	</dict>
 	<key>7.menu</key>
 	<dict>

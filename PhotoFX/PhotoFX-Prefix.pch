@@ -4,6 +4,7 @@
 
 #import <Availability.h>
 
+
 #ifndef __IPHONE_5_0
 #warning "This project uses features only available in iOS SDK 5.0 and later."
 #endif
@@ -45,5 +46,10 @@ return shared##classname;                           \
 
 #define APP_VERSION  [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey]
 //Sepia
-#define APP_ID @"578137731"  //SEPIA CAMERO 
+//#define APP_ID @"578137731"  //SEPIA CAMERO
+//TOON
+#define APP_ID @"583614582"  
+
+
+#import "Flurry.h"
 

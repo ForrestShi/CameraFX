@@ -10,6 +10,8 @@
 #import "PreviewFilterViewController.h"
 #import "MyAppsViewController.h"
 #import "StillImageFilterViewController.h"
+#import "Flurry.h"
+#import "CameraFXManager.h"
 
 
 static BOOL sureToDelete = YES;
@@ -48,46 +50,31 @@ static BOOL sureToDelete = YES;
 #pragma mark Initializers 
 
 
-- (GPUImageShowcaseFilterType)currentFilterType{
-#if defined(TOOCAM_RPO)
-    return GPUIMAGE_SMOOTHTOON;
-#else if SEPIACAM_RPO
-    return GPUIMAGE_SEPIA;
-#endif
-    
-}
-
 - (void)showSamples{
     
     BOOL firstTimeToRun = NO; //[[[NSUserDefaults standardUserDefaults] objectForKey:@"firstTime"] boolValue];
     UIImage *scarlett = [UIImage imageNamed:@"scarlett.jpg"];
     
-#if defined(TOONCAM_PRO)
-    DLog(@"ToonCamera Pro");
     if (!firstTimeToRun) {
         //first time run
         for (int i = 1 ; i < 6; i++) {
-            GPUImageSmoothToonFilter* imageFilter = [[GPUImageSmoothToonFilter alloc] init];
-            [imageFilter setBlurSize:.2*i];
-            [imageFilter setThreshold:.1*i];
-            [imageFilter setQuantizationLevels:10.];
-            [displayImages addObject:[imageFilter imageByFilteringImage:scarlett]];
+            
+            if ([curFilter isKindOfClass:[GPUImageSmoothToonFilter class]]) {
+                GPUImageSmoothToonFilter* imageFilter = [[GPUImageSmoothToonFilter alloc] init];
+                [imageFilter setBlurSize:.2*i];
+                [imageFilter setThreshold:.1*i];
+                [imageFilter setQuantizationLevels:10.];
+                [displayImages addObject:[imageFilter imageByFilteringImage:scarlett]];
+
+            }else if ([curFilter isKindOfClass:[GPUImageSepiaFilter class]]){
+                
+                GPUImageSepiaFilter* imageFilter = [[GPUImageSepiaFilter alloc] init];
+                [imageFilter setIntensity:.2*i];
+                [displayImages addObject:[imageFilter imageByFilteringImage:scarlett]];
+            }
         }
     }
-    
-#elif defined(SEPIACAM_PRO)
-    DLog(@"Sepia Camera Pro");
-    if (!firstTimeToRun) {
-        //first time run
-        for (int i = 1 ; i < 6; i++) {
-            GPUImageSepiaFilter* imageFilter = [[GPUImageSepiaFilter alloc] init];
-            [imageFilter setIntensity:.2*i];
-            [displayImages addObject:[imageFilter imageByFilteringImage:scarlett]];
-        }
-    }
-    
-#endif
-    
+        
     [self.photoCarousel reloadData];
     [self refreshUI];
     [self.photoCarousel scrollToItemAtIndex:[displayImages count]/2 animated:YES];
@@ -142,6 +129,8 @@ static BOOL sureToDelete = YES;
     self.photoCarousel.delegate = self;
     self.photoCarousel.dataSource = self;
 
+    curFilter = [[CameraFXManager sharedInstance] filter];
+    
     UITapGestureRecognizer *tapToCancelDeleteGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToCancel)];
     tapToCancelDeleteGesture.delegate = self;
     //[tapToCancelDeleteGesture setCancelsTouchesInView:NO];
@@ -273,6 +262,8 @@ static BOOL sureToDelete = YES;
         return;
     }
     
+    [Flurry logEvent:@"Share image"];
+    
     SHKItem *item = [SHKItem image:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex] title:@"Sepia Camera Pro"];
     
 	SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
@@ -285,8 +276,10 @@ static BOOL sureToDelete = YES;
 
 
 - (IBAction)stillImageFilterAdjust{
-    
-    StillImageFilterViewController *filterVC = [[StillImageFilterViewController alloc] initWithImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex] andFilterType:[self currentFilterType]];
+
+    [Flurry logEvent:@"Adjust filter for still image"];
+
+    StillImageFilterViewController *filterVC = [[StillImageFilterViewController alloc] initWithImage:[displayImages objectAtIndex:self.photoCarousel.currentItemIndex] withFilter:curFilter];
     filterVC.delegate = self;
     
     filterVC.modalTransitionStyle = UIModalTransitionStylePartialCurl;
@@ -329,8 +322,10 @@ static BOOL sureToDelete = YES;
 }
 
 - (IBAction)showInfo{
+    [Flurry logEvent:@"show info"];
+
     MyAppsViewController *infoVC = [[MyAppsViewController alloc] init];
-    infoVC.modalPresentationStyle = UIModalPresentationCurrentContext;
+    infoVC.modalPresentationStyle = UIModalPresentationFullScreen;
     infoVC.modalTransitionStyle = UIModalTransitionStylePartialCurl;
     [self presentModalViewController:infoVC animated:YES];
 }
@@ -364,12 +359,29 @@ static BOOL sureToDelete = YES;
 
 - (void)imagePickerController:(UIImagePickerController *)photoPicker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    UIImage *processedImage = image;
+    if ([curFilter isKindOfClass:[GPUImageSmoothToonFilter class]]) {
+        GPUImageSmoothToonFilter* imageFilter = [[GPUImageSmoothToonFilter alloc] init];
+        [imageFilter setBlurSize:.5];
+        [imageFilter setThreshold:.2];
+        [imageFilter setQuantizationLevels:10.];
+        processedImage = [imageFilter imageByFilteringImage:image];
+
+    }else if ([curFilter isKindOfClass:[GPUImageSepiaFilter class]]){
+        
+        GPUImageSepiaFilter* imageFilter = [[GPUImageSepiaFilter alloc] init];
+        [imageFilter setIntensity:.5];
+        processedImage = [imageFilter imageByFilteringImage:image];
+    }
+
+    
     if (self.photoCarousel.currentItemIndex >= 0 && self.photoCarousel.currentItemIndex < 1000 ) {
-        [displayImages insertObject:[info valueForKey:UIImagePickerControllerOriginalImage] atIndex:self.photoCarousel.currentItemIndex];
+        [displayImages insertObject:processedImage atIndex:self.photoCarousel.currentItemIndex];
         [self.photoCarousel insertItemAtIndex:self.photoCarousel.currentItemIndex animated:YES];
 
     }else{
-        [displayImages insertObject:[info valueForKey:UIImagePickerControllerOriginalImage] atIndex:0];
+        [displayImages insertObject:processedImage atIndex:0];
         [self.photoCarousel insertItemAtIndex:0 animated:YES];
 
     }
@@ -404,6 +416,7 @@ static BOOL sureToDelete = YES;
     if(!error)
     {
         UIImage *image = [[UIImage alloc] initWithData:imageData];
+        
         [displayImages addObject:image];
         
         runOnMainQueueWithoutDeadlocking(^{
@@ -481,14 +494,6 @@ static BOOL sureToDelete = YES;
     //load image
     [(FXImageView*)view setImage:[displayImages objectAtIndex:index]];
     
-    // One finger double-tap will delete an image
-//    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeImageFromCarousel:)];
-//    gesture.numberOfTouchesRequired = 1;
-//    gesture.numberOfTapsRequired = 2;
-//    view.gestureRecognizers = [NSArray arrayWithObject:gesture];
-//    
-    
-    
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSingleTap:)];
     singleTap.numberOfTapsRequired = 1;
     singleTap.numberOfTouchesRequired = 1;
@@ -503,13 +508,7 @@ static BOOL sureToDelete = YES;
     
     UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(onPinch:)];
     [view addGestureRecognizer:pinchGesture];
-    
-    //do not try this because hard to control 
-//    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(onLongPressing:)];
-//    [longPressGesture setMinimumPressDuration:1./2.];
-//    //longPressGesture.delegate = self;
-//    [view addGestureRecognizer:longPressGesture];
-    
+        
     return view;
 }
 
@@ -520,52 +519,6 @@ static BOOL sureToDelete = YES;
     [self.photoCarousel reloadData];
     [self.photoCarousel scrollToItemAtIndex:self.photoCarousel.currentItemIndex animated:YES];
 }
-
-//- (void)adjustFX{
-//    DLog(@"run fx adjust...");
-//    
-//    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-//        
-//        static int i = 0;
-//        UIImage *curImage = [displayImages objectAtIndex:self.photoCarousel.currentItemIndex];
-//        if (!curFilter) {
-//            curFilter =[[GPUImageSepiaFilter alloc] init];
-//        }
-//        curFilter.intensity = 1. - i++ * 0.01;
-//        if (curFilter.intensity < 0 ) {
-//            curFilter.intensity = 1.;
-//            i = 0;
-//        }
-//    
-//    GPUImagePicture *stillImageSource = [[GPUImagePicture alloc] initWithImage:curImage];
-//    [stillImageSource addTarget:curFilter];
-//    [stillImageSource processImage];
-//    
-//    UIImage *newImage = [curFilter imageFromCurrentlyProcessedOutput];
-//    
-//        [displayImages replaceObjectAtIndex:self.photoCarousel.currentItemIndex withObject:newImage];
-//        
-//        [self.photoCarousel reloadItemAtIndex:self.photoCarousel.currentItemIndex animated:NO];
-//    //});
-//}
-
-//- (void)onLongPressing:(UILongPressGestureRecognizer*)gesture{
-//    if (gesture.state == UIGestureRecognizerStateBegan) {
-//        DLog(@"start pressing...");
-//        if (!adjustFXTimer) {
-//            adjustFXTimer = [NSTimer scheduledTimerWithTimeInterval:1/30. target:self selector:@selector(adjustFX) userInfo:nil repeats:YES];
-//            [adjustFXTimer fire];
-//        }
-//    }else if(gesture.state == UIGestureRecognizerStateEnded){
-//        DLog(@"end pressing...");
-//        
-//        if (adjustFXTimer) {
-//            [adjustFXTimer invalidate];
-//            adjustFXTimer = nil;
-//        }
-//    }
-//}
-//
 
 - (void)onPinch:(UIPinchGestureRecognizer*)gesture{
     DLog(@"pinching... %@ scale : %f", gesture , [gesture scale] );

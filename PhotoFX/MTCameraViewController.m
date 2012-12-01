@@ -5,6 +5,7 @@
 #import "PreviewFilterViewController.h"
 #import "MBProgressHUD.h"
 #import "ParameterSliderView.h"
+#import "Flurry.h"
 
 @interface MTCameraViewController () <UIActionSheetDelegate, UIGestureRecognizerDelegate , PreviewFilterDelegate , ParameterSliderViewDelegate>
 {
@@ -55,7 +56,6 @@
     if (!filter) {
         // Setup initial camera filter
         filter = [[CameraFXManager sharedInstance] filter];
-        //[filter prepareForImageCapture];
         GPUImageView *filterView = (GPUImageView *)self.cameraView;
         [filter addTarget:filterView];
 
@@ -213,9 +213,16 @@
     if ([filter isKindOfClass:[GPUImageSepiaFilter class]]) {
         GPUImageSepiaFilter *sepiaFilter = (GPUImageSepiaFilter*)filter;
         [sepiaFilter setIntensity:intensity ];
+    }else if ([filter isKindOfClass:[GPUImageSmoothToonFilter class]]){
+        GPUImageSmoothToonFilter *curFilter = (GPUImageSmoothToonFilter*)filter;
+        DLog(@"update image %f",intensity);
+        [curFilter setBlurSize:(0.5 +intensity)];
+        [curFilter setThreshold:0.2+ (intensity - 0.5)/5.];  // 0.1 -- 0.3
+
     }
 
 }
+static float intensity = 0.5;
 
 - (void)onPan:(UIPanGestureRecognizer*)gesture{
     
@@ -224,25 +231,12 @@
     if (gesture.state == UIGestureRecognizerStateBegan) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     }else if (gesture.state == UIGestureRecognizerStateEnded){
+        intensity += translate.x/self.view.bounds.size.width/10.;
+        intensity = MIN(1.0, MAX(0.,intensity));
+        [self adjustFilter:intensity];
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }else if (gesture.state == UIGestureRecognizerStateChanged){
     
-        static float intensity = 1.;
-        if (translate.x > 0 ) {
-            intensity += fabsf(translate.x)/self.view.bounds.size.width/10.;
-            if (intensity > 2.) {
-                intensity = 2.;
-                return;
-            }
-        }else{
-            intensity -= fabsf(translate.x)/self.view.bounds.size.width/10.;
-            if (intensity < -1.) {
-                intensity = -1.;
-                return;
-            }
-        }
-        [self adjustFilter:intensity];
-
     }
 }
 
@@ -252,6 +246,7 @@
     {
         return NO;
     }
+    
     return YES;
 }
 
@@ -293,6 +288,8 @@
 
 -(IBAction)captureImage:(id)sender
 {
+    [Flurry logEvent:@"capture photo"];
+
     // Disable to prevent multiple taps while processing
     UIButton *captureButton = (UIButton *)sender;
     //captureButton.enabled = NO;

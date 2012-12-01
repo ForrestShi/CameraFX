@@ -11,9 +11,9 @@
 #import "CMPopTipView.h"
 #import "MTCameraViewController.h"
 
-@interface StillImageFilterViewController ()<CMPopTipViewDelegate>{
+@interface StillImageFilterViewController ()<CMPopTipViewDelegate,UIGestureRecognizerDelegate>{
     UIImageView *processImgView;
-    GPUImageShowcaseFilterType _filterType;
+    GPUImageFilter *_curFilter;
 }
 @property (nonatomic,strong) CMPopTipView *roundRectButtonPopTipView;
 @end
@@ -22,11 +22,11 @@
 @synthesize processImage,delegate;
 @synthesize roundRectButtonPopTipView;
 
-- (id)initWithImage:(UIImage*)image andFilterType:(GPUImageShowcaseFilterType)filterType{
+- (id)initWithImage:(UIImage*)image withFilter:(GPUImageFilter*)filter{
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         self.processImage = image;
-        _filterType = filterType;
+        _curFilter = filter;
     }
     return self;
 }
@@ -64,10 +64,16 @@
     processImgView.frame = self.view.frame;
     [self.view addSubview:processImgView];
     
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
+    panGesture.delegate = self;
+    [self.view addGestureRecognizer:panGesture];
+    
+ /*  //do not use slider any more, just use the pan gesture 
 #if defined(SEPIACAM_PRO)
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
     [self.view addGestureRecognizer:panGesture];
-#elif defined(TOONCAM_PRO)
+
+    #elif defined(TOONCAM_PRO)
     float w = self.view.bounds.size.width;    float h = self.view.bounds.size.height;
     float p = IS_IPAD ? 60.:40;
     UISlider *slider1 = [self customizedSliderFromFrame:CGRectMake(w*0.2, h*0.7, w*0.6, 20)];
@@ -81,6 +87,7 @@
     [self.view addSubview:slider3];
     
 #endif
+  */
     
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap)];
     doubleTap.numberOfTapsRequired = 2;
@@ -141,12 +148,7 @@ static float quanize = 10.;
     // Toggle popTipView when a standard UIButton is pressed
     if (nil == self.roundRectButtonPopTipView) {
       
-        NSString *message = @"";
-#if defined(TOONCAM_PRO)
-        message = @"Tips:1.Return back by top touch. 2.Save and return by double taps.";
-#elif defined(SEPIACAM_RPO)
-        message = @"Tips:1.Return back by top touch.2.Adjust effect by paning left/right. 3.Save and return by double taps."
-#endif
+        NSString *message = @"Tips:1.Return back by top touch.2.Adjust effect by paning left/right. 3.Save and return by double taps.";
         self.roundRectButtonPopTipView = [[CMPopTipView alloc] initWithMessage:message];
         self.roundRectButtonPopTipView.delegate = self;
         self.roundRectButtonPopTipView.backgroundColor = [UIColor lightGrayColor];
@@ -175,6 +177,8 @@ static float quanize = 10.;
     // Dispose of any resources that can be recreated.
 }
 
+static float intensity = 0.5;
+
 - (void)onPan:(UIPanGestureRecognizer*)gesture{
     
     CGPoint translate = [gesture translationInView:self.view];
@@ -183,35 +187,34 @@ static float quanize = 10.;
     if (gesture.state == UIGestureRecognizerStateBegan) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     }else if (gesture.state == UIGestureRecognizerStateEnded){
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-    }else if (gesture.state == UIGestureRecognizerStateChanged){
         
-        if (_filterType  == GPUIMAGE_SEPIA ) {
+        intensity += translate.x/self.view.bounds.size.width/10.;
+        intensity = MIN(1.0, MAX(0.,intensity));
+        
+        if ([_curFilter isKindOfClass:[GPUImageSepiaFilter class]] ) {
             
             GPUImageSepiaFilter *sepiaFlt = [[GPUImageSepiaFilter alloc] init];
-            static float intensity = 1.;
-            if (translate.x > 0 ) {
-                intensity += fabsf(translate.x)/self.view.bounds.size.width/10.;
-                if (intensity > 2.) {
-                    intensity = 2.;
-                    return;
-                }
-            }else{
-                intensity -= fabsf(translate.x)/self.view.bounds.size.width/10.;
-                if (intensity < -1.) {
-                    intensity = -1.;
-                    return;
-                }
-            }
             DLog(@"update image %f",intensity);
-            
             [sepiaFlt setIntensity:intensity];
             newImg = [sepiaFlt imageByFilteringImage:self.processImage];
-            [processImgView setImage:newImg];
+        }else if ([_curFilter isKindOfClass:[GPUImageSmoothToonFilter class]]){
+            
+            GPUImageSmoothToonFilter *filter = [[GPUImageSmoothToonFilter alloc] init];
+            DLog(@"update image %f",intensity);
+            [filter setBlurSize:0.5+intensity];
+            [filter setThreshold:0.2+ (intensity - 0.5)/5.];  // 0.1 -- 0.3 
+            newImg = [filter imageByFilteringImage:self.processImage];
         }
+        
+        [processImgView setImage:newImg];
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+
+    }else if (gesture.state == UIGestureRecognizerStateChanged){
     }
 }
 
-
+- (BOOL) gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    return YES;
+}
 
 @end
