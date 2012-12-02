@@ -14,8 +14,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1F92412E15F741B90089AAAF"
-               BuildableName = "SepiaCam Pro.app"
-               BlueprintName = "Camera Toon"
+               BuildableName = "Camera Toon.app"
+               BlueprintName = "Camera Fun"
                ReferencedContainer = "container:PhotoFX.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,8 +32,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1F92412E15F741B90089AAAF"
-            BuildableName = "SepiaCam Pro.app"
-            BlueprintName = "Camera Toon"
+            BuildableName = "Camera Toon.app"
+            BlueprintName = "Camera Fun"
             ReferencedContainer = "container:PhotoFX.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -51,8 +51,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1F92412E15F741B90089AAAF"
-            BuildableName = "SepiaCam Pro.app"
-            BlueprintName = "Camera Toon"
+            BuildableName = "Camera Toon.app"
+            BlueprintName = "Camera Fun"
             ReferencedContainer = "container:PhotoFX.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -69,8 +69,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1F92412E15F741B90089AAAF"
-            BuildableName = "SepiaCam Pro.app"
-            BlueprintName = "Camera Toon"
+            BuildableName = "Camera Toon.app"
+            BlueprintName = "Camera Fun"
             ReferencedContainer = "container:PhotoFX.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

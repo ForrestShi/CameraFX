@@ -12,6 +12,7 @@
 #import "Appirater.h"
 #import "SHK.h"
 #import "FXLabel.h"
+#import "Flurry.h"
 
 @interface MyApp : NSObject
 
@@ -98,11 +99,14 @@
     
     UILabel *introLabel = [self createLabelWithFrame:CGRectMake(30., self.view.bounds.size.height/4 - (IS_IPAD ? 55.:40.), 300., 44) andFontSize:(IS_IPAD?15:10.) andText:@"More apps from Design4Apple:"];
     introLabel.textAlignment = UITextAlignmentLeft;
+    introLabel.autoresizesSubviews = YES;
     introLabel.textColor = [UIColor lightGrayColor];
     [self.view addSubview:introLabel];
     
     self.titleLabel = [self createLabelWithFrame:CGRectMake(self.view.bounds.size.width/2 - 300/2, self.view.bounds.size.height/4, 300., 44) andFontSize:(IS_IPAD?15:10.) andText:@""];
-    self.titleLabel.textAlignment = UITextAlignmentCenter;    
+    self.titleLabel.textAlignment = UITextAlignmentCenter;
+    self.titleLabel.autoresizesSubviews = YES;
+    self.titleLabel.autoresizingMask = YES;
     [self.view addSubview:self.titleLabel];
     
     CGRect rateBtnFrame = CGRectMake(self.view.bounds.size.width/2 -22., self.view.bounds.size.height - 44.*2, 44., 44.);
@@ -192,7 +196,8 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     
-    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
+    return YES;
+    //return UIInterfaceOrientationIsPortrait(interfaceOrientation);
     
     //support all , not perfect now
     self.titleLabel.frame = CGRectMake(self.view.bounds.size.width/2 - 150., self.view.bounds.size.height/4, 300., 44);

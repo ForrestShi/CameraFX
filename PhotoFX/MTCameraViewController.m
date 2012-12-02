@@ -190,10 +190,31 @@
     }
 }
 
+static float defaultRadius = 0.25;
+
+- (void)adjustBulgeDistortionFilter:(CGPoint)center andRadius:(float)radius {
+    if ([filter isKindOfClass:[GPUImageBulgeDistortionFilter class]]){
+        GPUImageBulgeDistortionFilter *curFilter = (GPUImageBulgeDistortionFilter*)filter;
+        curFilter.center = CGPointMake(center.x/self.view.bounds.size.width, center.y/self.view.bounds.size.height);
+        curFilter.radius = radius;
+    }
+
+}
+
 - (void)onPinch:(UIPinchGestureRecognizer*)gesture{
+    
+    
+#if defined(TOONCAM_PRO) || defined(SEPIACAM_PRO)
     
     self.cameraView.transform = CGAffineTransformScale(self.cameraView.transform, [gesture scale], [gesture scale]);
     gesture.scale = 1.;
+
+#elif defined(FUNCAM_PRO)
+    CGPoint touchPoint = [gesture locationInView:self.view];
+    
+    [self adjustBulgeDistortionFilter:touchPoint andRadius:[gesture scale] ];
+#endif
+
 }
 
 - (void)onRotate:(UIRotationGestureRecognizer*)gesture{
@@ -220,12 +241,12 @@
         [curFilter setThreshold:0.2+ (intensity - 0.5)/5.];  // 0.1 -- 0.3
 
     }
-
 }
 static float intensity = 0.5;
 
 - (void)onPan:(UIPanGestureRecognizer*)gesture{
     
+#if defined(TOONCAM_PRO) || defined(SEPIACAM_PRO)
     CGPoint translate = [gesture translationInView:self.view];
     
     if (gesture.state == UIGestureRecognizerStateBegan) {
@@ -238,6 +259,11 @@ static float intensity = 0.5;
     }else if (gesture.state == UIGestureRecognizerStateChanged){
     
     }
+#elif defined(FUNCAM_PRO)
+    CGPoint touchPoint = [gesture locationInView:self.view];
+    
+    [self adjustBulgeDistortionFilter:touchPoint andRadius:defaultRadius];
+#endif
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{

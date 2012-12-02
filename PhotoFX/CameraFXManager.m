@@ -35,6 +35,10 @@ static CameraFXManager* instance = nil;
         _filter = [[GPUImageSepiaFilter alloc] init];
 #elif TOONCAM_PRO
         _filter = [[GPUImageSmoothToonFilter alloc] init];
+#elif FUNCAM_PRO
+        
+        
+        _filter = [[GPUImageBulgeDistortionFilter alloc] init];
 #endif
     }
 

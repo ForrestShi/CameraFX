@@ -63,69 +63,50 @@
     processImgView.contentMode = UIViewContentModeScaleAspectFit;
     processImgView.frame = self.view.frame;
     [self.view addSubview:processImgView];
-    
+
+//#if defined(TOONCAM_PRO) || defined(SEPIACAM_PRO)
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
     panGesture.delegate = self;
     [self.view addGestureRecognizer:panGesture];
-    
- /*  //do not use slider any more, just use the pan gesture 
-#if defined(SEPIACAM_PRO)
-    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
-    [self.view addGestureRecognizer:panGesture];
-
-    #elif defined(TOONCAM_PRO)
-    float w = self.view.bounds.size.width;    float h = self.view.bounds.size.height;
-    float p = IS_IPAD ? 60.:40;
-    UISlider *slider1 = [self customizedSliderFromFrame:CGRectMake(w*0.2, h*0.7, w*0.6, 20)];
-    UISlider *slider2 = [self customizedSliderFromFrame:CGRectMake(w*0.2, h*0.7 + p, w*0.6, 20)];
-    UISlider *slider3 = [self customizedSliderFromFrame:CGRectMake(w*0.2, h*0.7+ p*2, w*0.6, 20)];
-    [slider1 addTarget:self action:@selector(onSlider1:) forControlEvents:UIControlEventTouchDown];
-    [slider2 addTarget:self action:@selector(onSlider2:) forControlEvents:UIControlEventTouchDown];
-    [slider3 addTarget:self action:@selector(onSlider3:) forControlEvents:UIControlEventTouchDown];
-    [self.view addSubview:slider1];
-    [self.view addSubview:slider2];
-    [self.view addSubview:slider3];
-    
-#endif
-  */
+//#elif defined(FUNCAM_PRO)
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap:)];
+    tap.delegate = self;
+    //[self.view addGestureRecognizer:tap];
+//#endif
     
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap)];
     doubleTap.numberOfTapsRequired = 2;
     [self.view addGestureRecognizer:doubleTap];
-    
+    [tap requireGestureRecognizerToFail:doubleTap];
+
     UIButton *tipBtn = [UIButton buttonWithType:UIButtonTypeInfoDark];
     tipBtn.frame = CGRectMake(self.view.bounds.size.width - 60., 50., 44., 44.);
+    tipBtn.autoresizesSubviews = YES;
+    
     [tipBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    
     [self.view addSubview:tipBtn];
+    [self buttonAction:tipBtn];
+
     
 }
-static float blur = 0.2;
-static float threshold = 0.5;
-static float quanize = 10.;
 
-- (void)onSlider1:(UISlider*)slider{
-    blur = slider.value;
-    [self adjustToonFilter];
-}
-- (void)onSlider2:(UISlider*)slider{
-    threshold = slider.value;
-    [self adjustToonFilter];
-}
-- (void)onSlider3:(UISlider*)slider{
-    quanize = slider.value*10 + 5.;
-    [self adjustToonFilter];    
-}
-
-- (void)adjustToonFilter{
-    @autoreleasepool {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        GPUImageSmoothToonFilter* imageFilter = [[GPUImageSmoothToonFilter alloc] init];
-        [imageFilter setBlurSize:blur];
-        [imageFilter setThreshold:threshold];
-        [imageFilter setQuantizationLevels:quanize];
-        UIImage  *newImg = [imageFilter imageByFilteringImage:self.processImage];
-        [processImgView setImage:newImg];
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+- (void)onTap:(UITapGestureRecognizer*)gesture{
+    
+    CGPoint touchPoint = [gesture locationInView:self.view];
+    
+    if (gesture.state == UIGestureRecognizerStateEnded){
+        
+        if ([_curFilter isKindOfClass:[GPUImageBulgeDistortionFilter class]]){
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            
+            GPUImageBulgeDistortionFilter *curFilter = [[GPUImageBulgeDistortionFilter alloc] init];
+            curFilter.center = CGPointMake(touchPoint.x/self.view.bounds.size.width, touchPoint.y/self.view.bounds.size.height);
+            UIImage *newImg = [curFilter imageByFilteringImage:self.processImage];
+            [processImgView setImage:newImg];
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            
+        }        
     }
 }
 
@@ -149,6 +130,9 @@ static float quanize = 10.;
     if (nil == self.roundRectButtonPopTipView) {
       
         NSString *message = @"Tips:1.Return back by top touch.2.Adjust effect by paning left/right. 3.Save and return by double taps.";
+#if defined(FUNCAM_PRO)
+        message = @"Tips: 1.Return by touch the top. 2.Adjust effect by single tap.  3.Save photo by double taps.";
+#endif
         self.roundRectButtonPopTipView = [[CMPopTipView alloc] initWithMessage:message];
         self.roundRectButtonPopTipView.delegate = self;
         self.roundRectButtonPopTipView.backgroundColor = [UIColor lightGrayColor];
@@ -204,6 +188,13 @@ static float intensity = 0.5;
             [filter setBlurSize:0.5+intensity];
             [filter setThreshold:0.2+ (intensity - 0.5)/5.];  // 0.1 -- 0.3 
             newImg = [filter imageByFilteringImage:self.processImage];
+        }else if ([_curFilter isKindOfClass:[GPUImageBulgeDistortionFilter class]]){
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            CGPoint touchPoint = [gesture locationInView:self.view];
+
+            GPUImageBulgeDistortionFilter *curFilter = [[GPUImageBulgeDistortionFilter alloc] init];
+            curFilter.center = CGPointMake(touchPoint.x/self.view.bounds.size.width, touchPoint.y/self.view.bounds.size.height);
+            newImg = [curFilter imageByFilteringImage:self.processImage];            
         }
         
         [processImgView setImage:newImg];
@@ -211,6 +202,8 @@ static float intensity = 0.5;
 
     }else if (gesture.state == UIGestureRecognizerStateChanged){
     }
+    
+
 }
 
 - (BOOL) gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{

@@ -12,7 +12,7 @@
 #import "StillImageFilterViewController.h"
 #import "Flurry.h"
 #import "CameraFXManager.h"
-
+#import "CMPopTipView.h"
 
 static BOOL sureToDelete = YES;
 
@@ -53,11 +53,12 @@ static BOOL sureToDelete = YES;
 - (void)showSamples{
     
     BOOL firstTimeToRun = NO; //[[[NSUserDefaults standardUserDefaults] objectForKey:@"firstTime"] boolValue];
+    
     UIImage *scarlett = [UIImage imageNamed:@"scarlett.jpg"];
     
     if (!firstTimeToRun) {
         //first time run
-        for (int i = 1 ; i < 6; i++) {
+        for (int i = 1 ; i < 2; i++) {
             
             if ([curFilter isKindOfClass:[GPUImageSmoothToonFilter class]]) {
                 GPUImageSmoothToonFilter* imageFilter = [[GPUImageSmoothToonFilter alloc] init];
@@ -71,7 +72,14 @@ static BOOL sureToDelete = YES;
                 GPUImageSepiaFilter* imageFilter = [[GPUImageSepiaFilter alloc] init];
                 [imageFilter setIntensity:.2*i];
                 [displayImages addObject:[imageFilter imageByFilteringImage:scarlett]];
+            }else if ([curFilter isKindOfClass:[GPUImageBulgeDistortionFilter class]]){
+                
+                GPUImageBulgeDistortionFilter* imageFilter = [[GPUImageBulgeDistortionFilter alloc] init];
+                imageFilter.center = CGPointMake(.45, .25);
+                [displayImages addObject:scarlett];
+                [displayImages addObject:[imageFilter imageByFilteringImage:scarlett]];
             }
+
         }
     }
         
@@ -373,6 +381,21 @@ static BOOL sureToDelete = YES;
         GPUImageSepiaFilter* imageFilter = [[GPUImageSepiaFilter alloc] init];
         [imageFilter setIntensity:.5];
         processedImage = [imageFilter imageByFilteringImage:image];
+    }else if ([curFilter isKindOfClass:[GPUImageBulgeDistortionFilter class]]){
+        
+//        GPUImageStretchDistortionFilter* imageFilter = [[GPUImageStretchDistortionFilter alloc] init];
+//        imageFilter.center = CGPointMake(.5, .5);
+        processedImage = image;// [imageFilter imageByFilteringImage:image];
+        
+        int64_t delayInSeconds = 1.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            CMPopTipView *tipView = [[CMPopTipView alloc] initWithMessage:@"Tap me"];
+            [tipView presentPointingAtView:self.photoCarousel.currentItemView inView:self.view animated:YES];
+            tipView.disableTapToDismiss = NO;
+
+        });
+        
     }
 
     

@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PhotoFX/ViewController.m"
-         timestampString = "376040276.72365"
+         timestampString = "376122057.502054"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "548"
-         endingLineNumber = "548"
+         startingLineNumber = "571"
+         endingLineNumber = "571"
          landmarkName = "-onSingle2Tap:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PhotoFX/ViewController.m"
-         timestampString = "376040276.72365"
+         timestampString = "376122057.502054"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "531"
-         endingLineNumber = "531"
+         startingLineNumber = "554"
+         endingLineNumber = "554"
          landmarkName = "-onPinch:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -86,11 +86,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PhotoFX/MyAppsViewController.m"
-         timestampString = "375436076.707586"
+         timestampString = "376062383.075306"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "64"
-         endingLineNumber = "64"
+         startingLineNumber = "65"
+         endingLineNumber = "65"
          landmarkName = "-initWithNibName:bundle:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -99,11 +99,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PhotoFX/MyAppsViewController.m"
-         timestampString = "376039711.458443"
+         timestampString = "376062513.342305"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "229"
-         endingLineNumber = "229"
+         startingLineNumber = "234"
+         endingLineNumber = "234"
          landmarkName = "-rateMe:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -121,28 +121,15 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "PhotoFX/StillImageFilterViewController.m"
-         timestampString = "376038266.178405"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "107"
-         endingLineNumber = "107"
-         landmarkName = "-onSlider1:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PhotoFX/MTCameraViewController.m"
-         timestampString = "376039264.150307"
+         timestampString = "376116888.275525"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "213"
-         endingLineNumber = "213"
+         startingLineNumber = "234"
+         endingLineNumber = "234"
          landmarkName = "-adjustFilter:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -151,11 +138,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PhotoFX/MTCameraViewController.m"
-         timestampString = "376039264.150307"
+         timestampString = "376116888.275525"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "217"
-         endingLineNumber = "217"
+         startingLineNumber = "238"
+         endingLineNumber = "238"
          landmarkName = "-adjustFilter:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -164,11 +151,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PhotoFX/ViewController.m"
-         timestampString = "376044475.376845"
+         timestampString = "376119045.06316"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "327"
-         endingLineNumber = "327"
+         startingLineNumber = "335"
+         endingLineNumber = "335"
          landmarkName = "-showInfo"
          landmarkType = "5">
       </FileBreakpoint>

@@ -191,48 +191,6 @@
         <image name="back.png" width="128" height="128"/>
         <image name="switch0.png" width="95" height="47"/>
     </resources>
-    <classes>
-        <class className="GPUImageView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GPUImageView.h"/>
-        </class>
-        <class className="MTCameraViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MTCameraViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="back:"/>
-                <relationship kind="action" name="captureImage:"/>
-                <relationship kind="action" name="switchCamera:"/>
-                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="cameraView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="filterItem" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="switchButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
-            </relationships>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="applyImageFilter:"/>
-                <relationship kind="action" name="deleteImage"/>
-                <relationship kind="action" name="photoFromAlbum:"/>
-                <relationship kind="action" name="refreshCarouselStyle"/>
-                <relationship kind="action" name="shareImage"/>
-                <relationship kind="action" name="showInfo"/>
-                <relationship kind="action" name="stillImageFilterAdjust"/>
-                <relationship kind="outlet" name="deleteButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="filterButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="photoCarousel" candidateClass="iCarousel"/>
-                <relationship kind="outlet" name="refreshButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="shareButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="iCarousel" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/iCarousel.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dataSource"/>
-                <relationship kind="outlet" name="delegate"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

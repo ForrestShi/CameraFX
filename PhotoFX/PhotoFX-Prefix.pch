@@ -41,14 +41,18 @@ return shared##classname;                           \
 #define IS_IPAD ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
 
 
-#define TOONCAM_PRO 1
+//#define TOONCAM_PRO 1
 //#define SEPIACAM_PRO 1
+#define FUNCAM_PRO 1
 
 #define APP_VERSION  [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey]
 //Sepia
 //#define APP_ID @"578137731"  //SEPIA CAMERO
 //TOON
-#define APP_ID @"583614582"  
+//#define APP_ID @"583614582"
+//FUN
+#define APP_ID @"583693496"
+
 
 
 #import "Flurry.h"
