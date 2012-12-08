@@ -66,12 +66,12 @@
 
 // connected with design4app@gmail.com 5****apple*
 - (NSString*)facebookAppId {
-	return @"414276128610860";
+	return  @"313316545449640"; //@"414276128610860";
 }
 
 - (NSString*)facebookLocalAppId {
-    NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
-	return @"";
+    //NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
+	return @"fun";
 }
 // Read It Later - http://readitlaterlist.com/api/signup/
 - (NSString*)readItLaterKey {
