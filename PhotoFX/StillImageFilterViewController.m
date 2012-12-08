@@ -87,8 +87,40 @@
     
     [self.view addSubview:tipBtn];
     [self buttonAction:tipBtn];
+    int64_t delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self buttonAction:tipBtn];
+    });
+    
+    float w = 80., h = 40.;
+    UIButton *saveBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2 - w/2, self.view.bounds.size.height - h, w, h)];
+    saveBtn.backgroundColor = [UIColor blackColor];
+    saveBtn.alpha = 0.6;
+    saveBtn.titleLabel.textColor = [UIColor whiteColor];
+    [saveBtn setTitle:@"Save" forState:UIControlStateNormal];
+    [saveBtn addTarget:self action:@selector(saveImage:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:saveBtn];
 
     
+}
+
+- (void)saveImage:(UIButton*)btn{
+    DLog(@"save image");
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.processImage = processImgView.image;
+    [UIView animateWithDuration:0.3 animations:^{
+        btn.alpha = 0.;
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [UIView animateWithDuration:0.3 animations:^{
+                btn.alpha = 0.6;
+            }];
+        }
+    }];
+    [self.delegate updateStillImage:self.processImage];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 - (void)onTap:(UITapGestureRecognizer*)gesture{
