@@ -12,11 +12,7 @@
 		18172B81165A62160073C8E2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 18172B80165A62160073C8E2 /* Default.png */; };
 		1827BB78164F929900A869B9 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1827BB71164F929800A869B9 /* Icon.png */; };
 		1827BB7B164F929900A869B9 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1827BB74164F929900A869B9 /* Icon@2x.png */; };
-		1827BB7D164F929900A869B9 /* Icon512.png in Resources */ = {isa = PBXBuildFile; fileRef = 1827BB76164F929900A869B9 /* Icon512.png */; };
-		183948A71658268C00FD7A99 /* fx.png in Resources */ = {isa = PBXBuildFile; fileRef = 183948A61658268C00FD7A99 /* fx.png */; };
 		18938D161659ED7C007196D0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 18938D151659ED7C007196D0 /* MBProgressHUD.m */; };
-		189495B31661DD5C002F53AC /* fx44.png in Resources */ = {isa = PBXBuildFile; fileRef = 189495B11661DD5C002F53AC /* fx44.png */; };
-		189495B41661DD5C002F53AC /* fx57.png in Resources */ = {isa = PBXBuildFile; fileRef = 189495B21661DD5C002F53AC /* fx57.png */; };
 		189495B71661DEC8002F53AC /* StillImageFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189495B61661DEC8002F53AC /* StillImageFilterViewController.m */; };
 		189495BB1661F24F002F53AC /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 189495BA1661F24F002F53AC /* CMPopTipView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1894962516623672002F53AC /* slider_thumb_21.png in Resources */ = {isa = PBXBuildFile; fileRef = 1894962316623672002F53AC /* slider_thumb_21.png */; };
@@ -39,11 +35,7 @@
 		1899451E1660B3F200C3C8F4 /* apple-shirt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1899451B1660B3F000C3C8F4 /* apple-shirt.jpg */; };
 		1899451F1660B3F200C3C8F4 /* dark_gray_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1899451C1660B3F000C3C8F4 /* dark_gray_background.jpg */; };
 		189945201660B3F200C3C8F4 /* ipadbk.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1899451D1660B3F100C3C8F4 /* ipadbk.jpeg */; };
-		189945221660B6E900C3C8F4 /* scarlett.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 189945211660B6E900C3C8F4 /* scarlett.jpg */; };
 		189A0C911658B747003ED0D5 /* PreviewFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A0C901658B747003ED0D5 /* PreviewFilterViewController.m */; };
-		189C5A3316593817000378DA /* s3.png in Resources */ = {isa = PBXBuildFile; fileRef = 189C5A3016593817000378DA /* s3.png */; };
-		189C5A3416593817000378DA /* s2.png in Resources */ = {isa = PBXBuildFile; fileRef = 189C5A3116593817000378DA /* s2.png */; };
-		189C5A3516593817000378DA /* s1.png in Resources */ = {isa = PBXBuildFile; fileRef = 189C5A3216593817000378DA /* s1.png */; };
 		18A0AD321669D43300D92F3B /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A0AD311669D43300D92F3B /* libFlurry.a */; };
 		18A0AD3A1669F6A600D92F3B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A0AD331669F6A600D92F3B /* Default@2x.png */; };
 		18A0AD3C1669F6A600D92F3B /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A0AD351669F6A600D92F3B /* Icon-72.png */; };
@@ -53,10 +45,7 @@
 		18A0AD401669F6A600D92F3B /* Ion-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A0AD391669F6A600D92F3B /* Ion-Small@2x.png */; };
 		18A0AD431669F97300D92F3B /* Default-Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A0AD411669F97300D92F3B /* Default-Portrait@2x.png */; };
 		18A0AD441669F97300D92F3B /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A0AD421669F97300D92F3B /* Default-Portrait.png */; };
-		18A28CF4165A03D700ABF876 /* switch.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A28CF3165A03D700ABF876 /* switch.png */; };
 		18A28CF8165A0A8D00ABF876 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A28CF5165A0A8D00ABF876 /* back.png */; };
-		18A28CFA165A0A8D00ABF876 /* switch2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A28CF7165A0A8D00ABF876 /* switch2.png */; };
-		18A28CFC165A0AA600ABF876 /* switch3.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A28CFB165A0AA500ABF876 /* switch3.png */; };
 		18A28D00165A0F9900ABF876 /* switch0.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A28CFF165A0F9900ABF876 /* switch0.png */; };
 		18A28D03165A23D000ABF876 /* ParameterSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A28D02165A23D000ABF876 /* ParameterSliderView.m */; };
 		18A28D06165A3FBE00ABF876 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A28D04165A3FBE00ABF876 /* MainStoryboard_iPad.storyboard */; };
@@ -78,6 +67,7 @@
 		18AEE496164E6E8C00D1A3D3 /* MySHKConfigurator.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AEE495164E6E8C00D1A3D3 /* MySHKConfigurator.m */; };
 		18AEE498164E6EE800D1A3D3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18AEE497164E6EE800D1A3D3 /* CoreLocation.framework */; };
 		18AEE4CF164E9B7E00D1A3D3 /* MySHKSharers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18AEE4CE164E9B7E00D1A3D3 /* MySHKSharers.plist */; };
+		18EE68F61678D245002B160F /* default1.png in Resources */ = {isa = PBXBuildFile; fileRef = 18EE68F51678D245002B160F /* default1.png */; };
 		1F12BD2D15FEFC0200DD8284 /* MTCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */; };
 		1F8C30D41600FEAF00FEBB7B /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8C30D31600FE0D00FEBB7B /* UIImage+ProportionalFill.m */; };
 		1F92413415F741B90089AAAF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F92413315F741B90089AAAF /* UIKit.framework */; };
@@ -389,12 +379,8 @@
 		18172B80165A62160073C8E2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		1827BB71164F929800A869B9 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		1827BB74164F929900A869B9 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		1827BB76164F929900A869B9 /* Icon512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon512.png; sourceTree = "<group>"; };
-		183948A61658268C00FD7A99 /* fx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fx.png; sourceTree = "<group>"; };
 		18938D141659ED7C007196D0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		18938D151659ED7C007196D0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		189495B11661DD5C002F53AC /* fx44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fx44.png; sourceTree = "<group>"; };
-		189495B21661DD5C002F53AC /* fx57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fx57.png; sourceTree = "<group>"; };
 		189495B51661DEC8002F53AC /* StillImageFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StillImageFilterViewController.h; sourceTree = "<group>"; };
 		189495B61661DEC8002F53AC /* StillImageFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StillImageFilterViewController.m; sourceTree = "<group>"; };
 		189495B91661F24F002F53AC /* CMPopTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPopTipView.h; sourceTree = "<group>"; };
@@ -423,12 +409,8 @@
 		1899451B1660B3F000C3C8F4 /* apple-shirt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "apple-shirt.jpg"; sourceTree = "<group>"; };
 		1899451C1660B3F000C3C8F4 /* dark_gray_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dark_gray_background.jpg; sourceTree = "<group>"; };
 		1899451D1660B3F100C3C8F4 /* ipadbk.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ipadbk.jpeg; sourceTree = "<group>"; };
-		189945211660B6E900C3C8F4 /* scarlett.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scarlett.jpg; sourceTree = "<group>"; };
 		189A0C8F1658B747003ED0D5 /* PreviewFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewFilterViewController.h; sourceTree = "<group>"; };
 		189A0C901658B747003ED0D5 /* PreviewFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewFilterViewController.m; sourceTree = "<group>"; };
-		189C5A3016593817000378DA /* s3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = s3.png; sourceTree = "<group>"; };
-		189C5A3116593817000378DA /* s2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = s2.png; sourceTree = "<group>"; };
-		189C5A3216593817000378DA /* s1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = s1.png; sourceTree = "<group>"; };
 		18A0AD301669D43300D92F3B /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		18A0AD311669D43300D92F3B /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
 		18A0AD331669F6A600D92F3B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -439,10 +421,7 @@
 		18A0AD391669F6A600D92F3B /* Ion-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ion-Small@2x.png"; sourceTree = "<group>"; };
 		18A0AD411669F97300D92F3B /* Default-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x.png"; sourceTree = "<group>"; };
 		18A0AD421669F97300D92F3B /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
-		18A28CF3165A03D700ABF876 /* switch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch.png; sourceTree = "<group>"; };
 		18A28CF5165A0A8D00ABF876 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
-		18A28CF7165A0A8D00ABF876 /* switch2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch2.png; sourceTree = "<group>"; };
-		18A28CFB165A0AA500ABF876 /* switch3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch3.png; sourceTree = "<group>"; };
 		18A28CFF165A0F9900ABF876 /* switch0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch0.png; sourceTree = "<group>"; };
 		18A28D01165A23D000ABF876 /* ParameterSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterSliderView.h; sourceTree = "<group>"; };
 		18A28D02165A23D000ABF876 /* ParameterSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParameterSliderView.m; sourceTree = "<group>"; };
@@ -491,6 +470,7 @@
 		18AEE495164E6E8C00D1A3D3 /* MySHKConfigurator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySHKConfigurator.m; sourceTree = "<group>"; };
 		18AEE497164E6EE800D1A3D3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		18AEE4CE164E9B7E00D1A3D3 /* MySHKSharers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MySHKSharers.plist; sourceTree = "<group>"; };
+		18EE68F51678D245002B160F /* default1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default1.png; sourceTree = "<group>"; };
 		1F12BD2B15FEFC0200DD8284 /* MTCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCameraViewController.h; sourceTree = "<group>"; };
 		1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCameraViewController.m; sourceTree = "<group>"; };
 		1F8C30D21600FE0D00FEBB7B /* UIImage+ProportionalFill.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ProportionalFill.h"; sourceTree = "<group>"; };
@@ -583,25 +563,16 @@
 		1894962216622DF4002F53AC /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				18EE68F51678D245002B160F /* default1.png */,
 				1895067D166B1D6100B692A3 /* Icons */,
 				1894962316623672002F53AC /* slider_thumb_21.png */,
 				1894962416623672002F53AC /* slider_bar_21.png */,
-				189945211660B6E900C3C8F4 /* scarlett.jpg */,
 				189945131660A92300C3C8F4 /* thumbs_down.png */,
 				189945141660A92300C3C8F4 /* thumbs_up.png */,
 				1895067E166B1D8100B692A3 /* myapps */,
 				1895067F166B1D9200B692A3 /* texture */,
 				18A28CFF165A0F9900ABF876 /* switch0.png */,
 				18A28CF5165A0A8D00ABF876 /* back.png */,
-				18A28CFB165A0AA500ABF876 /* switch3.png */,
-				18A28CF7165A0A8D00ABF876 /* switch2.png */,
-				18A28CF3165A03D700ABF876 /* switch.png */,
-				189C5A3016593817000378DA /* s3.png */,
-				189C5A3116593817000378DA /* s2.png */,
-				189C5A3216593817000378DA /* s1.png */,
-				189495B11661DD5C002F53AC /* fx44.png */,
-				189495B21661DD5C002F53AC /* fx57.png */,
-				183948A61658268C00FD7A99 /* fx.png */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -618,7 +589,6 @@
 				18A0AD371669F6A600D92F3B /* Icon-Small-50.png */,
 				18A0AD381669F6A600D92F3B /* Icon-Small.png */,
 				18A0AD391669F6A600D92F3B /* Ion-Small@2x.png */,
-				1827BB76164F929900A869B9 /* Icon512.png */,
 				1827BB71164F929800A869B9 /* Icon.png */,
 				1827BB74164F929900A869B9 /* Icon@2x.png */,
 			);
@@ -1217,15 +1187,7 @@
 				18AEE4CF164E9B7E00D1A3D3 /* MySHKSharers.plist in Resources */,
 				1827BB78164F929900A869B9 /* Icon.png in Resources */,
 				1827BB7B164F929900A869B9 /* Icon@2x.png in Resources */,
-				1827BB7D164F929900A869B9 /* Icon512.png in Resources */,
-				183948A71658268C00FD7A99 /* fx.png in Resources */,
-				189C5A3316593817000378DA /* s3.png in Resources */,
-				189C5A3416593817000378DA /* s2.png in Resources */,
-				189C5A3516593817000378DA /* s1.png in Resources */,
-				18A28CF4165A03D700ABF876 /* switch.png in Resources */,
 				18A28CF8165A0A8D00ABF876 /* back.png in Resources */,
-				18A28CFA165A0A8D00ABF876 /* switch2.png in Resources */,
-				18A28CFC165A0AA600ABF876 /* switch3.png in Resources */,
 				18A28D00165A0F9900ABF876 /* switch0.png in Resources */,
 				18A28D06165A3FBE00ABF876 /* MainStoryboard_iPad.storyboard in Resources */,
 				18172B7D165A515D0073C8E2 /* linen.jpg in Resources */,
@@ -1248,9 +1210,6 @@
 				1899451E1660B3F200C3C8F4 /* apple-shirt.jpg in Resources */,
 				1899451F1660B3F200C3C8F4 /* dark_gray_background.jpg in Resources */,
 				189945201660B3F200C3C8F4 /* ipadbk.jpeg in Resources */,
-				189945221660B6E900C3C8F4 /* scarlett.jpg in Resources */,
-				189495B31661DD5C002F53AC /* fx44.png in Resources */,
-				189495B41661DD5C002F53AC /* fx57.png in Resources */,
 				1894962516623672002F53AC /* slider_thumb_21.png in Resources */,
 				1894962616623672002F53AC /* slider_bar_21.png in Resources */,
 				18A0AD3A1669F6A600D92F3B /* Default@2x.png in Resources */,
@@ -1262,6 +1221,7 @@
 				18A0AD431669F97300D92F3B /* Default-Portrait@2x.png in Resources */,
 				18A0AD441669F97300D92F3B /* Default-Portrait.png in Resources */,
 				18950676166B1D5200B692A3 /* deepred.jpg in Resources */,
+				18EE68F61678D245002B160F /* default1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1408,7 +1368,7 @@
 				GCC_PREFIX_HEADER = "PhotoFX/PhotoFX-Prefix.pch";
 				HEADER_SEARCH_PATHS = "Submodules/GPUImage/framework/**";
 				INFOPLIST_FILE = "PhotoFX/PhotoFX-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Flurry\"",
@@ -1490,7 +1450,7 @@
 				GCC_PREFIX_HEADER = "PhotoFX/PhotoFX-Prefix.pch";
 				HEADER_SEARCH_PATHS = "Submodules/GPUImage/framework/**";
 				INFOPLIST_FILE = "PhotoFX/PhotoFX-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Flurry\"",
@@ -1516,7 +1476,7 @@
 				GCC_PREFIX_HEADER = "PhotoFX/PhotoFX-Prefix.pch";
 				HEADER_SEARCH_PATHS = "Submodules/GPUImage/framework/**";
 				INFOPLIST_FILE = "PhotoFX/PhotoFX-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Flurry\"",

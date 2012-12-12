@@ -54,7 +54,7 @@ static BOOL sureToDelete = YES;
     
     BOOL firstTimeToRun = NO; //[[[NSUserDefaults standardUserDefaults] objectForKey:@"firstTime"] boolValue];
     
-    UIImage *scarlett = [UIImage imageNamed:@"scarlett.jpg"];
+    UIImage *scarlett = [UIImage imageNamed:@"default1.png"];
     
     if (!firstTimeToRun) {
         //first time run
@@ -75,7 +75,7 @@ static BOOL sureToDelete = YES;
             }else if ([curFilter isKindOfClass:[GPUImageBulgeDistortionFilter class]]){
                 
                 GPUImageBulgeDistortionFilter* imageFilter = [[GPUImageBulgeDistortionFilter alloc] init];
-                imageFilter.center = CGPointMake(.45, .25);
+                imageFilter.center = CGPointMake(.55, .3);
                 [displayImages addObject:scarlett];
                 [displayImages addObject:[imageFilter imageByFilteringImage:scarlett]];
             }

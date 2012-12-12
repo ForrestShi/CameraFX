@@ -1,7 +1,7 @@
 #!/bin/bash
 ICON512=$1
 convert $ICON512 -resize 57x57 ../Icon.png
-convert $ICON512 -resize 512x512 ../Icon512.png
+convert $ICON512 -resize 1042x1024 ../Icon1024.png
 convert  $ICON512 -resize 58x58 ../Ion-Small@2x.png
 convert $ICON512 -resize 29x29 ../Icon-Small.png
 convert  $ICON512 -resize 114x114 ../Icon@2x.png
