@@ -58,17 +58,22 @@ static BOOL sureToDelete = YES;
     
     if (!firstTimeToRun) {
         //first time run
-        for (int i = 1 ; i < 2; i++) {
+        //for (int i = 1 ; i < 2; i++) {
             
             if ([curFilter isKindOfClass:[GPUImageSmoothToonFilter class]]) {
-                GPUImageSmoothToonFilter* imageFilter = [[GPUImageSmoothToonFilter alloc] init];
-                [imageFilter setBlurSize:.2*i];
-                [imageFilter setThreshold:.1*i];
-                [imageFilter setQuantizationLevels:10.];
-                [displayImages addObject:[imageFilter imageByFilteringImage:scarlett]];
+                
+                [displayImages addObject:scarlett];
+                for (int i = 1; i < 5 ; i++) {
+                    GPUImageSmoothToonFilter* imageFilter = [[GPUImageSmoothToonFilter alloc] init];
+                    [imageFilter setBlurSize:.2*i];
+                    [imageFilter setThreshold:.1*i];
+                    [imageFilter setQuantizationLevels:10.];
+                    [displayImages addObject:[imageFilter imageByFilteringImage:scarlett]];
+
+                }
 
             }else if ([curFilter isKindOfClass:[GPUImageSepiaFilter class]]){
-                
+                int i = 1;
                 GPUImageSepiaFilter* imageFilter = [[GPUImageSepiaFilter alloc] init];
                 [imageFilter setIntensity:.2*i];
                 [displayImages addObject:[imageFilter imageByFilteringImage:scarlett]];
@@ -80,7 +85,7 @@ static BOOL sureToDelete = YES;
                 [displayImages addObject:[imageFilter imageByFilteringImage:scarlett]];
             }
 
-        }
+        //}
     }
         
     [self.photoCarousel reloadData];
