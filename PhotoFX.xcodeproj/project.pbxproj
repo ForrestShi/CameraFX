@@ -596,7 +596,7 @@
 		1F12BD2C15FEFC0200DD8284 /* MTCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCameraViewController.m; sourceTree = "<group>"; };
 		1F8C30D21600FE0D00FEBB7B /* UIImage+ProportionalFill.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ProportionalFill.h"; sourceTree = "<group>"; };
 		1F8C30D31600FE0D00FEBB7B /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
-		1F92412F15F741B90089AAAF /* Camera Toon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Camera Toon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F92412F15F741B90089AAAF /* Camera Toon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Camera Toon.app"; path = "Camera Fun.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F92413315F741B90089AAAF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1F92413515F741B90089AAAF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1F92413715F741B90089AAAF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
